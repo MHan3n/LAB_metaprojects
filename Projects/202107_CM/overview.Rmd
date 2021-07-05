@@ -1,0 +1,54 @@
+---
+title: "overview"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(osfr)
+```
+
+### 下載原始資料映像檔
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+## Download and load W1 rawdata from OSF
+osf_retrieve_file("he2v7") %>%
+  osf_download()
+## Download and load W2 rawdata from OSF
+osf_retrieve_file("ch68a") %>%
+  osf_download() 
+```
+
+### 載入原始資料物件
+
+```{r message=FALSE, warning=FALSE}
+load(list.files(recursive = TRUE,full.names = TRUE,include.dirs = TRUE,pattern = "*.Rdata")[1])
+load(list.files(recursive = TRUE,full.names = TRUE,include.dirs = TRUE,pattern = "*.Rdata")[2])
+ls()
+file.remove(list.files(recursive = TRUE,full.names = TRUE,include.dirs = TRUE,pattern = "*.Rdata"))
+```
+
+### Wave 1原始資料欄位說明清單
+
+```{r}
+items %>% rmarkdown::paged_table(options = list(rows.print = 20))
+```
+
+
+### NC 資料數值集
+
+```{r}
+data_numeric %>% select(starts_with("Q16_")) %>%
+  rmarkdown::paged_table(options = list(rows.print = 20))
+```
+
+
+### NCC資料數值集
+
+
+```{r}
+data_numeric %>% select(starts_with("Q17_")) %>%
+  rmarkdown::paged_table(options = list(rows.print = 20))
+```
