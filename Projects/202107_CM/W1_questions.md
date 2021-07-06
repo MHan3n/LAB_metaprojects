@@ -1,17 +1,59 @@
 # Boot et al.(2021)問卷資訊
 
 ## １. 信息處理 冠狀病毒知識（24題）
-|題號|English|翻譯|回答|
+|題號|English|翻譯|計分|
 |---|---|---|---|
-## １. 信息處理 陰謀拒絕（8題）
-|題號|English|翻譯|回答|
+|Q1_1|What is your current view on the following statements about the coronavirus? (Try to answer promptly based on your first instinct) - The first known case of the coronavirus was in Wuhan, China.|您目前對以下有關冠狀病毒的說法有何看法？ （嘗試根據您的第一直覺及時回答） - 已知的首例冠狀病毒病例發生在中國武漢。|1 = I am sure this is not true.<br>2 = I think this is not true.<br>3 = I don’t know.<br>4 = I think this is true.<br>5 = I am sure this is true.
+Q1_2|What is your current view on the following statements about the coronavirus? (Try to answer promptly based on your first instinct) - The coronavirus is primarily spread through coughing and sneezing.|您目前對以下有關冠狀病毒的說法有何看法？ （嘗試根據您的第一直覺及時回答） - 冠狀病毒主要通過咳嗽和打噴嚏傳播。|1 =我確定這不是真的。<br>2 = 我認為這不是真的。<br>3 = 我不知道。<br>4 = 我認為這是真的。<br>5 = 我確信這是真的。
+Q1_3|What is your current view on the following statements about the coronavirus? (Try to answer promptly based on your first instinct) - The coronavirus is especially deadly for older adults.|您目前對以下有關冠狀病毒的說法有何看法？ （嘗試根據您的第一直覺及時回答）- 冠狀病毒對老年人尤其致命。|
+Q1_4|What is your current view on the following statements about the coronavirus? (Try to answer promptly based on your first instinct) - Fever is a potential symptom of the coronavirus.|您目前對以下有關冠狀病毒的說法有何看法？ （嘗試根據您的第一直覺及時回答） - 發燒是冠狀病毒的潛在症狀。|
+<font color="#dd0000">Q1_5|What is your current view on the following statements about the coronavirus? (Try to answer promptly based on your first instinct) - The coronavirus can be spread by people who don\xe2\u0080 show the symptoms.|您目前對以下有關冠狀病毒的說法有何看法？ （嘗試根據您的第一直覺及時回答） - 冠狀病毒可以通過沒有\xe2\u0080 出現症狀的人傳播。|
+Q1_6|What is your current view on the following statements about the coronavirus? (Try to answer promptly based on your first instinct) - The coronavirus comes from animals.|您目前對以下有關冠狀病毒的說法有何看法？ （嘗試根據您的第一直覺及時回答） - 冠狀病毒來自動物。|
+Q1_7|What is your current view on the following statements about the coronavirus? (Try to answer promptly based on your first instinct) - There is no treatment yet for the coronavirus.|您目前對以下有關冠狀病毒的說法有何看法？ （嘗試根據您的第一直覺及時回答） - 冠狀病毒尚無治療方法。|
+Q1_8|What is your current view on the following statements about the coronavirus? (Try to answer promptly based on your first instinct) - It might take 14 days after exposure to the coronavirus before you show symptoms.|您目前對以下有關冠狀病毒的說法有何看法？ （嘗試根據您的第一直覺及時回答） - 暴露于冠狀病毒後可能需要 14 天才能出現症狀。|
+Q1_9|What is your current view on the following statements about the coronavirus? (Try to answer promptly based on your first instinct) - Social distancing helps slow down the spread of the coronavirus.|您目前對以下有關冠狀病毒的說法有何看法？ （嘗試根據您的第一直覺及時回答）- 保持社交距離有助於減緩冠狀病毒的傳播。|
+Q1_10|What is your current view on the following statements about the coronavirus? (Try to answer promptly based on your first instinct) - It is possible to become immune for the coronavirus after recovery.|您目前對以下有關冠狀病毒的說法有何看法？ （嘗試根據您的第一直覺及時回答） - 康復後有可能對冠狀病毒免疫。|
+Q1_11|What is your current view on the following statements about the coronavirus? (Try to answer promptly based on your first instinct) - Most people infected with the coronavirus will experience mild symptoms.|您目前對以下有關冠狀病毒的說法有何看法？ （嘗試根據您的第一直覺及時回答） - 大多數感染冠狀病毒的人會出現輕微症狀。|
+Q1_12|What is your current view on the following statements about the coronavirus? (Try to answer promptly based on your first instinct) - The coronavirus can be transmitted through elevator buttons and door handles.|您目前對以下有關冠狀病毒的說法有何看法？ （嘗試根據您的第一直覺及時回答） - 冠狀病毒可以通過電梯按鈕和門把手傳播。|
+Q1_13R|What is your current view on the following statements about the coronavirus? (Try to answer promptly based on your first instinct) - The coronavirus is less deadly than the common flu.|您目前對以下有關冠狀病毒的說法有何看法？ （嘗試根據您的第一直覺及時回答） - 冠狀病毒不如普通流感致命。|
+Q1_14R|What is your current view on the following statements about the coronavirus? (Try to answer promptly based on your first instinct) - The coronavirus can be spread via food contamination.|您目前對以下有關冠狀病毒的說法有何看法？ （嘗試根據您的第一直覺及時回答） - 冠狀病毒可以通過食物污染傳播。|
+Q1_15R|What is your current view on the following statements about the coronavirus? (Try to answer promptly based on your first instinct) - Face masks can protect you against the coronavirus.|您目前對以下有關冠狀病毒的說法有何看法？ （嘗試根據您的第一直覺及時回答） - 口罩可以保護您免受冠狀病毒的侵害。|
+Q1_16R|What is your current view on the following statements about the coronavirus? (Try to answer promptly based on your first instinct) - Flu vaccine protects you against the coronavirus.|您目前對以下有關冠狀病毒的說法有何看法？ （嘗試根據您的第一直覺及時回答） - 流感疫苗可以保護您免受冠狀病毒的侵害。|
+Q1_17R|What is your current view on the following statements about the coronavirus? (Try to answer promptly based on your first instinct) - The coronavirus primarily affects the heart.|您目前對以下有關冠狀病毒的說法有何看法？ （嘗試根據您的第一直覺及時回答） - 冠狀病毒主要影響心臟。|
+Q1_18R|What is your current view on the following statements about the coronavirus? (Try to answer promptly based on your first instinct) - Nausea is a potential symptom of the coronavirus.|您目前對以下有關冠狀病毒的說法有何看法？ （嘗試根據您的第一直覺及時回答）- 噁心是冠狀病毒的潛在症狀。|
+Q1_19R|What is your current view on the following statements about the coronavirus? (Try to answer promptly based on your first instinct) - The coronavirus cannot be spread via little children of primary school age.|您目前對以下有關冠狀病毒的說法有何看法？ （嘗試根據您的第一直覺及時回答） - 冠狀病毒不會通過小學適齡兒童傳播。|
+Q1_20R|What is your current view on the following statements about the coronavirus? (Try to answer promptly based on your first instinct) - The coronavirus is a variant of the common flu.|您目前對以下有關冠狀病毒的說法有何看法？ （嘗試根據您的第一直覺及時回答） - 冠狀病毒是普通流感的變種。|
+Q1_21R|What is your current view on the following statements about the coronavirus? (Try to answer promptly based on your first instinct) - Pets can become affected by the coronavirus.|您目前對以下有關冠狀病毒的說法有何看法？ （嘗試根據您的第一直覺及時回答） - 寵物可能會受到冠狀病毒的影響。|
+Q1_22R|What is your current view on the following statements about the coronavirus? (Try to answer promptly based on your first instinct) - You can only die from the coronavirus if you are sick already.|您目前對以下有關冠狀病毒的說法有何看法？ （嘗試根據您的第一直覺及時回答）- 只有在您已經生病的情況下，您才能死于冠狀病毒。|
+Q1_23R|What is your current view on the following statements about the coronavirus? (Try to answer promptly based on your first instinct) - People infected with the coronavirus can only infect 2-3 others.|您目前對以下有關冠狀病毒的說法有何看法？ （嘗試根據您的第一直覺及時回答） - 感染冠狀病毒的人只能感染 2-3 個人。|
+Q1_24R|What is your current view on the following statements about the coronavirus? (Try to answer promptly based on your first instinct) - Hand dryers are effective at killing the coronavirus.|您目前對以下有關冠狀病毒的說法有何看法？ （嘗試根據您的第一直覺及時回答） - 乾手器可有效殺死冠狀病毒。|
+
+題號後有"R"=反向計分題目
+
+---
+
+## １. 信息處理 陰謀論（8題）
+|題號|English|翻譯|計分|
 |---|---|---|---|
+Q1_1CONSR|What is your current view on the following statements about the coronavirus? (Try to answer promptly based on your first instinct) - The coronavirus was released by the Chinese government to prevent overpopulation.|您目前對以下有關冠狀病毒的說法有何看法？ （嘗試根據您的第一直覺及時回答） - 中國政府發布了冠狀病毒以防止人口過剩。|1 = I am sure this is not true.<br>2 = I think this is not true.<br>3 = I don’t know.<br>4 = I think this is true.<br>5 = I am sure this is true.|
+Q1_2CONSR|What is your current view on the following statements about the coronavirus? (Try to answer promptly based on your first instinct) - The coronavirus was created in a lab so the pharmaceutical industry can sell vaccines.|您目前對以下有關冠狀病毒的說法有何看法？ （嘗試根據您的第一直覺及時回答） - 冠狀病毒是在實驗室中創建的，因此製藥行業可以銷售疫苗。|1 = 我確定這不是真的。<br>2 = 我認為這不是真的。<br>3 = 我不知道。<br>4 = 我認為這是真的。<br>5 = 我確信這是真的。
+Q1_3CONSR|What is your current view on the following statements about the coronavirus? (Try to answer promptly based on your first instinct) - The coronavirus was sent by God to punish humanity.|您目前對以下有關冠狀病毒的說法有何看法？ （嘗試根據你的第一直覺及時回答） - 冠狀病毒是上帝派來懲罰人類的。|
+Q1_4CONSR|What is your current view on the following statements about the coronavirus? (Try to answer promptly based on your first instinct) - The coronavirus was sent by God to punish humanity.|您目前對以下有關冠狀病毒的說法有何看法？ （嘗試根據您的第一直覺及時回答） - 環保人士發布冠狀病毒以減少二氧化碳排放。|
+Q1_5CONSR|What is your current view on the following statements about the coronavirus? (Try to answer promptly based on your first instinct) - The coronavirus was created by the US government to destabilize China.|您目前對以下有關冠狀病毒的說法有何看法？ （嘗試根據你的第一直覺及時回答） - 冠狀病毒是美國政府為了擾亂中國而製造的。|
+Q1_6CONSR|What is your current view on the following statements about the coronavirus? (Try to answer promptly based on your first instinct) - The coronavirus was deliberately created and spread by the US to sell vaccines.|您目前對以下有關冠狀病毒的說法有何看法？ （嘗試根據您的第一直覺及時回答） - 冠狀病毒是美國故意製造和傳播用以銷售疫苗的。
+Q1_7CONSR|What is your current view on the following statements about the coronavirus? (Try to answer promptly based on your first instinct) - The coronavirus was stolen from a Canadian virus research lab in China.|您目前對以下有關冠狀病毒的說法有何看法？ （嘗試根據您的第一直覺及時回答） - 冠狀病毒是從位於中國的加拿大病毒研究實驗室竊取的。
+Q1_8CONS|What is your current view on the following statements about the coronavirus? (Try to answer promptly based on your first instinct) - The coronavirus was stolen from a Canadian virus research lab in China.|您目前對以下有關冠狀病毒的說法有何看法？ （嘗試根據您的第一直覺及時回答） - 冠狀病毒不是由人類創造的。
+
+題號後有"R"=反向計分題目
+
+---
+
 ## 2. 認知動機 NC問卷（18題）
 
-|題號|English|翻譯|回答|
+|題號|English|翻譯|計分|
 |---|---|---|---|
-|Q16_1|For each of the statements below, please indicate whether or not the statement is characteristic of you or of what you believe. - I prefer complex to simple problems.|對於下面的每一個陳述，請說明該陳述是否是您的特徵或您所相信的。 - 比起簡單的問題，我更喜歡複雜的問題。|1 extremely uncharacteristic of me.<br> 2 somewhat uncharacteristic of me.<br>3 uncertain. <br>4 somewhat characteristic of me. <br>5 extremely characteristic of me.|
-Q16_2|For each of the statements below, please indicate whether or not the statement is characteristic of you or of what you believe. - I like to have the responsibility of handling a situation that requires a lot of thinking.|對於下面的每一個陳述，請說明該陳述是否是您的特徵或您所相信的。 - 我喜歡有責任處理需要大量思考的情況。
+|Q16_1|For each of the statements below, please indicate whether or not the statement is characteristic of you or of what you believe. - I prefer complex to simple problems.|對於下面的每一個陳述，請說明該陳述是否是您的特徵或您所相信的。 - 比起簡單的問題，我更喜歡複雜的問題。|1 = extremely uncharacteristic of me.<br>2 = somewhat uncharacteristic of me.<br>3 = uncertain.<br>4 = somewhat characteristic of mev.<br>5 = extremely characteristic of me.|
+Q16_2|For each of the statements below, please indicate whether or not the statement is characteristic of you or of what you believe. - I like to have the responsibility of handling a situation that requires a lot of thinking.|對於下面的每一個陳述，請說明該陳述是否是您的特徵或您所相信的。 - 我喜歡有責任處理需要大量思考的情況。|1 = 非常不符合我的特點。<br>2 =有點不符合我的特點。<br>3 = 不確定。<br>4 = 有點不符合我的特點。<br>5 = 非常不符合我的特點。
 Q16_3R|For each of the statements below, please indicate whether or not the statement is characteristic of you or of what you believe. - Thinking is not my idea of fun.|對於下面的每一個陳述，請說明該陳述是否是您的特徵或您所相信的。 - 思考不是我的樂趣
 Q16_4R|For each of the statements below, please indicate whether or not the statement is characteristic of you or of what you believe. - I would rather do something that requires little thought than something that is sure to challenge my thinking abilities.|對於下面的每一個陳述，請說明該陳述是否是您的特徵或您所相信的。 - 我寧願做一些不需要思考的事情，也不願做一些肯定會挑戰我的思維能力的事情。
 Q16_5R|For each of the statements below, please indicate whether or not the statement is characteristic of you or of what you believe. - I try to anticipate and avoid situations where there is a likely chance I will have to think in depth about something.|對於下面的每一個陳述，請說明該陳述是否是您的特徵或您所相信的。 - 我嘗試預測並避免可能需要深入思考某事的情況。
@@ -29,7 +71,7 @@ Q16_16R|For each of the statements below, please indicate whether or not the sta
 |<font color="#dd0000">Q16_17R</font><br />|For each of the statements below, please indicate whether or not the statement is characteristic of you or of what you believe. - It\xe2\u0080 enough for me that something gets the job done; I don\xe2\u0080 care how or why it works.|對於下面的每一個陳述，請說明該陳述是否是您的特徵或您所相信的。 - 它\xe2\u0080 對我來說足以完成工作；我不\xe2\u0080關心它是如何工作或為什麼工作。
 |Q16_18|For each of the statements below, please indicate whether or not the statement is characteristic of you or of what you believe. - I usually end up deliberating about issues even when they do not affect me personally.|對於下面的每一個陳述，請說明該陳述是否是您的特徵或您所相信的。 - 我通常最終會考慮問題，即使它們對我個人沒有影響。
 
-題號後有R=反向計分項目
+題號後有"R"=反向計分題目
 
 ---
 
@@ -37,8 +79,8 @@ Q16_16R|For each of the statements below, please indicate whether or not the sta
 
 |題號|English|翻譯|回答|
 |---|---|---|---|
-|Q17_1|Read each of the following statements and decide how much you agree with each according to your beliefs and experiences. - I think that having clear rules and order at work is essential for success.|閱讀以下每個陳述，並根據你的信念和經驗決定你對每個陳述的同意程度。 - 我認為在工作中製定明確的規則和秩序是成功的必要條件。|1 strongly disagree<br>2 moderately disagree<br>3 slightly disagree<br>4 slightly agree<br>5 moderately agree<br>6 strongly agree|
-Q17_2R|Read each of the following statements and decide how much you agree with each according to your beliefs and experiences. - Even after I've made up my mind about something, I am always eager to consider a different opinion.|閱讀以下每個陳述，並根據你的信念和經驗決定你對每個陳述的同意程度。 - 我認為在工作中製定明確的規則和秩序是成功的必要條件。
+|Q17_1|Read each of the following statements and decide how much you agree with each according to your beliefs and experiences. - I think that having clear rules and order at work is essential for success.|閱讀以下每個陳述，並根據你的信念和經驗決定你對每個陳述的同意程度。 - 我認為在工作中製定明確的規則和秩序是成功的必要條件。|1 = strongly disagree<br>2 = moderately disagree<br>3 = slightly disagree<br>4 = slightly agree<br>5 = moderately agree<br>6 = strongly agree|
+Q17_2R|Read each of the following statements and decide how much you agree with each according to your beliefs and experiences. - Even after I've made up my mind about something, I am always eager to consider a different opinion.|閱讀以下每個陳述，並根據你的信念和經驗決定你對每個陳述的同意程度。 - 我認為在工作中製定明確的規則和秩序是成功的必要條件。|1 = 非常不同意<br>2 = 不同意<br>3 = 稍微不同意<br>4 = 稍微同意<br>5 = 同意<br>6 = 非常同意
 Q17_3|Read each of the following statements and decide how much you agree with each according to your beliefs and experiences. - I don't like situations that are uncertain.|閱讀以下每個陳述，並根據你的信念和經驗決定你對每個陳述的同意程度。 - 我不喜歡不確定的情況。
 Q17_4|Read each of the following statements and decide how much you agree with each according to your beliefs and experiences. - I dislike questions which could be answered in many different ways.|閱讀以下每個陳述，並根據你的信念和經驗決定你對每個陳述的同意程度。 - 我不喜歡可以用多種不同方式回答的問題。
 Q17_5R|Read each of the following statements and decide how much you agree with each according to your beliefs and experiences. - I like to have friends who are unpredictable.|閱讀以下每個陳述，並根據你的信念和經驗決定你對每個陳述的同意程度。 - 我喜歡有不可預測的朋友。
@@ -111,21 +153,69 @@ Closed Mindedness: 2, 4, 10, 25, 29, 36, 41, 44
 ## 3. 冠狀病毒媒體使用 來源（10題）
 |題號|English|翻譯|回答|
 |---|---|---|---|
-## 3. 冠狀病毒媒體使用 條件（4題）
+Q10_1|Which of the following sources do you use for the latest news about the coronavirus? - Television	|您使用以下哪些來源獲取有關冠狀病毒的最新消息？ - 電視
+Q10_2|Which of the following sources do you use for the latest news about the coronavirus? - Radio	|您使用以下哪些來源獲取有關冠狀病毒的最新消息？ - 收音機
+Q10_3|Which of the following sources do you use for the latest news about the coronavirus? - Printed newspapers	|您使用以下哪些來源獲取有關冠狀病毒的最新消息？ - 印刷報紙
+Q10_4|Which of the following sources do you use for the latest news about the coronavirus? - News sites (e.g., cnn.com, theguardian.com, washingtonpost.com)|您使用以下哪些來源獲取有關冠狀病毒的最新消息？ - 新聞網站（例如，cnn.com、theguardian.com、washingtonpost.com）
+Q10_5|Which of the following sources do you use for the latest news about the coronavirus? - Social networking sites (e.g., Facebook, Twitter, Instagram)|您使用以下哪些來源獲取有關冠狀病毒的最新消息？ - 社交網站（例如 Facebook、Twitter、Instagram）
+Q10_6|Which of the following sources do you use for the latest news about the coronavirus? - Video sharing platforms (e.g., YouTube)|您使用以下哪些來源獲取有關冠狀病毒的最新消息？ - 視頻分享平台（例如，YouTube）
+Q10_7|Which of the following sources do you use for the latest news about the coronavirus? - Video streaming platforms (e.g., Netflix)|您使用以下哪些來源獲取有關冠狀病毒的最新消息？ - 視頻流平台（例如，Netflix）
+Q10_8|Which of the following sources do you use for the latest news about the coronavirus? - Friends and/or family (personal interactions)|您使用以下哪些來源獲取有關冠狀病毒的最新消息？ - 朋友和/或家人（個人互動）
+Q10_9|Which of the following sources do you use for the latest news about the coronavirus? - Messaging apps (e.g., Whatsapp, Facebook messenger)|您使用以下哪些來源獲取有關冠狀病毒的最新消息？ -  訊息軟體（例如，Whatsapp、Facebook messenger）
+Q10_10|Which of the following sources do you use for the latest news about the coronavirus? - Social news aggregation sites (e.g., Reddit, 4Chan, Quora)|您使用以下哪些來源獲取有關冠狀病毒的最新消息？ - 社交新聞聚合網站（例如 Reddit、4Chan、Quora）
+---
+
+## 3. 冠狀病毒媒體使用 情況（4題）
 |題號|English|翻譯|回答|
 |---|---|---|---|
+Q10_1.1	|How do you come across news about the coronavirus? - I actively search for updates about the coronavirus.	|您是如何看到有關冠狀病毒的消息的？ - 我積極搜索有關冠狀病毒的更新。
+Q10_2.1	|How do you come across news about the coronavirus? - I coincidentally read news about the coronavirus when I'm browsing online.	|您是如何看到有關冠狀病毒的消息的？ - 我在網上瀏覽時偶然閱讀了有關冠狀病毒的新聞。
+Q10_3.1	|How do you come across news about the coronavirus? - I get updates about the coronavirus from other people (friends, family coworkers).	|您是如何看到有關冠狀病毒的消息的？ - 我從其他人（朋友、家人同事）那裡獲得有關冠狀病毒的最新消息。
+Q10_4.1	|How do you come across news about the coronavirus? - I ignore news about the coronavirus.	|您是如何看到有關冠狀病毒的消息的？ - 我忽略了有關冠狀病毒的消息。
+
+---
+
 ## 3. 冠狀病毒媒體使用 頻率（1題）
 |題號|English|翻譯|回答|
 |---|---|---|---|
+Q12|How often do you check updates about the coronavirus online?|您多久在線查看一次有關冠狀病毒的更新？|
+
+---
+
 ## 3. 冠狀病毒媒體使用 動機（5題）
 |題號|English|翻譯|回答|
 |---|---|---|---|
+Q14_1	|What are reasons you check updates about the coronavirus? - I want to be informed about the coronavirus.	|您查看有關冠狀病毒的更新的原因是什麼？ - 我想了解冠狀病毒。
+Q14_2	|What are reasons you check updates about the coronavirus? - I worry about my own health.	|您查看有關冠狀病毒的更新的原因是什麼？ - 我擔心自己的健康。
+Q14_3	|What are reasons you check updates about the coronavirus? - I worry about the health of people close to me.	|您查看有關冠狀病毒的更新的原因是什麼？ - 我擔心身邊人的健康。
+Q14_4	|What are reasons you check updates about the coronavirus? - I worry about the health of the general public.	|您查看有關冠狀病毒的更新的原因是什麼？ - 我擔心公眾的健康。
+Q14_5	|What are reasons you check updates about the coronavirus? - I want to educate others about the coronavirus.	|您查看有關冠狀病毒的更新的原因是什麼？ - 我想教育其他人有關冠狀病毒的知識。
+
+
+---
+
 ## 4. 一般媒體使用 使用的平台（1題）
 |題號|English|翻譯|回答|
 |---|---|---|---|
+Q8    |Which online media platform(s) do you use at least once a week? - Selected Choice	|您每周至少使用一次哪些在線媒體平台？ - 精選
+Q8_23_TEXT|Which online media platform(s) do you use at least once a week? - Other (please specify; multiple entries possible) - Text|您每周至少使用一次哪些在線媒體平台？ - 其他（請說明；可能有多個條目） - 文本
+
+---
+
 ## 4. 一般媒體使用 每天花費的時間（1題）
 |題號|English|翻譯|回答|
 |---|---|---|---|
+Q9|How much time on average do you spend daily on the online media platforms you selected above?|您平均每天在上面選擇的在線媒體平台上花費多少時間？|
+
+---
+
 ## 5. 人口特徵 （7題）
 |題號|English|翻譯|回答|
 |---|---|---|---|
+Q2_1	|What is your age? - 4	|你幾歲？ - 4
+Q3	|What is your gender? - Selected Choice	|你的性別是什麼？ - 精選
+Q3_3_TEXT	|What is your gender? - Other (please specify) - Text	|你的性別是什麼？ - 其他（請註明） - 文字
+Q4	|List of Countries	|國家名單
+Q5	|What is your native language?	|什麼是你的母語？
+Q6	|What is the highest level of school you have completed or the highest degree you have received?	|您完成的最高級別的學校或獲得的最高學位是什麼？
+Q7	|What is your current career field? - Selected Choice	|你目前的職業領域是什麼？ - 精選
