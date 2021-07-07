@@ -131,30 +131,22 @@ Q17_47R|Read each of the following statements and decide how much you agree with
 1. 反向計分項目 2, 5, 7, 12, 13, 16, 19, 20, 23, 25, 28, 29, 36, 40, 41, 和 47。
 2. 將第 18、22、39、43 和 46 相加，形成謊言分數。
 3. 如果謊言分數大於 15，則移除對象。
-4. 將除上面列出的謊言項目之外的所有項目相加以計算closure score。
-5. 使用頂部和底部四分位數來確定關閉主題的高低需求。
+4. 將除上面列出的謊言項目之外的所有項目相加以計算閉合分數。
+5. 使用頂部和底部四分位數來確定閉合項目的高低需求。
 6. 如果需要因素，請使用以下評分系統：
 順序：1, 6, 11, 20, 24, 28, 34, 35, 37, 47
 可預測性：5、7、8、19、26、27、30、45
 決定性：12, 13, 14, 16, 17, 23, 40
 歧義：3、9、15、21、31、32、33、38、42
 封閉性：2, 4, 10, 25, 29, 36, 41, 44
-5. Sum all items except for the above listed lie items to calculate the need for closurescore.
-5. Use the top and bottom quartiles to determine high and low need for closure subjects.
-6. If factors are required, use the following scoring system:
-Order: 1, 6, 11, 20, 24, 28, 34, 35, 37, 47
-Predictability: 5, 7, 8, 19, 26, 27, 30, 45
-Decisiveness: 12, 13, 14, 16, 17, 23, 40
-Ambiguity: 3, 9, 15, 21, 31, 32, 33, 38, 42
-Closed Mindedness: 2, 4, 10, 25, 29, 36, 41, 44
 
 ---
 
 ## 3. 冠狀病毒媒體使用 來源（10題）
 |題號|English|翻譯|回答|
 |---|---|---|---|
-Q10_1|Which of the following sources do you use for the latest news about the coronavirus? - Television	|您使用以下哪些來源獲取有關冠狀病毒的最新消息？ - 電視
-Q10_2|Which of the following sources do you use for the latest news about the coronavirus? - Radio	|您使用以下哪些來源獲取有關冠狀病毒的最新消息？ - 收音機
+Q10_1|Which of the following sources do you use for the latest news about the coronavirus? - Television	|您使用以下哪些來源獲取有關冠狀病毒的最新消息？ - 電視|1 = None at all <br>2 = A little <br>3 = A moderate amount  <br>4 = A lot 5 <br>= A great deal
+Q10_2|Which of the following sources do you use for the latest news about the coronavirus? - Radio	|您使用以下哪些來源獲取有關冠狀病毒的最新消息？- 收音機|1=完全沒有<br>2 = 較少 <br>3 = 中間 <br>4 = 很多 5= 大量
 Q10_3|Which of the following sources do you use for the latest news about the coronavirus? - Printed newspapers	|您使用以下哪些來源獲取有關冠狀病毒的最新消息？ - 印刷報紙
 Q10_4|Which of the following sources do you use for the latest news about the coronavirus? - News sites (e.g., cnn.com, theguardian.com, washingtonpost.com)|您使用以下哪些來源獲取有關冠狀病毒的最新消息？ - 新聞網站（例如，cnn.com、theguardian.com、washingtonpost.com）
 Q10_5|Which of the following sources do you use for the latest news about the coronavirus? - Social networking sites (e.g., Facebook, Twitter, Instagram)|您使用以下哪些來源獲取有關冠狀病毒的最新消息？ - 社交網站（例如 Facebook、Twitter、Instagram）
@@ -168,8 +160,8 @@ Q10_10|Which of the following sources do you use for the latest news about the c
 ## 3. 冠狀病毒媒體使用 情況（4題）
 |題號|English|翻譯|回答|
 |---|---|---|---|
-Q10_1.1	|How do you come across news about the coronavirus? - I actively search for updates about the coronavirus.	|您是如何看到有關冠狀病毒的消息的？ - 我積極搜索有關冠狀病毒的更新。
-Q10_2.1	|How do you come across news about the coronavirus? - I coincidentally read news about the coronavirus when I'm browsing online.	|您是如何看到有關冠狀病毒的消息的？ - 我在網上瀏覽時偶然閱讀了有關冠狀病毒的新聞。
+Q10_1.1	|How do you come across news about the coronavirus? - I actively search for updates about the coronavirus.	|您是如何看到有關冠狀病毒的消息的？ - 我積極搜索有關冠狀病毒的更新。|1 = Strongly disagree<br>2 = Somewhat disagree<br>3 = Neither agree nor disagree<br>4 = Somewhat agree<br>5 = Strongly agree<br>
+Q10_2.1	|How do you come across news about the coronavirus? - I coincidentally read news about the coronavirus when I'm browsing online.|您是如何看到有關冠狀病毒的消息的？ - 我在網上瀏覽時偶然閱讀了有關冠狀病毒的新聞。|1 = 非常不同意<br>2 = 有點不同意<br>3 = 既不同意也不反對<br>4 = 有點同意<br>5 = 非常同意<br>
 Q10_3.1	|How do you come across news about the coronavirus? - I get updates about the coronavirus from other people (friends, family coworkers).	|您是如何看到有關冠狀病毒的消息的？ - 我從其他人（朋友、家人同事）那裡獲得有關冠狀病毒的最新消息。
 Q10_4.1	|How do you come across news about the coronavirus? - I ignore news about the coronavirus.	|您是如何看到有關冠狀病毒的消息的？ - 我忽略了有關冠狀病毒的消息。
 
@@ -178,15 +170,15 @@ Q10_4.1	|How do you come across news about the coronavirus? - I ignore news abou
 ## 3. 冠狀病毒媒體使用 頻率（1題）
 |題號|English|翻譯|回答|
 |---|---|---|---|
-Q12|How often do you check updates about the coronavirus online?|您多久在線查看一次有關冠狀病毒的更新？|
+Q12|How often do you check updates about the coronavirus online?|您多久在線查看一次有關冠狀病毒的更新？|1=never(從不)<br>2 =once every few dats(每隔幾天一次) <br>3 = once a day(每天一次) <br>4 =once per hour(每小時一次)<br>5 = multiple times per hour(每小時多次)
 
 ---
 
 ## 3. 冠狀病毒媒體使用 動機（5題）
 |題號|English|翻譯|回答|
 |---|---|---|---|
-Q14_1	|What are reasons you check updates about the coronavirus? - I want to be informed about the coronavirus.	|您查看有關冠狀病毒的更新的原因是什麼？ - 我想了解冠狀病毒。
-Q14_2	|What are reasons you check updates about the coronavirus? - I worry about my own health.	|您查看有關冠狀病毒的更新的原因是什麼？ - 我擔心自己的健康。
+Q14_1	|What are reasons you check updates about the coronavirus? - I want to be informed about the coronavirus.	|您查看有關冠狀病毒的更新的原因是什麼？ - 我想了解冠狀病毒。|1 = Strongly disagree<br>2 = Somewhat disagree<br>3 = Neither agree nor disagree<br>4 = Somewhat agree<br>5 = Strongly agree
+Q14_2	|What are reasons you check updates about the coronavirus? - I worry about my own health.	|您查看有關冠狀病毒的更新的原因是什麼？ - 我擔心自己的健康。|1 = 非常不同意<br>2 = 有點不同意<br>3 = 既不同意也不反對<br>4 = 有點同意<br>5 = 非常同意
 Q14_3	|What are reasons you check updates about the coronavirus? - I worry about the health of people close to me.	|您查看有關冠狀病毒的更新的原因是什麼？ - 我擔心身邊人的健康。
 Q14_4	|What are reasons you check updates about the coronavirus? - I worry about the health of the general public.	|您查看有關冠狀病毒的更新的原因是什麼？ - 我擔心公眾的健康。
 Q14_5	|What are reasons you check updates about the coronavirus? - I want to educate others about the coronavirus.	|您查看有關冠狀病毒的更新的原因是什麼？ - 我想教育其他人有關冠狀病毒的知識。
@@ -197,15 +189,15 @@ Q14_5	|What are reasons you check updates about the coronavirus? - I want to edu
 ## 4. 一般媒體使用 使用的平台（1題）
 |題號|English|翻譯|回答|
 |---|---|---|---|
-Q8    |Which online media platform(s) do you use at least once a week? - Selected Choice	|您每周至少使用一次哪些在線媒體平台？ - 精選
-Q8_23_TEXT|Which online media platform(s) do you use at least once a week? - Other (please specify; multiple entries possible) - Text|您每周至少使用一次哪些在線媒體平台？ - 其他（請說明；可能有多個條目） - 文本
+Q8    |Which online media platform(s) do you use at least once a week? - Selected Choice	|您每周至少使用一次哪些在線媒體平台?|<br>1.Youtube、<br>2.WhatsApp、<br>3.facebook、<br>4.Facebook messenger、<br>5.Twitter、<br>6.Netflix、<br>7.Reddit、<br>8.Discord、<br>9.Discord、<br>10.9GAG、<br>11.Quora、<br>12.Netflix、<br>13.Tinder (or other dating apps)、<br>14.Instagram、<br>15.Pinterest、<br>16.Spotify、<br>17.TikTok、<br>18.Snapchat、<br>19.Tumblr、<br>20.LinkedIn<br>21.Skype and/or other video calling services、<br>22.4Chan、<br>23.Other (please specify; multiple entries possible)、
+
 
 ---
 
 ## 4. 一般媒體使用 每天花費的時間（1題）
 |題號|English|翻譯|回答|
 |---|---|---|---|
-Q9|How much time on average do you spend daily on the online media platforms you selected above?|您平均每天在上面選擇的在線媒體平台上花費多少時間？|
+Q9|How much time on average do you spend daily on the online media platforms you selected above?|您平均每天在上面選擇的在線媒體平台上花費多少時間？|1.0-15分鐘<br>2.15-60分鐘<br>3.1-2小時<br>4.2-3小時<br>5.3-4小時<br>6.4-5小時<br>7.5-6小時<br>8.6-7小時<br>9.7-8小時<br>10.8小時以上
 
 ---
 
@@ -213,8 +205,8 @@ Q9|How much time on average do you spend daily on the online media platforms you
 |題號|English|翻譯|回答|
 |---|---|---|---|
 Q2_1	|What is your age? - 4	|你幾歲？ - 4
-Q3	|What is your gender? - Selected Choice	|你的性別是什麼？ - 精選
-Q3_3_TEXT	|What is your gender? - Other (please specify) - Text	|你的性別是什麼？ - 其他（請註明） - 文字
+Q3	|What is your gender? - Selected Choice	|你的性別是什麼？ - 精選|1.男性<br>2.女性<br>3.寧可不說<br>4.跨性別者<br>5.其他：未替定<br>6.其他：性別酷兒<br>7.其他非二元性別
+Q3_3_TEXT	|What is your gender? - Other (please specify) - Text	|你的性別是什麼？ - 其他（請註明） - 文字|（填充題）
 Q4	|List of Countries	|國家名單
 Q5	|What is your native language?	|什麼是你的母語？
 Q6	|What is the highest level of school you have completed or the highest degree you have received?	|您完成的最高級別的學校或獲得的最高學位是什麼？
