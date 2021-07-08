@@ -145,8 +145,8 @@ Q17_47R|Read each of the following statements and decide how much you agree with
 ## 3. 冠狀病毒媒體使用 來源（10題）
 |題號|English|翻譯|回答|
 |---|---|---|---|
-Q10_1|Which of the following sources do you use for the latest news about the coronavirus? - Television	|您使用以下哪些來源獲取有關冠狀病毒的最新消息？ - 電視|1 = None at all <br>2 = A little <br>3 = A moderate amount  <br>4 = A lot 5 <br>= A great deal
-Q10_2|Which of the following sources do you use for the latest news about the coronavirus? - Radio	|您使用以下哪些來源獲取有關冠狀病毒的最新消息？- 收音機|1=完全沒有<br>2 = 較少 <br>3 = 中間 <br>4 = 很多 5= 大量
+Q10_1|Which of the following sources do you use for the latest news about the coronavirus? - Television	|您使用以下哪些來源獲取有關冠狀病毒的最新消息？ - 電視|(codes in data set) <br> 38 = None at all <br>39 = A little <br>40 = A moderate amount  <br>41 = A lot <br>42 = A great deal
+Q10_2|Which of the following sources do you use for the latest news about the coronavirus? - Radio	|您使用以下哪些來源獲取有關冠狀病毒的最新消息？- 收音機|(numbers on survey form)<br>1=完全沒有<br>2 = 較少 <br>3 = 中間 <br>4 = 很多 5= 大量
 Q10_3|Which of the following sources do you use for the latest news about the coronavirus? - Printed newspapers	|您使用以下哪些來源獲取有關冠狀病毒的最新消息？ - 印刷報紙
 Q10_4|Which of the following sources do you use for the latest news about the coronavirus? - News sites (e.g., cnn.com, theguardian.com, washingtonpost.com)|您使用以下哪些來源獲取有關冠狀病毒的最新消息？ - 新聞網站（例如，cnn.com、theguardian.com、washingtonpost.com）
 Q10_5|Which of the following sources do you use for the latest news about the coronavirus? - Social networking sites (e.g., Facebook, Twitter, Instagram)|您使用以下哪些來源獲取有關冠狀病毒的最新消息？ - 社交網站（例如 Facebook、Twitter、Instagram）
