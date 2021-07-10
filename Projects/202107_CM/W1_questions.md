@@ -1,4 +1,4 @@
-# Boot et al.(2021)問卷資訊
+# Boot et al.(2021)問卷資訊W_1
 
 ## １. 信息處理 冠狀病毒知識（24題）
 |題號|English|翻譯|計分|
@@ -146,7 +146,7 @@ Q17_47R|Read each of the following statements and decide how much you agree with
 |題號|English|翻譯|回答|
 |---|---|---|---|
 Q10_1|Which of the following sources do you use for the latest news about the coronavirus? - Television	|您使用以下哪些來源獲取有關冠狀病毒的最新消息？ - 電視|(codes in data set) <br> 38 = None at all <br>39 = A little <br>40 = A moderate amount  <br>41 = A lot <br>42 = A great deal
-Q10_2|Which of the following sources do you use for the latest news about the coronavirus? - Radio	|您使用以下哪些來源獲取有關冠狀病毒的最新消息？- 收音機|(numbers on survey form)<br>1=完全沒有<br>2 = 較少 <br>3 = 中間 <br>4 = 很多 5= 大量
+Q10_2|Which of the following sources do you use for the latest news about the coronavirus? - Radio	|您使用以下哪些來源獲取有關冠狀病毒的最新消息？- 收音機|(numbers on survey form)<br>1=完全沒有<br>2 = 較少 <br>3 = 中間 <br>4 = 很多 <br>5= 大量
 Q10_3|Which of the following sources do you use for the latest news about the coronavirus? - Printed newspapers	|您使用以下哪些來源獲取有關冠狀病毒的最新消息？ - 印刷報紙
 Q10_4|Which of the following sources do you use for the latest news about the coronavirus? - News sites (e.g., cnn.com, theguardian.com, washingtonpost.com)|您使用以下哪些來源獲取有關冠狀病毒的最新消息？ - 新聞網站（例如，cnn.com、theguardian.com、washingtonpost.com）
 Q10_5|Which of the following sources do you use for the latest news about the coronavirus? - Social networking sites (e.g., Facebook, Twitter, Instagram)|您使用以下哪些來源獲取有關冠狀病毒的最新消息？ - 社交網站（例如 Facebook、Twitter、Instagram）
@@ -182,7 +182,18 @@ Q14_2	|What are reasons you check updates about the coronavirus? - I worry about
 Q14_3	|What are reasons you check updates about the coronavirus? - I worry about the health of people close to me.	|您查看有關冠狀病毒的更新的原因是什麼？ - 我擔心身邊人的健康。
 Q14_4	|What are reasons you check updates about the coronavirus? - I worry about the health of the general public.	|您查看有關冠狀病毒的更新的原因是什麼？ - 我擔心公眾的健康。
 Q14_5	|What are reasons you check updates about the coronavirus? - I want to educate others about the coronavirus.	|您查看有關冠狀病毒的更新的原因是什麼？ - 我想教育其他人有關冠狀病毒的知識。
-
+|||
+Q14_1.1	|When I check for updates on the coronavirus, I use the following source(s)/website(s). Type in maximally five responses. - 1.	|當我檢查冠狀病毒的更新時，我使用以下來源/網站。最多輸入五個回應。 - 1.|搭配上述Q14的題目，具體陳述接收訊息的管道/網站。
+Q14_2.1	|When I check for updates on the coronavirus, I use the following source(s)/website(s). Type in maximally five responses. - 2.	|當我檢查冠狀病毒的更新時，我使用以下來源/網站。最多輸入五個回應。 - 2.
+Q14_3.1	|When I check for updates on the coronavirus, I use the following source(s)/website(s). Type in maximally five responses. - 3.	|當我檢查冠狀病毒的更新時，我使用以下來源/網站。最多輸入五個回應。 - 3.
+Q14_4.1	|When I check for updates on the coronavirus, I use the following source(s)/website(s). Type in maximally five responses. - 4.	|當我檢查冠狀病毒的更新時，我使用以下來源/網站。最多輸入五個回應。 - 4.
+Q14_5.1	|When I check for updates on the coronavirus, I use the following source(s)/website(s). Type in maximally five responses. - 5.	|當我檢查冠狀病毒的更新時，我使用以下來源/網站。最多輸入五個回應。 - 5.
+|||
+Q15_1	|Rank the sources you use from most frequently used (1) to least frequently used. - [QID11-ChoiceTextEntryValue-1]	|將您使用的來源從最常用 (1) 到最不常用。 - [QID11-ChoiceTextEntryValue-1]|依上述的.1的題目做常用度排行
+Q15_2	|Rank the sources you use from most frequently used (1) to least frequently used. - [QID11-ChoiceTextEntryValue-2]	|將您使用的來源從最常用 (1) 到最不常用。 - [QID11-ChoiceTextEntryValue-2]
+Q15_3	|Rank the sources you use from most frequently used (1) to least frequently used. - [QID11-ChoiceTextEntryValue-3]	|將您使用的來源從最常用 (1) 到最不常用。 - [QID11-ChoiceTextEntryValue-3]
+Q15_4	|Rank the sources you use from most frequently used (1) to least frequently used. - [QID11-ChoiceTextEntryValue-4]	|將您使用的來源從最常用 (1) 到最不常用。 - [QID11-ChoiceTextEntryValue-4]
+Q15_5	|Rank the sources you use from most frequently used (1) to least frequently used. - [QID11-ChoiceTextEntryValue-5]	|將您使用的來源從最常用 (1) 到最不常用。 - [QID11-ChoiceTextEntryValue-5]
 
 ---
 
