@@ -18,5 +18,9 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## 培力資源
 
+
 - [可重製統計中文示範](https://scgeeker.github.io/Reproducible_STAT/)
-- 開源線上實驗平台(準備中)
+- [開源線上實驗平台](https://scgeeker.github.io/Online_EXP/)
+
+
+**註** 以上網站不定期更新中，任何問題與建議可透過[作者github](https://github.com/SCgeeker)，與我溝通討論。
