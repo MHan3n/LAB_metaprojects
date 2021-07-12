@@ -36,11 +36,41 @@ file.remove(list.files(recursive = TRUE,full.names = TRUE,include.dirs = TRUE,pa
 items %>% rmarkdown::paged_table(options = list(rows.print = 20))
 ```
 
+### Wave 2 原始資料欄位說明清單
+
+```{r}
+tag_info %>% rmarkdown::paged_table(options = list(rows.print = 20))
+```
+
+
+### Wave 1 正式分析資料
+
+根據以下描述，篩選納入正式分析的資料：
+
+"Five hundred and twenty-six respondents completed the Wave 1 survey via the Prolific.com platform. Sixteen respondents were excluded for spending too much time on the survey("Duration..in.seconds."). Another nine respondents were excluded for failing the catch question("Q1_CATCH1")."
+
+```{r message=FALSE, warning=FALSE}
+## check the equality of two data sets
+sum(data_factors$Duration..in.seconds. != data_numeric$Duration..in.seconds.)
+## Boxplot for test duration
+boxplot(data_numeric$Duration..in.seconds.)
+
+wave1_rawdata <- data_numeric %>% 
+## exclude the participants who spent longer duration than the 17th slowest participant
+  filter(Duration..in.seconds. <= sort(data_numeric$Duration..in.seconds., decreasing = TRUE)[17]) %>%
+## exclude the participants who failed the catch question
+  filter(Q1_CATCH1 == 5) 
+## How many participants' data are analyzed?
+wave1_rawdata %>%
+  summarise(n())
+```
+
+
 ### Media use code
 
 ```{r}
-data.frame(TEXT = data_factors$Q10_1, CODE = data_numeric$Q10_1) %>% distinct() %>% arrange(CODE)
-data.frame(TEXT = data_factors$Q10_2, CODE = data_numeric$Q10_2) %>% distinct() %>% arrange(CODE)
+data.frame(TEXT = wave1_rawdata$Q10_1, CODE = wave1_rawdata$Q10_1) %>% distinct() %>% arrange(CODE)
+data.frame(TEXT = wave1_rawdata$Q10_2, CODE = wave1_rawdata$Q10_2) %>% distinct() %>% arrange(CODE)
 
 ```
 
@@ -48,7 +78,7 @@ data.frame(TEXT = data_factors$Q10_2, CODE = data_numeric$Q10_2) %>% distinct() 
 ### NC 資料數值集
 
 ```{r}
-data_numeric %>% select(starts_with("Q1_")) %>%
+wave1_rawdata %>% select(starts_with("Q1_")) %>%
   rmarkdown::paged_table(options = list(rows.print = 20))
 ```
 
@@ -57,6 +87,6 @@ data_numeric %>% select(starts_with("Q1_")) %>%
 
 
 ```{r}
-data_numeric %>% select(starts_with("Q17_")) %>%
+wave1_rawdata %>% select(starts_with("Q17_")) %>%
   rmarkdown::paged_table(options = list(rows.print = 20))
 ```
