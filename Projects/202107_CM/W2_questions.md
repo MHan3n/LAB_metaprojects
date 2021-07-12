@@ -123,7 +123,18 @@ QSIT_d d. |... the impact on society and everyday life?|...對社會和日常生
 6	|Relatives and family	|親戚和家人
 7	|My general practitioner	|我的一般科醫師 
 8	|A (former) COVID-19 patient	|一名（前）COVID-19 患者
+Q5RS_EX |To me, the most important authority when it comes to COVID-19 information is...|對我來說，關於 COVID-19 信息的最重要的權威是……|開放性問題
 ---
 |題號|英文題目|翻譯|計分|
 |---|---|---|---|
-Q5RS_EX |To me, the most important authority when it comes to COVID-19 information is...|對我來說，關於 COVID-19 信息的最重要的權威是……|（填空題）
+6AM_1 |To what degree do you follow the measures your government took in reaction to COVID-19?|您在多大程度上遵循了您的政府為應對 COVID-19 所採取的措施？|&#9744;Not at all &#9744;Rarely &#9744;Sometimes &#9744;Often <br>&#9744;Always 
+Q6AM_2 |Please explain your answer in the text box below|Q6AM_2 請在下面的文本框中解釋您的答案|開放性問題|
+---
+|題號|英文題目|翻譯|計分|
+|---|---|---|---|
+Q_comments_1 |Do you have any comments about this survey?|您對本次調查有什麼意見嗎？|開放性問題
+---
+### QDEB Debriefing感謝您填寫本調查並參與本研究。 本研究的目的是調查公眾對冠狀病毒 (COVID-19) 的了解以及這些知識與信息搜索行為和認知之間的關係。 您在本調查中的任何答案都不會產生任何後果或影響； 您的數據將被匿名處理。 需要注意的是，有關冠狀病毒的陳述（在本調查開始時）部分是錯誤的。 此外，一些陳述是缺乏可靠證據的虛假陰謀論。 有關此主題的可靠信息和指南，我們建議您參閱世界衛生組織的問答（您完成此調查後將提供鏈接）
+|題號|英文題目|翻譯|計分|
+|---|---|---|---|
+Q_comments_2 |Do you have any additional comments about this debriefing page|你對這個陳述頁面有什麼額外的意見嗎|開放性問題|
