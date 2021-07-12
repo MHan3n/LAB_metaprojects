@@ -1,4 +1,4 @@
-# Boot et al.(2021)問卷資訊
+# Boot et al.(2021)問卷資訊W_1
 
 ## １. 信息處理 冠狀病毒知識（24題）
 |題號|English|翻譯|計分|
@@ -7,7 +7,7 @@
 Q1_2|What is your current view on the following statements about the coronavirus? (Try to answer promptly based on your first instinct) - The coronavirus is primarily spread through coughing and sneezing.|您目前對以下有關冠狀病毒的說法有何看法？ （嘗試根據您的第一直覺及時回答） - 冠狀病毒主要通過咳嗽和打噴嚏傳播。|1 =我確定這不是真的。<br>2 = 我認為這不是真的。<br>3 = 我不知道。<br>4 = 我認為這是真的。<br>5 = 我確信這是真的。
 Q1_3|What is your current view on the following statements about the coronavirus? (Try to answer promptly based on your first instinct) - The coronavirus is especially deadly for older adults.|您目前對以下有關冠狀病毒的說法有何看法？ （嘗試根據您的第一直覺及時回答）- 冠狀病毒對老年人尤其致命。|
 Q1_4|What is your current view on the following statements about the coronavirus? (Try to answer promptly based on your first instinct) - Fever is a potential symptom of the coronavirus.|您目前對以下有關冠狀病毒的說法有何看法？ （嘗試根據您的第一直覺及時回答） - 發燒是冠狀病毒的潛在症狀。|
-<font color="#dd0000">Q1_5|What is your current view on the following statements about the coronavirus? (Try to answer promptly based on your first instinct) - The coronavirus can be spread by people who don\xe2\u0080 show the symptoms.|您目前對以下有關冠狀病毒的說法有何看法？ （嘗試根據您的第一直覺及時回答） - 冠狀病毒可以通過沒有\xe2\u0080 出現症狀的人傳播。|
+Q1_5|What is your current view on the following statements about the coronavirus? (Try to answer promptly based on your first instinct) - The coronavirus can be spread by people who don't show the symptoms.|您目前對以下有關冠狀病毒的說法有何看法？ （嘗試根據您的第一直覺及時回答） - 冠狀病毒可以通過沒有出現症狀的人傳播。|
 Q1_6|What is your current view on the following statements about the coronavirus? (Try to answer promptly based on your first instinct) - The coronavirus comes from animals.|您目前對以下有關冠狀病毒的說法有何看法？ （嘗試根據您的第一直覺及時回答） - 冠狀病毒來自動物。|
 Q1_7|What is your current view on the following statements about the coronavirus? (Try to answer promptly based on your first instinct) - There is no treatment yet for the coronavirus.|您目前對以下有關冠狀病毒的說法有何看法？ （嘗試根據您的第一直覺及時回答） - 冠狀病毒尚無治療方法。|
 Q1_8|What is your current view on the following statements about the coronavirus? (Try to answer promptly based on your first instinct) - It might take 14 days after exposure to the coronavirus before you show symptoms.|您目前對以下有關冠狀病毒的說法有何看法？ （嘗試根據您的第一直覺及時回答） - 暴露于冠狀病毒後可能需要 14 天才能出現症狀。|
@@ -60,15 +60,15 @@ Q16_5R|For each of the statements below, please indicate whether or not the stat
 Q16_6|For each of the statements below, please indicate whether or not the statement is characteristic of you or of what you believe. - I find satisfaction in deliberating hard and for long hours.|對於下面的每一個陳述，請說明該陳述是否是您的特徵或您所相信的。 - 我在努力和長時間的深思熟慮中找到了滿足感。
 Q16_7R|For each of the statements below, please indicate whether or not the statement is characteristic of you or of what you believe. - I only think as hard as I have to.|對於下面的每一個陳述，請說明該陳述是否是您的特徵或您所相信的。 - 我在努力和長時間的深思熟慮中找到了滿足感。
 Q16_8R|For each of the statements below, please indicate whether or not the statement is characteristic of you or of what you believe. - I prefer to think about small daily projects to long term ones.|對於下面的每一個陳述，請說明該陳述是否是您的特徵或您所相信的。 - 我在努力和長時間的深思熟慮中找到了滿足感。
-<font color="#dd0000">Q16_9R|For each of the statements below, please indicate whether or not the statement is characteristic of you or of what you believe. - I like tasks that require little thought once I\xe2\u0080e learned them.|對於下面的每一個陳述，請說明該陳述是否是您的特徵或您所相信的。 - 一旦我\xe2\u0080e 學會了它們，我喜歡不需要思考的任務。
+Q16_9R|For each of the statements below, please indicate whether or not the statement is characteristic of you or of what you believe. - I like tasks that require little thought once I've learned them.|對於下面的每一個陳述，請說明該陳述是否是您的特徵或您所相信的。 - 我喜歡一旦我學會了就不需要思考的任務。
 Q16_10|For each of the statements below, please indicate whether or not the statement is characteristic of you or of what you believe. - The idea of relying on thought to make my way to the top appeals to me.|對於下面的每一個陳述，請說明該陳述是否是您的特徵或您所相信的。 - 依靠思想達到頂峰的想法對我很有吸引力。
 Q16_11|For each of the statements below, please indicate whether or not the statement is characteristic of you or of what you believe. - I really enjoy a task that involves coming up with new solutions to problems.|對於下面的每一個陳述，請說明該陳述是否是您的特徵或您所相信的。 - 我真的很喜歡一項涉及為問題提出新解決方案的任務。
-<font color="#dd0000">Q16_12R|For each of the statements below, please indicate whether or not the statement is characteristic of you or of what you believe. - Learning new ways to think doesn\xe2\u0080 excite me very much.|對於下面的每一個陳述，請說明該陳述是否是您的特徵或您所相信的。 - 學習新的思考方式不會讓我很興奮。
+Q16_12R|For each of the statements below, please indicate whether or not the statement is characteristic of you or of what you believe. - Learning new ways to think doesn't excite me very much.|對於下面的每一個陳述，請說明該陳述是否是您的特徵或您所相信的。 - 學習新的思考方式並沒有讓我很興奮。。
 Q16_13|For each of the statements below, please indicate whether or not the statement is characteristic of you or of what you believe. - I prefer my life to be filled with puzzles I must solve.|對於下面的每一個陳述，請說明該陳述是否是您的特徵或您所相信的。 - 我更喜歡我的生活充滿我必須解決的難題。
 Q16_14|For each of the statements below, please indicate whether or not the statement is characteristic of you or of what you believe. - The notion of thinking abstractly is appealing to me.|對於下面的每一個陳述，請說明該陳述是否是您的特徵或您所相信的。 - 抽象思維的概念對我很有吸引力。
 Q16_15|For each of the statements below, please indicate whether or not the statement is characteristic of you or of what you believe. - I would prefer a task that is intellectual, difficult, and important to one that is somewhat important but does not require much thought.|對於下面的每一個陳述，請說明該陳述是否是您的特徵或您所相信的。 - 我更喜歡智力、困難和重要的任務，而不是有點重要但不需要太多思考的任務。
 Q16_16R|For each of the statements below, please indicate whether or not the statement is characteristic of you or of what you believe. - I feel relief rather than satisfaction after completing a task that requires a lot of mental effort.|對於下面的每一個陳述，請說明該陳述是否是您的特徵或您所相信的。 - 完成一項需要大量腦力勞動的任務後，我感到輕鬆而不是滿足。
-|<font color="#dd0000">Q16_17R</font><br />|For each of the statements below, please indicate whether or not the statement is characteristic of you or of what you believe. - It\xe2\u0080 enough for me that something gets the job done; I don\xe2\u0080 care how or why it works.|對於下面的每一個陳述，請說明該陳述是否是您的特徵或您所相信的。 - 它\xe2\u0080 對我來說足以完成工作；我不\xe2\u0080關心它是如何工作或為什麼工作。
+Q16_17R|For each of the statements below, please indicate whether or not the statement is characteristic of you or of what you believe. - It's enough for me that something gets the job done; I don't care how or why it works.|對於下面的每一個陳述，請說明該陳述是否是您的特徵或您所相信的。 - 對我來說，完成工作就足夠了； 我不在乎它如何或為什麼起作用。
 |Q16_18|For each of the statements below, please indicate whether or not the statement is characteristic of you or of what you believe. - I usually end up deliberating about issues even when they do not affect me personally.|對於下面的每一個陳述，請說明該陳述是否是您的特徵或您所相信的。 - 我通常最終會考慮問題，即使它們對我個人沒有影響。
 
 題號後有"R"=反向計分題目
@@ -146,7 +146,7 @@ Q17_47R|Read each of the following statements and decide how much you agree with
 |題號|English|翻譯|回答|
 |---|---|---|---|
 Q10_1|Which of the following sources do you use for the latest news about the coronavirus? - Television	|您使用以下哪些來源獲取有關冠狀病毒的最新消息？ - 電視|(codes in data set) <br> 38 = None at all <br>39 = A little <br>40 = A moderate amount  <br>41 = A lot <br>42 = A great deal
-Q10_2|Which of the following sources do you use for the latest news about the coronavirus? - Radio	|您使用以下哪些來源獲取有關冠狀病毒的最新消息？- 收音機|(numbers on survey form)<br>1=完全沒有<br>2 = 較少 <br>3 = 中間 <br>4 = 很多 5= 大量
+Q10_2|Which of the following sources do you use for the latest news about the coronavirus? - Radio	|您使用以下哪些來源獲取有關冠狀病毒的最新消息？- 收音機|(numbers on survey form)<br>1=完全沒有<br>2 = 較少 <br>3 = 中間 <br>4 = 很多 <br>5= 大量
 Q10_3|Which of the following sources do you use for the latest news about the coronavirus? - Printed newspapers	|您使用以下哪些來源獲取有關冠狀病毒的最新消息？ - 印刷報紙
 Q10_4|Which of the following sources do you use for the latest news about the coronavirus? - News sites (e.g., cnn.com, theguardian.com, washingtonpost.com)|您使用以下哪些來源獲取有關冠狀病毒的最新消息？ - 新聞網站（例如，cnn.com、theguardian.com、washingtonpost.com）
 Q10_5|Which of the following sources do you use for the latest news about the coronavirus? - Social networking sites (e.g., Facebook, Twitter, Instagram)|您使用以下哪些來源獲取有關冠狀病毒的最新消息？ - 社交網站（例如 Facebook、Twitter、Instagram）
@@ -182,7 +182,18 @@ Q14_2	|What are reasons you check updates about the coronavirus? - I worry about
 Q14_3	|What are reasons you check updates about the coronavirus? - I worry about the health of people close to me.	|您查看有關冠狀病毒的更新的原因是什麼？ - 我擔心身邊人的健康。
 Q14_4	|What are reasons you check updates about the coronavirus? - I worry about the health of the general public.	|您查看有關冠狀病毒的更新的原因是什麼？ - 我擔心公眾的健康。
 Q14_5	|What are reasons you check updates about the coronavirus? - I want to educate others about the coronavirus.	|您查看有關冠狀病毒的更新的原因是什麼？ - 我想教育其他人有關冠狀病毒的知識。
-
+|||
+Q14_1.1	|When I check for updates on the coronavirus, I use the following source(s)/website(s). Type in maximally five responses. - 1.	|當我檢查冠狀病毒的更新時，我使用以下來源/網站。最多輸入五個回應。 - 1.|搭配上述Q14的題目，具體陳述接收訊息的管道/網站。
+Q14_2.1	|When I check for updates on the coronavirus, I use the following source(s)/website(s). Type in maximally five responses. - 2.	|當我檢查冠狀病毒的更新時，我使用以下來源/網站。最多輸入五個回應。 - 2.
+Q14_3.1	|When I check for updates on the coronavirus, I use the following source(s)/website(s). Type in maximally five responses. - 3.	|當我檢查冠狀病毒的更新時，我使用以下來源/網站。最多輸入五個回應。 - 3.
+Q14_4.1	|When I check for updates on the coronavirus, I use the following source(s)/website(s). Type in maximally five responses. - 4.	|當我檢查冠狀病毒的更新時，我使用以下來源/網站。最多輸入五個回應。 - 4.
+Q14_5.1	|When I check for updates on the coronavirus, I use the following source(s)/website(s). Type in maximally five responses. - 5.	|當我檢查冠狀病毒的更新時，我使用以下來源/網站。最多輸入五個回應。 - 5.
+|||
+Q15_1	|Rank the sources you use from most frequently used (1) to least frequently used. - [QID11-ChoiceTextEntryValue-1]	|將您使用的來源從最常用 (1) 到最不常用。 - [QID11-ChoiceTextEntryValue-1]|依上述的.1的題目做常用度排行
+Q15_2	|Rank the sources you use from most frequently used (1) to least frequently used. - [QID11-ChoiceTextEntryValue-2]	|將您使用的來源從最常用 (1) 到最不常用。 - [QID11-ChoiceTextEntryValue-2]
+Q15_3	|Rank the sources you use from most frequently used (1) to least frequently used. - [QID11-ChoiceTextEntryValue-3]	|將您使用的來源從最常用 (1) 到最不常用。 - [QID11-ChoiceTextEntryValue-3]
+Q15_4	|Rank the sources you use from most frequently used (1) to least frequently used. - [QID11-ChoiceTextEntryValue-4]	|將您使用的來源從最常用 (1) 到最不常用。 - [QID11-ChoiceTextEntryValue-4]
+Q15_5	|Rank the sources you use from most frequently used (1) to least frequently used. - [QID11-ChoiceTextEntryValue-5]	|將您使用的來源從最常用 (1) 到最不常用。 - [QID11-ChoiceTextEntryValue-5]
 
 ---
 
