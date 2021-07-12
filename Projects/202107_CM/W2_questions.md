@@ -1,4 +1,4 @@
-# Boot et al.(2021)問卷資訊
+# Boot et al.(2021)問卷資訊W_2
 第 2 波包括 (1) COVID-19 知識測試的更新版本，(2) 關於 COVID-19 的起源、症狀、措施和社會影響的開放式問題，(3) 關於媒體使用頻率的問題與 COVID-19 新聞相關，(4) 有關獲取 COVID-19 知識的一系列來源的重要性的問題，以及 (5) 遵守政府實施的措施。
 
 **計分方式皆使用核取方塊**
@@ -36,7 +36,7 @@
 24	|The coronavirus is a variant of the common flu.	|冠狀病毒是普通流感的變種。
 25	|You can only die from the coronavirus if you are sick already.	|如果您已經生病，您只能死于冠狀病毒。
 26	|People infected with the coronavirus can only infect 2-3 others.	|感染冠狀病毒的人只能感染 2-3 個人。
-27	|Hand dryers are effective at killing the coronavirus.	|乾手器可有效殺死冠狀病毒。
+27	|Hand dryers are effective at killing the coronavirus.	|乾手液可有效殺死冠狀病毒。
 28	|Injecting bleach can protect you from the coronavirus.	|注射漂白劑可以保護您免受冠狀病毒的侵害。
 29	|Exposing yourself to sunlight decreases the chance of becoming infected.	|將自己暴露在陽光下會減少被感染的機會。
 30	|Antibiotics are an effective reatment of the coronavirus.	|抗生素是一種有效的冠狀病毒治療方法。
@@ -54,9 +54,24 @@
 6	|The coronavirus was deliberately created and spread by the US to sell vaccines.	|冠狀病毒是美國故意製造和傳播以銷售疫苗的。
 7	|The coronavirus was stolen from a Canadian virus research lab in China.	|冠狀病毒是從位於中國的加拿大病毒研究實驗室竊取的。
 8	|The coronavirus was not created by humans.	|冠狀病毒不是人類製造的。
+|||
+||It is important that you pay attention to the questions in this survey. Please tick “I am sure his is true”.	|請務必注意本調查中的問題。請勾選“我確定這是真的”。
 
 ---
+##  Describe the situation （描述情況）
+### QSIT_a.Imagine you have to explain the current situation regarding COVID-19 to someone who just woke up after being in a coma since December 2019. What would you tell this person about...
+### QSIT_a.想像一下，您必須向自 2019 年 12 月以來在昏迷中醒來的人解釋有關 COVID-19 的當前情況。您會告訴此人甚麼...
 
+|題號|英文題目|翻譯|計分|
+|---|---|---|---|
+|a. |... the origin of the virus|...病毒的起源|開放性問題
+|QSIT_b b.| ... the symptom|...症狀|開放性問題|
+QSIT_c c. |... how to protect yourself?|……如何保護自己？|開放性問題
+QSIT_d d. |... the impact on society and everyday life?|...對社會和日常生活的影響？|開放性問題|
+
+
+
+---
 ## 2. 媒體使用 每個來源的頻率（18題）
 ### Q2_Media How often do you check or encounter COVID-19 news using the following sources?
 ### Q2_Media 您使用以下來源查看或遇到 COVID-19 新聞的頻率如何？
@@ -64,7 +79,7 @@
 |題號|英文題目|翻譯|計分|
 |---|---|---|---|
 1	|Facebook	|Facebook|&#9744; I don't use this source<br>&#9744; Never <br>&#9744; Once a month<br>&#9744; Once a week<br>&#9744; Once every 2-4 days<br>&#9744; Once a day<br>&#9744; Multiple times per day
-2	|Friends, coworkers, family, and/or close relatives	|&#9744; 朋友、同事、家人和/或近親|&#9744; 我不使用這個來源<br>&#9744; 從不<br>&#9744; 一個月一次<br>&#9744; 一周一次<br>&#9744; 每 2-4 天一次<br>&#9744; 一天一次<br>&#9744; 每天多次
+2	|Friends, coworkers, family, and/or close relatives	|朋友、同事、家人和/或近親|&#9744; 我不使用這個來源<br>&#9744; 從不<br>&#9744; 一個月一次<br>&#9744; 一周一次<br>&#9744; 每 2-4 天一次<br>&#9744; 一天一次<br>&#9744; 每天多次
 3	|Government websites	|政府網站
 4	|Health care service or health care insurance websites (e.g., nhs.uk)	|醫療保健服務或醫療保險網站（例如，nhs.uk）
 5	|Instagram and/or Snapchat	|Instagram 和/或 Snapchat
@@ -86,13 +101,12 @@
 ---
 
 ## 3. 行為 遵守措施（1題）
-### Q6AM_1 To what degree do you follow the measures your government took in reaction to COVID-19?
-### Q6AM_1 您在多大程度上遵循了政府為應對 COVID-19 所採取的措施？
-- [ ] Not at all （一點也不）
-- [ ] Rarely（很少）
-- [ ] Sometimes（有時）
-- [ ] Often（經常）
-- [ ] Always（總是）
+|題號|英文題目|翻譯|計分|
+|---|---|---|---|
+|Q6AM_1| To what degree do you follow the measures your government took in reaction to COVID-19?| Q6AM_1 您在多大程度上遵循了政府為應對 COVID-19 所採取的措施？|&#9744;Not at all （一點也不） <br>&#9744;Rarely（很少） <br>&#9744;Sometimes（有時） <br>&#9744;Often（經常） <br>&#9744;Always（總是）
+||||
+| Q6AM_2 |Please explain your answer in the text box below.|請在下面的文字框中解釋您的答案。|（填空題）
+
 
 ---
 
@@ -109,3 +123,7 @@
 6	|Relatives and family	|親戚和家人
 7	|My general practitioner	|我的一般科醫師 
 8	|A (former) COVID-19 patient	|一名（前）COVID-19 患者
+---
+|題號|英文題目|翻譯|計分|
+|---|---|---|---|
+Q5RS_EX |To me, the most important authority when it comes to COVID-19 information is...|對我來說，關於 COVID-19 信息的最重要的權威是……|（填空題）
