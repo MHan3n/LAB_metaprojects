@@ -65,6 +65,41 @@ wave1_rawdata %>%
   summarise(n())
 ```
 
+重製原始論文 Table 3描述統計
+
+```{r}
+## True statement "I am sure this is true"
+wave1_rawdata %>%
+  select(Q1_1:Q1_12) %>%
+  summarise(Q1_1_5 = sum(Q1_1==5)/length(Q1_1),
+            Q1_2_5 = sum(Q1_2==5)/length(Q1_2),
+            Q1_3_5 = sum(Q1_3==5)/length(Q1_3),
+            Q1_4_5 = sum(Q1_4==5)/length(Q1_4),
+            Q1_5_5 = sum(Q1_5==5)/length(Q1_5),
+            Q1_6_5 = sum(Q1_6==5)/length(Q1_6),
+            Q1_7_5 = sum(Q1_7==5)/length(Q1_7),
+            Q1_8_5 = sum(Q1_8==5)/length(Q1_8),
+            Q1_9_5 = sum(Q1_9==5)/length(Q1_9),
+            Q1_10_5 = sum(Q1_10==5)/length(Q1_10),
+            Q1_11_5 = sum(Q1_11==5)/length(Q1_11),
+            Q1_12_5 = sum(Q1_12==5)/length(Q1_12)) %>%
+  pivot_longer(cols = starts_with("Q1_"),names_to = "True_Statement_5", values_to = "Percentage") %>%
+  summarise(Average = round(mean(Percentage)*100), 
+            SD = round(sd(Percentage)*100))
+
+# unavailable code
+#ture_statements <- wave1_rawdata  %>% 
+#  mutate(year = year(date)) %>% 
+#  group_by(year) %>% 
+#  summarise( n = n(), 
+#             mean_percentage = mean(total, na.rm = TRUE), 
+#             SD = sd(total, na.rm = TRUE), 
+#             Min = min(total, na.rm = TRUE), 
+#             Max = max(total, na.rm = TRUE), 
+#             .groups = "drop" )
+```
+
+
 
 ### Media use code
 
@@ -78,7 +113,7 @@ data.frame(TEXT = wave1_rawdata$Q10_2, CODE = wave1_rawdata$Q10_2) %>% distinct(
 ### NC 資料數值集
 
 ```{r}
-wave1_rawdata %>% select(starts_with("Q1_")) %>%
+wave1_rawdata %>% select(starts_with("Q16_")) %>%
   rmarkdown::paged_table(options = list(rows.print = 20))
 ```
 
