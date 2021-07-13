@@ -178,7 +178,7 @@ scale: 頻率
 - {score=2} 每隔幾天一次
 - {score=3} 每天一次
 - {score=4} 每小時一次
-- {score=5}每小時多次
+- {score=5} 每小時多次
 
 l: Q12	
 q: 您多久在線查看一次有關冠狀病毒的更新？
@@ -193,15 +193,109 @@ t: scale 同意2
 - 我擔心公眾的健康。
 - 我想教育其他人有關冠狀病毒的知識。
 
-**未完成**
+l: Q14_.1
+q: 當我檢查冠狀病毒的更新時，我使用以下來源/網站。最多輸入五個回應。
+t: textline
+-
+-
+-
+-
+-
+
+l: Q15
+q: 將您使用的來源從最常用排到最不常用。
+t: rank 
+- {Q14_.1-ChoiceTextEntryValue-1}
+- {Q14_.1-ChoiceTextEntryValue-2}
+- {Q14_.1-ChoiceTextEntryValue-3}
+- {Q14_.1-ChoiceTextEntryValue-4}
+- {Q14_.1-ChoiceTextEntryValue-5}
 
 
 l: Q8
+q: 您每周至少使用一次哪些在線媒體平台?
+t: check
+- 1.Youtube
+- 2.WhatsApp
+- 3.facebook
+- 4.Facebook messenger
+- 5.Twitter
+- 6.Netflix
+- 7.Reddit
+- 8.Discord
+- 9.Discord
+- 10.9GAG
+- 11.Quora
+- 12.Netflix
+- 13.Tinder (或其他交友軟體)
+- 14.Instagram
+- 15.Pinterest
+- 16.Spotify
+- 17.TikTok
+- 18.Snapchat
+- 19.Tumblr
+- 20.LinkedIn
+- 21.Skype 或其他視頻通話服務
+- 22.4Chan
+- {other} 其他。請明確說明
+
+l: Q9
+q: 您平均每天在上面選擇的在線媒體平台上花費多少時間？
+t: radio
+- 1.0-15分鐘
+- 2.15-60分鐘
+- 3.1-2小時
+- 4.2-3小時
+- 5.3-4小時
+- 6.4-5小時
+- 7.5-6小時
+- 8.6-7小時
+- 9.7-8小時
+- 10.8小時以上
 
 
+l: Q2_1
+t: textline
+q: 你幾歲？
+- {min=0,max=100}
 
+l: Q3
+t: radio
+q: 你的性別是什麼？
+- 1.男
+- 2.女
+- 3.寧可不說
+- 4.跨性別者
+- {other}5.其他：未替定
+- {other}6.其他：性別酷兒
+- {other}7.其他非二元性別
 
+l: Q6
+t: radio
+q: 您完成的最高級別的學校或獲得的最高學位是什麼？	
+- 國小畢業
+- 國中畢業
+- 高中畢業
+- 大學畢業
+- 碩士畢業
+- 博士畢業
 
+l: Q7
+t: radio
+q: 你目前的職業領域是什麼？
+- 軍警 
+- 公務人員 
+- 教育 
+- 商 
+- 工 
+- 農 
+- 醫療 
+- 服務業 
+- 家管 
+- 學生
+- 退休 
+- 無
+- {other} 其他
 
 
 
