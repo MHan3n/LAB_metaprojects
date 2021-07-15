@@ -1,0 +1,68 @@
+---
+title: "Psytoolkit data processing"
+author: "Sau-Chin Chen"
+date: "2021/7/15"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+library(readr)
+library(lubridate)
+```
+
+匯入下載的資料壓縮檔
+
+```{r}
+## path to the latest downloaded raw data
+downloaded_rawdata <- "0_reproduce_training/data.zip"
+## Check the downloaded data files
+datafiles <- unzip(downloaded_rawdata, list = TRUE)
+## Check the time of latest data 
+subset(datafiles, Name == "data.csv")$Date
+## Import data
+datarows <- read_csv(unz(downloaded_rawdata,filename = "data.csv")) %>%
+## Erase empty responses
+    drop_na() %>%
+## Remove the time columns
+   select(-starts_with("TIME_"))
+```
+提取NC資料
+
+```{r NC, message=FALSE, warning=FALSE}
+NC_data <- datarows %>% 
+  ## 挑出ID及NC資料
+  select("participant", starts_with("16_NC"))
+```
+
+
+提取NCC資料
+
+
+```{r NCC, message=FALSE, warning=FALSE}
+NCC_data <- datarows %>% 
+  ## 挑出ID及NC資料
+  select("participant", starts_with("17_NCC"))
+```
+
+轉換為long table
+
+```{r w_to_l}
+data_long <- datarows %>% gather("Qtype","Response",-1) %>%
+  separate("Qtype",c("Qtype","Qid"),sep = ":") %>%
+  ## 標記測謊題
+  mutate(LIE = if_else(Qtype=="17_NCC"&(Qid %in%c(18,22,39,43,46)),"Y","N"))
+```
+
+小計參與者量表得分
+
+```{r}
+data_long %>%
+  ## 排除測謊題
+  filter(LIE != "Y") %>%
+  group_by(Qtype) %>%
+  summarise(score = sum(Response))
+```
+
