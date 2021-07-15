@@ -69,6 +69,28 @@ wave1_rawdata %>%
 
 ```{r}
 ## True statement "I am sure this is true"
+
+## Approach 1, my favor
+wave1_rawdata %>%
+  select(ID,Q1_1:Q1_12) %>%
+  pivot_longer(cols = starts_with("Q1_"), names_to = "True_statment", values_to = "rating") %>%
+  group_by(ID) %>%
+  summarise(Percentage_option5 = mean(rating == 5),
+            Percentage_option4 = mean(rating == 4),
+            Percentage_option3 = mean(rating == 3),
+            Percentage_option2 = mean(rating == 2),
+            Percentage_option1 = mean(rating == 1)) %>%
+  pivot_longer(cols = starts_with("Percentage_"), names_to = "Options",values_to = "Averages") %>%
+  group_by(Options) %>%
+  summarise(Mean = round(mean(Averages)*100,2), 
+            SD = round(sd(Averages)*100,2),
+            CI_L = round(Mean + qnorm(.05)*SD/sqrt(length(unique(ID))),2),
+            CI_U = round(Mean + qnorm(.95)*SD/sqrt(length(unique(ID))),2),
+            MIN = min(Averages),
+            MAX = max(Averages))
+
+
+## Approach 2
 wave1_rawdata %>%
   select(Q1_1:Q1_12) %>%
   summarise(Q1_1_5 = sum(Q1_1==5)/length(Q1_1),
