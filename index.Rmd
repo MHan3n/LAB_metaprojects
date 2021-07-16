@@ -1,5 +1,9 @@
 ---
 title: "預先註冊研究重製及分析"
+output: 
+  html_document:
+    include:
+      after_body: footer.html
 ---
 
 ```{r setup, include=FALSE}
@@ -13,7 +17,7 @@ knitr::opts_chunk$set(echo = TRUE)
 |智性直覺|[OSF](https://osf.io/6trj5/)|
 |閱讀過程的神遊現象|[專案網站](https://scgeeker.github.io/MW_Project/)|
 |白話摘要增進理解的關鍵|[原始文獻](https://doi.org/10.1525/collabra.18898);TBA|
-|吸收解讀危機資訊的認知動機|[原始文獻](https://www.nature.com/articles/s41598-021-86088-3)<br/>[原始資料概覽](Projects/202107_CM/overview.html)<br/>[重製認知動機量表分析](Projects/202107_CM/NC.html)<br/>[Psytoolkit測試資料處理示範](Projects/202107_CM/Psytoolkit_data.html)|
+|吸收解讀危機資訊的認知動機|[原始文獻](https://www.nature.com/articles/s41598-021-86088-3)<br/>[資料分析重製總覽](Projects/202107_CM/overview.html)|
 
 
 ## 培力資源

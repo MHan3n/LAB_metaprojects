@@ -1,7 +1,8 @@
 ---
-title: "overview"
+title: "原始資料重製分析及問卷中文化建置"
 date: "`r Sys.Date()`"
-output: html_document
+output: 
+  html_document
 ---
 
 ```{r setup, include=FALSE}
@@ -9,6 +10,15 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(osfr)
 ```
+
+## 中文化問卷建置資訊
+
+[Psytoolkit問卷資料測試](Psytoolkit_data.html)
+
+## 原始資料重製分析
+
+[認知動機問卷重製分析](NC.html)
+
 
 ### 下載原始資料映像檔
 
@@ -129,21 +139,4 @@ wave1_rawdata %>%
 data.frame(TEXT = wave1_rawdata$Q10_1, CODE = wave1_rawdata$Q10_1) %>% distinct() %>% arrange(CODE)
 data.frame(TEXT = wave1_rawdata$Q10_2, CODE = wave1_rawdata$Q10_2) %>% distinct() %>% arrange(CODE)
 
-```
-
-
-### NC 資料數值集
-
-```{r}
-wave1_rawdata %>% select(starts_with("Q16_")) %>%
-  rmarkdown::paged_table(options = list(rows.print = 20))
-```
-
-
-### NCC資料數值集
-
-
-```{r}
-wave1_rawdata %>% select(starts_with("Q17_")) %>%
-  rmarkdown::paged_table(options = list(rows.print = 20))
 ```
