@@ -26,8 +26,12 @@ file.remove(list.files(recursive = TRUE,full.names = TRUE,include.dirs = TRUE,pa
 
 ```{r NC, message=FALSE, warning=FALSE}
 NC_data <- data_numeric %>% 
-  ## 保留2500秒內完成而且通過檢測題的參與者
-  filter( as.numeric(Duration..in.seconds.) <= 2500 & Q1_CATCH1 == 5) %>%
+## exclude the participants who spent more than 999 seconds on the knowledge test
+  filter(Q1T_Page.Submit < 999) %>%
+## exclude the participants who failed the catch question
+  filter(Q1_CATCH1 == 5) %>%
+## ## exclude the participants who spent time on the knowledge test longer than 3.29 standardized time
+  filter(scale(Q1T_Page.Submit)<3.29) %>%
   ## 挑出ID及NC資料
   select("ID", starts_with("Q16_"))
 ```
@@ -35,8 +39,12 @@ NC_data <- data_numeric %>%
 
 ```{r NCC, message=FALSE, warning=FALSE}
 NCC_data <- data_numeric %>% 
-  ## 保留2500秒內完成而且通過檢測題的參與者
-  filter( as.numeric(Duration..in.seconds.) <= 2500 & Q1_CATCH1 == 5) %>%
+  ## exclude the participants who spent more than 999 seconds on the knowledge test
+  filter(Q1T_Page.Submit < 999) %>%
+## exclude the participants who failed the catch question
+  filter(Q1_CATCH1 == 5) %>%
+## ## exclude the participants who spent time on the knowledge test longer than 3.29 standardized time
+  filter(scale(Q1T_Page.Submit)<3.29) %>%
   ## 挑出ID及NC資料
   select("ID", starts_with("Q17_"))
 ```
@@ -82,6 +90,7 @@ bind_cols(7 - NCC_data %>%
   select(ends_with("R")))
 ```
 
+NCC總分大於Q3為高分組;小於或等於Q1為低分組
 
 ```{r NCC_group, message=FALSE, warning=FALSE}
 ## 測謊題欄數
@@ -117,7 +126,7 @@ NCC_scores <- NCC_data_reversed %>%
 (NCC_scores <- NCC_scores %>% 
 ## 計算NCC 25% & 75%四位分數
 ## NCC High > 75%; NCC Low < 25%
-  mutate(NCC_GROUP = if_else(ncc_score >= quantile(ncc_score,c(.75)), "H",
+  mutate(NCC_GROUP = if_else(ncc_score > quantile(ncc_score,c(.75)), "H",
                       (if_else(ncc_score <= quantile(ncc_score,c(.25)),"L","N"))                      )
          )) %>%
   group_by(NCC_GROUP) %>%
@@ -138,12 +147,13 @@ bind_cols(6 - NC_data %>%
   select(ends_with("R")))
 ```
 
+NC總分大於中位數為高分組，等於或小於為低分組。
 
 ```{r NC_group, message=FALSE, warning=FALSE}
 ## NC總分小計
 (NC_scores <- NC_data_reversed %>%
   transmute(ID=ID,nc_score = rowSums(.[-1])) %>%
-   mutate(NC_GROUP = if_else(nc_score > quantile(nc_score,c(.5)), "H", "L")))%>%
+   mutate(NC_GROUP = if_else(nc_score > median(nc_score), "H", "L")))%>%
 #                      if_else(nc_score <= quantile(nc_score,c(.25)),"L","N") ))) %>%
   group_by(NC_GROUP) %>%
   summarise(N=n(), Average = mean(nc_score))
@@ -169,7 +179,7 @@ NCC_scores %>%
 ```
 
 
-## 分組人數與論文報告有出入
+## 分組人數與論文報告確認一致
 
 ```{r}
 NC_scores %>% left_join(NCC_scores, by = "ID") %>% 

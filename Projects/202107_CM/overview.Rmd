@@ -5,6 +5,8 @@ output:
   html_document
 ---
 
+若要取得專案資料，可由[github倉庫](https://github.com/SCgeeker/LAB_metaprojects/tree/main/Projects/202107_CM)下載。
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
@@ -57,27 +59,31 @@ tag_info %>% rmarkdown::paged_table(options = list(rows.print = 20))
 
 根據以下描述，篩選納入正式分析的資料：
 
-"Five hundred and twenty-six respondents completed the Wave 1 survey via the Prolific.com platform. Sixteen respondents were excluded for spending too much time on the survey("Duration..in.seconds."). Another nine respondents were excluded for failing the catch question("Q1_CATCH1")."
+"Five hundred and twenty-six respondents completed the Wave 1 survey via the Prolific.com platform. Sixteen respondents were excluded for spending too much time on the survey("Duration..in.seconds." -> "Q1T_Page.Submit"). Another nine respondents were excluded for failing the catch question("Q1_CATCH1")."
+
+由於初次嘗試發現分組人數與論文不一致，聯絡論文第一作者Arnout Boot，得知16位被排除的參與者是根據完成"Knowledge Test"的秒數。
 
 ```{r message=FALSE, warning=FALSE}
 ## check the equality of two data sets
-sum(data_factors$Duration..in.seconds. != data_numeric$Duration..in.seconds.)
+sum(data_factors$Q1T_Page.Submit != data_numeric$Q1T_Page.Submit)
 ## Boxplot for test duration
-boxplot(data_numeric$Duration..in.seconds.)
+boxplot(data_numeric$Q1T_Page.Submit)
 
 wave1_rawdata <- data_numeric %>% 
-## exclude the participants who spent longer duration than the 17th slowest participant
-  filter(Duration..in.seconds. <= sort(data_numeric$Duration..in.seconds., decreasing = TRUE)[17]) %>%
+## exclude the participants who spent more than 999 seconds on the knowledge test
+  filter(Q1T_Page.Submit < 999) %>%
 ## exclude the participants who failed the catch question
-  filter(Q1_CATCH1 == 5) 
+  filter(Q1_CATCH1 == 5) %>%
+## ## exclude the participants who spent time on the knowledge test longer than 3.29 standardized time
+  filter(scale(Q1T_Page.Submit)<3.29)
 ## How many participants' data are analyzed?
 wave1_rawdata %>%
-  summarise(n())
+  summarise(N=n())
 ```
 
 重製原始論文 Table 3描述統計
 
-```{r}
+```{r approach01}
 ## True statement "I am sure this is true"
 
 ## Approach 1, my favor
@@ -85,21 +91,23 @@ wave1_rawdata %>%
   select(ID,Q1_1:Q1_12) %>%
   pivot_longer(cols = starts_with("Q1_"), names_to = "True_statment", values_to = "rating") %>%
   group_by(ID) %>%
-  summarise(Percentage_option5 = mean(rating == 5),
-            Percentage_option4 = mean(rating == 4),
-            Percentage_option3 = mean(rating == 3),
-            Percentage_option2 = mean(rating == 2),
-            Percentage_option1 = mean(rating == 1)) %>%
-  pivot_longer(cols = starts_with("Percentage_"), names_to = "Options",values_to = "Averages") %>%
+  summarise(True_Statement_5 = mean(rating == 5),
+            True_Statement_4 = mean(rating == 4),
+            True_Statement_3 = mean(rating == 3),
+            True_Statement_2 = mean(rating == 2),
+            True_Statement_1 = mean(rating == 1)) %>%
+  pivot_longer(cols = starts_with("True_Statement_"), names_to = "Options",values_to = "Percentage") %>%
   group_by(Options) %>%
-  summarise(Mean = round(mean(Averages)*100,2), 
-            SD = round(sd(Averages)*100,2),
-            CI_L = round(Mean + qnorm(.05)*SD/sqrt(length(unique(ID))),2),
-            CI_U = round(Mean + qnorm(.95)*SD/sqrt(length(unique(ID))),2),
-            MIN = min(Averages),
-            MAX = max(Averages))
+  summarise(Mean = round(mean(Percentage)*100,1), 
+            SD = round(sd(Percentage)*100,1),
+            CI_L = round(Mean + qnorm(.025)*SD/sqrt(length(unique(ID))),1),
+            CI_U = round(Mean + qnorm(.975)*SD/sqrt(length(unique(ID))),1),
+            MIN = min(Percentage),
+            MAX = max(Percentage)) %>%
+  arrange(desc(Options))
+```
 
-
+```{r approach02}
 ## Approach 2
 wave1_rawdata %>%
   select(Q1_1:Q1_12) %>%
@@ -116,19 +124,8 @@ wave1_rawdata %>%
             Q1_11_5 = sum(Q1_11==5)/length(Q1_11),
             Q1_12_5 = sum(Q1_12==5)/length(Q1_12)) %>%
   pivot_longer(cols = starts_with("Q1_"),names_to = "True_Statement_5", values_to = "Percentage") %>%
-  summarise(Average = round(mean(Percentage)*100), 
-            SD = round(sd(Percentage)*100))
-
-# unavailable code
-#ture_statements <- wave1_rawdata  %>% 
-#  mutate(year = year(date)) %>% 
-#  group_by(year) %>% 
-#  summarise( n = n(), 
-#             mean_percentage = mean(total, na.rm = TRUE), 
-#             SD = sd(total, na.rm = TRUE), 
-#             Min = min(total, na.rm = TRUE), 
-#             Max = max(total, na.rm = TRUE), 
-#             .groups = "drop" )
+  summarise(Average = round(mean(Percentage)*100,1), 
+            SD = round(sd(Percentage)*100),1)
 ```
 
 
