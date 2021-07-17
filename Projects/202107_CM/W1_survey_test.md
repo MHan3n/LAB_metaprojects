@@ -72,7 +72,7 @@ t: scale 符合
 - 我更喜歡智力、困難和重要的任務，而不是有點重要但不需要太多思考的任務。
 - {reverse}完成一項需要大量腦力勞動的任務後，我感到輕鬆而不是滿足。
 - {reverse}對我來說，完成工作就足夠了； 我不在乎它如何或為什麼起作用。
-- ***我通常會深思熟慮解決ㄊ問題，即使它對我個人沒有影響。***
+- ***我通常會深思熟慮解決的問題，即使它對我個人沒有影響。***
 
 
 scale: 同意
@@ -123,7 +123,7 @@ t: scale 同意
 - 我發現建立一致的例行公事能讓我更享受生活。
 - 我喜歡有一個清晰和有條理的生活模式。
 -  {reverse}我喜歡與觀點跟我截然不同的人互動。
-- ***我喜歡對一切都有一個計劃和一個地方。***
+- ***我喜歡對一切都有一個計劃和一個地方。***(我喜歡對一切都有一個計劃)
 - 我會感到不舒服當我不清楚某人的意思或意圖時。
 - 我相信一個人永遠不應該從事休閒活動。
 - {reverse}嘗試解決問題時，我經常發現很多可能的選項令我困惑。
@@ -148,13 +148,13 @@ t: scale 次數
 - 電視
 - 收音機
 - 印刷報紙
-- 新聞網站（例如，cnn.com、theguardian.com、washingtonpost.com）
-- 社交網站（例如 Facebook、Twitter、Instagram）
+- 新聞網站（例如，東森新聞、yahoo奇摩新聞、LINE TODAY、ET TODAY ）
+- 社交網站（例如，Facebook、Twitter、Instagram）
 - 影片分享平台（例如，YouTube）
 - 影片串流平台（例如，Netflix）
 - 朋友和/或家人（個人互動）
 - 訊息軟體（例如，LINE、Whatsapp、Facebook messenger）
-- 社交新聞聚合網站（例如 Reddit、4Chan、Quora）	
+- 社交新聞聚合網站（例如，PTT、Dcard、卡提諾）	
 
 scale: 同意2
 - {score=1} 非常不同意
@@ -219,18 +219,20 @@ t: check
 - WhatsApp
 - facebook
 - Facebook messenger
+- LINE
 - Twitter
 - Netflix
-- Reddit
 - Discord
-- Netflix
+- PTT
 - Tinder (或其他交友軟體)
 - Instagram
 - Pinterest
+- Dcard
 - Spotify
 - TikTok
 - Tumblr
-- Skype 或其他視頻通話服務
+- podcast
+- Skype(或其他視頻通話服務)
 - {other} 其他。請明確說明
 
 l: Q9
