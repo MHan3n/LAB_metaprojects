@@ -130,10 +130,35 @@ wave1_rawdata %>%
 
 
 
-### Media use code
+### 媒體使用問卷
 
 ```{r}
 data.frame(TEXT = wave1_rawdata$Q10_1, CODE = wave1_rawdata$Q10_1) %>% distinct() %>% arrange(CODE)
 data.frame(TEXT = wave1_rawdata$Q10_2, CODE = wave1_rawdata$Q10_2) %>% distinct() %>% arrange(CODE)
 
 ```
+
+
+### Boot et al.(2021)確證性假設
+
+H1a: 高NC者對疫情的正確認識高於低NC者
+H1b: 高NC者更新疫情資訊的頻率高於低NC者
+H1c: 高NC者對疫情資訊來源正確性的要求高於低NC者
+H2: 高NCC者比低NCC者認為是真實的資訊更有信心
+H3: 低認知動機者(低NC,低NCC)容易接受陰謀論說法
+
+
+### Boot et al.(2021)分析結果重點
+
+- 第一波2020/3/27執行、篩選後參與者501人; 第二波2020/7/1執行、第一波回鍋參與者326人
+
+- H1a: 迴歸分析確認高NC者掌握資訊的正確度高於低NC者
+- H1b: 迴歸分析無法支持高NC者更新疫情資訊的頻率高於低NC者
+- H1c: 集群分析無法支持高NC者對疫情資訊來源正確性的要求高於低NC者
+- H2: 描述統計顯示高NCC者比低NCC者認為是真實的資訊更有信心( https://osf.io/8jfwe/  Table 9,10 回答“I am sure this is ture"/"I am sure this is not true"的分組信賴區間)；迴歸分析並未充分支持。
+- H3: 迴歸分析無法支持低認知動機者(低NC,低NCC)容易接受陰謀論說法
+
+- 第一波與第二波消息可信度比較
+    - Table 7 缺乏證據的消息認為可信的比例增加，有統計顯著性的差異
+    - “新冠肺炎病毒是人造的”第一波調查超過一半認為絕對可信(Figure 1)，第二波調查絕對可信比例降低，超過一半仍然認為可信([Appendix B](https://osf.io/nr6bw/), Figure 2)
+    - 第二波調查訊息來源的重視程度([Appendix B](https://osf.io/nr6bw/), Figure 5)最重視WHO與國家衛生機構發佈的資訊，親近者與康復者提供的資訊也有一定的重視程度，政治人物言論最不被重視

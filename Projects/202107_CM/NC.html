@@ -10,7 +10,7 @@
 
 
 
-<meta name="date" content="2021-07-17" />
+<meta name="date" content="2021-07-19" />
 
 <title>Boot et al.(2021)認知動機量表分析重製測試</title>
 
@@ -167,7 +167,7 @@ pre code {
 
 
 <h1 class="title toc-ignore">Boot et al.(2021)認知動機量表分析重製測試</h1>
-<h4 class="date">2021-07-17</h4>
+<h4 class="date">2021-07-19</h4>
 
 </div>
 
@@ -178,9 +178,9 @@ pre code {
 osf_retrieve_file(&quot;he2v7&quot;) %&gt;%
   osf_download()</code></pre>
 <pre><code>## # A tibble: 1 x 4
-##   name                 id                local_path             meta        
-##   &lt;chr&gt;                &lt;chr&gt;             &lt;chr&gt;                  &lt;list&gt;      
-## 1 anonymous_raw_data_~ 5f69eb869e9a3d01~ ./anonymous_raw_data_~ &lt;named list~</code></pre>
+##   name                       id                      local_path                   meta           
+##   &lt;chr&gt;                      &lt;chr&gt;                   &lt;chr&gt;                        &lt;list&gt;         
+## 1 anonymous_raw_data_W1.Rda~ 5f69eb869e9a3d01136e2c~ ./anonymous_raw_data_W1.Rda~ &lt;named list [3~</code></pre>
 <pre class="r"><code>load(list.files(recursive = TRUE,full.names = TRUE,include.dirs = TRUE,pattern = &quot;*.Rdata&quot;))
 file.remove(list.files(recursive = TRUE,full.names = TRUE,include.dirs = TRUE,pattern = &quot;*.Rdata&quot;))</code></pre>
 <pre><code>## [1] TRUE</code></pre>
@@ -322,12 +322,9 @@ NCC_scores %&gt;%
   summarise(N = n(), Mean = mean(ncc_score), SD = sd(ncc_score), Median=median(ncc_score), Min = min(ncc_score), Max = max(ncc_score), CI_L = Mean + qnorm(.025)*SD/sqrt(n()), CI_H = Mean + qnorm(.975)*SD/sqrt(n()) )
  )
 )</code></pre>
-<pre><code>##                         ...1   N      Mean       SD Median Min Max
-## 1         Need for Cognition 501  62.47106 11.55118     63  20  90
-## 2 Need for Cognitive Closure 501 164.15369 20.07641    163 107 239
-##        CI_L      CI_H
-## 1  61.45958  63.48253
-## 2 162.39571 165.91168</code></pre>
+<pre><code>##                         ...1   N      Mean       SD Median Min Max      CI_L      CI_H
+## 1         Need for Cognition 501  62.47106 11.55118     63  20  90  61.45958  63.48253
+## 2 Need for Cognitive Closure 501 164.15369 20.07641    163 107 239 162.39571 165.91168</code></pre>
 </div>
 </div>
 <div id="分組人數與論文報告確認一致" class="section level2">
