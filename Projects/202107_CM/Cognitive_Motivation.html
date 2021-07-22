@@ -10,7 +10,7 @@
 
 
 
-<meta name="date" content="2021-07-19" />
+<meta name="date" content="2021-07-22" />
 
 <title>Boot et al.(2021)認知動機量表分析重製測試</title>
 
@@ -167,7 +167,7 @@ pre code {
 
 
 <h1 class="title toc-ignore">Boot et al.(2021)認知動機量表分析重製測試</h1>
-<h4 class="date">2021-07-19</h4>
+<h4 class="date">2021-07-22</h4>
 
 </div>
 
@@ -178,12 +178,24 @@ pre code {
 osf_retrieve_file(&quot;he2v7&quot;) %&gt;%
   osf_download()</code></pre>
 <pre><code>## # A tibble: 1 x 4
-##   name                       id                      local_path                   meta           
-##   &lt;chr&gt;                      &lt;chr&gt;                   &lt;chr&gt;                        &lt;list&gt;         
-## 1 anonymous_raw_data_W1.Rda~ 5f69eb869e9a3d01136e2c~ ./anonymous_raw_data_W1.Rda~ &lt;named list [3~</code></pre>
+##   name                  id                  local_path              meta        
+##   &lt;chr&gt;                 &lt;chr&gt;               &lt;chr&gt;                   &lt;list&gt;      
+## 1 anonymous_raw_data_W~ 5f69eb869e9a3d0113~ ./anonymous_raw_data_W~ &lt;named list~</code></pre>
 <pre class="r"><code>load(list.files(recursive = TRUE,full.names = TRUE,include.dirs = TRUE,pattern = &quot;*.Rdata&quot;))
 file.remove(list.files(recursive = TRUE,full.names = TRUE,include.dirs = TRUE,pattern = &quot;*.Rdata&quot;))</code></pre>
 <pre><code>## [1] TRUE</code></pre>
+</div>
+<div id="nc-問卷題目" class="section level3">
+<h3>NC 問卷題目</h3>
+<pre class="r"><code>subset(items, key %in% grep(&quot;^Q16_&quot;,key,value=TRUE) )%&gt;%
+  select(value) %&gt;% gsub(pattern = &quot;For each of the statements below, please indicate whether or not the statement is characteristic of you or of what you believe. - &quot;,replacement = &quot;&quot;)</code></pre>
+<pre><code>## [1] &quot;c(\&quot;I prefer complex to simple problems.\&quot;, \&quot;I like to have the responsibility of handling a situation that requires a lot of thinking.\&quot;, \&quot;Thinking is not my idea of fun.\&quot;, \n\&quot;I would rather do something that requires little thought than something that is sure to challenge my thinking abilities.\&quot;, \&quot;I try to anticipate and avoid situations where there is a likely chance I will have to think in depth about something.\&quot;, \n\&quot;I find satisfaction in deliberating hard and for long hours.\&quot;, \&quot;I only think as hard as I have to.\&quot;, \&quot;I prefer to think about small daily projects to long term ones.\&quot;, \n\&quot;I like tasks that require little thought once I\\xe2\\u0080e learned them.\&quot;, \&quot;The idea of relying on thought to make my way to the top appeals to me.\&quot;, \&quot;I really enjoy a task that involves coming up with new solutions to problems.\&quot;, \n\&quot;Learning new ways to think doesn\\xe2\\u0080 excite me very much.\&quot;, \&quot;I prefer my life to be filled with puzzles I must solve.\&quot;, \&quot;The notion of thinking abstractly is appealing to me.\&quot;, \n\&quot;I would prefer a task that is intellectual, difficult, and important to one that is somewhat important but does not require much thought.\&quot;, \&quot;I feel relief rather than satisfaction after completing a task that requires a lot of mental effort.\&quot;, \n\&quot;It\\xe2\\u0080 enough for me that something gets the job done; I don\\xe2\\u0080 care how or why it works.\&quot;, \&quot;I usually end up deliberating about issues even when they do not affect me personally.\&quot;)&quot;</code></pre>
+</div>
+<div id="ncc-問卷題目" class="section level3">
+<h3>NCC 問卷題目</h3>
+<pre class="r"><code>subset(items, key %in% grep(&quot;^Q17_&quot;,key,value=TRUE) )%&gt;%
+  select(value) %&gt;% gsub(pattern = &quot;Read each of the following statements and decide how much you agree with each according to your beliefs and experiences. - &quot;,replacement = &quot;&quot;)</code></pre>
+<pre><code>## [1] &quot;c(\&quot;I think that having clear rules and order at work is essential for success.\&quot;, \&quot;Even after I&#39;ve made up my mind about something, I am always eager to consider a different opinion.\&quot;, \&quot;I don&#39;t like situations that are uncertain.\&quot;, \n\&quot;I dislike questions which could be answered in many different ways.\&quot;, \&quot;I like to have friends who are unpredictable.\&quot;, \&quot;I find that a well ordered life with regular hours suits my temperament.\&quot;, \n\&quot;I enjoy the uncertainty of going into a new situation without knowing what might happen.\&quot;, \&quot;When dining out, I like to go to places where I have been before so that I know what to expect.\&quot;, \&quot;I feel uncomfortable when I don&#39;t understand the reason why an event occurred in my life.\&quot;, \n\&quot;I feel irritated when one person disagrees with what everyone else in a group believes.\&quot;, \&quot;I hate to change my plans at the last minute.\&quot;, \&quot;I would describe myself as indecisive.\&quot;, \n\&quot;When I go shopping, I have difficulty deciding exactly what it is I want.\&quot;, \&quot;When faced with a problem I usually see the one best solution very quickly.\&quot;, \&quot;When I am confused about an important issue, I feel very upset.\&quot;, \n\&quot;I tend to put off making important decisions until the last possible moment.\&quot;, \&quot;I usually make important decisions quickly and confidently.\&quot;, \&quot;I have never been late for an appointment or work.\&quot;, \n\&quot;I think it is fun to change my plans at the last moment.\&quot;, \&quot;My personal space is usually messy and disorganized.\&quot;, \&quot;In most social conflicts, I can easily see which side is right and which is wrong.\&quot;, \n\&quot;I have never known someone I did not like.\&quot;, \&quot;I tend to struggle with most decisions.\&quot;, \&quot;I believe orderliness and organization are among the most important characteristics of a good student.\&quot;, \n\&quot;When considering most conflict situations, I can usually see how both sides could be right.\&quot;, \&quot;I don&#39;t like to be with people who are capable of unexpected actions.\&quot;, \&quot;I prefer to socialize with familiar friends because I know what to expect from them.\&quot;, \n\&quot;I think that I would learn best in a class that lacks clearly stated objectives and requirements.\&quot;, \&quot;When thinking about a problem, I consider as many different opinions on the issue as possible.\&quot;, \&quot;I don&#39;t like to go into a situation without knowing what I can expect from it.\&quot;, \n\&quot;I like to know what people are thinking all the time.\&quot;, \&quot;I dislike it when a person&#39;s statement could mean many different things.\&quot;, \&quot;It&#39;s annoying to listen to someone who cannot seem to make up his or her mind.\&quot;, \n\&quot;I find that establishing a consistent routine enables me to enjoy life more.\&quot;, \&quot;I enjoy having a clear and structured mode of life.\&quot;, \&quot;I prefer interacting with people whose opinions are very different from my own.\&quot;, \n\&quot;I like to have a plan for everything and a place for everything.\&quot;, \&quot;I feel uncomfortable when someone&#39;s meaning or intention is unclear to me.\&quot;, \&quot;I believe that one should never engage in leisure activities.\&quot;, \n\&quot;When trying to solve a problem I often see so many possible options that it&#39;s confusing.\&quot;, \&quot;I always see many possible solutions to problems I face.\&quot;, \&quot;I&#39;d rather know bad news than stay in a state of uncertainty.\&quot;, \n\&quot;I feel that there is no such thing as an honest mistake.\&quot;, \&quot;I do not usually consult many different options before forming my own view.\&quot;, \&quot;I dislike unpredictable situations.\&quot;, \n\&quot;I have never hurt another person&#39;s feelings.\&quot;, \&quot;I dislike the routine aspects of my work (studies).\&quot;)&quot;</code></pre>
 </div>
 <div id="匯入wave-1-認知動機資料" class="section level3">
 <h3>匯入wave 1 認知動機資料</h3>
@@ -322,9 +334,12 @@ NCC_scores %&gt;%
   summarise(N = n(), Mean = mean(ncc_score), SD = sd(ncc_score), Median=median(ncc_score), Min = min(ncc_score), Max = max(ncc_score), CI_L = Mean + qnorm(.025)*SD/sqrt(n()), CI_H = Mean + qnorm(.975)*SD/sqrt(n()) )
  )
 )</code></pre>
-<pre><code>##                         ...1   N      Mean       SD Median Min Max      CI_L      CI_H
-## 1         Need for Cognition 501  62.47106 11.55118     63  20  90  61.45958  63.48253
-## 2 Need for Cognitive Closure 501 164.15369 20.07641    163 107 239 162.39571 165.91168</code></pre>
+<pre><code>##                         ...1   N      Mean       SD Median Min Max      CI_L
+## 1         Need for Cognition 501  62.47106 11.55118     63  20  90  61.45958
+## 2 Need for Cognitive Closure 501 164.15369 20.07641    163 107 239 162.39571
+##        CI_H
+## 1  63.48253
+## 2 165.91168</code></pre>
 </div>
 </div>
 <div id="分組人數與論文報告確認一致" class="section level2">

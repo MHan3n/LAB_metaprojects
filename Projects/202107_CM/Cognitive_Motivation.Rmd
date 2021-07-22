@@ -22,6 +22,22 @@ load(list.files(recursive = TRUE,full.names = TRUE,include.dirs = TRUE,pattern =
 file.remove(list.files(recursive = TRUE,full.names = TRUE,include.dirs = TRUE,pattern = "*.Rdata"))
 ```
 
+
+### NC 問卷題目
+
+```{r}
+subset(items, key %in% grep("^Q16_",key,value=TRUE) )%>%
+  select(value) %>% gsub(pattern = "For each of the statements below, please indicate whether or not the statement is characteristic of you or of what you believe. - ",replacement = "")
+```
+
+
+### NCC 問卷題目
+
+```{r}
+subset(items, key %in% grep("^Q17_",key,value=TRUE) )%>%
+  select(value) %>% gsub(pattern = "Read each of the following statements and decide how much you agree with each according to your beliefs and experiences. - ",replacement = "")
+```
+
 ### 匯入wave 1 認知動機資料
 
 ```{r NC, message=FALSE, warning=FALSE}
