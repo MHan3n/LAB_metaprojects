@@ -1,0 +1,32 @@
+---
+title: "原始資料取得與預覽"
+date: "`r Sys.Date()`"
+output: html_document
+---
+  
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(osfr)
+```
+
+
+### 下載原始資料
+
+原始資料下載處： https://osf.io/a9qsy
+
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+## Get the meta from OSF
+pl_project <- osf_retrieve_node("a9qsy")
+origin_files <- osf_ls_files(pl_project)
+
+if(sum((origin_files %>% filter( grepl(".csv$|.xlsx$|rmd",name)))$name %in% as.numeric(list.files(pattern = ".csv$|.xlsx$|rmd")))  != 7){
+  ## Download the csv, excel, and Rmd files
+origin_files %>% filter( grepl(".csv$|.xlsx$|rmd",name)) %>%
+  osf_download()
+} else{
+  print("all files were downloaded")
+}
+```
