@@ -17,7 +17,7 @@ library(osfr)
 
 - [Psytoolkit問卷資料測試](Psytoolkit_data.html)
 - [台灣事實查核中心COVID-19專區](https://tfc-taiwan.org.tw/topic/3826)
-- [新興科技媒體中心COVID-19專區](https://tfc-taiwan.org.tw/topic/3826)
+- [新興科技媒體中心COVID-19專區](https://smctw.tw/)
 
 ## 原始資料重製分析
 
