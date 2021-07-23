@@ -1,0 +1,1229 @@
+---
+API: 2.1
+OpenSesame: 3.3.8
+Platform: nt
+---
+set width 1024
+set uniform_coordinates yes
+set title "Replication: Kerwer et al.(2021)"
+set subject_parity even
+set subject_nr 0
+set start experiment
+set sound_sample_size -16
+set sound_freq 48000
+set sound_channels 2
+set sound_buf_size 1024
+set sampler_backend legacy
+set round_decimals 2
+set mouse_backend legacy
+set keyboard_backend legacy
+set height 768
+set fullscreen no
+set form_clicks no
+set foreground black
+set font_underline no
+set font_size 18
+set font_italic no
+set font_family "chinese-japanese-korean"
+set font_bold no
+set experiment_path "D:\\TCU\\Lecture\\Experimental_Psychology\\2020\\Kerwer_plain_lang"
+set disable_garbage_collection yes
+set description "The main experiment item"
+set coordinates uniform
+set compensation 0
+set color_backend legacy
+set clock_backend legacy
+set canvas_backend legacy
+set background white
+
+define loop ACC
+	set source_file ""
+	set source table
+	set repeat 1
+	set order sequential
+	set description "Repeatedly runs another item"
+	set cycles 1
+	set continuous no
+	set break_if_on_first yes
+	set break_if never
+	setcycle 0 Q_type Access
+	setcycle 0 Q_probe "你想要取得原始論文全文嗎？"
+	run ACC_sequence
+
+define sketchpad ACC_board
+	set duration 0
+	set description "Displays stimuli"
+	draw textline center=1 color=black font_bold=no font_family="chinese-japanese-korean" font_italic=no font_size=18 html=yes show_if=always text="[Q_probe]" x=0 y=-96 z_index=0
+	draw textline center=1 color=black font_bold=no font_family="chinese-japanese-korean" font_italic=no font_size=18 html=yes show_if=always text="Y:想要" x=-160 y=128 z_index=0
+	draw textline center=1 color=black font_bold=no font_family="chinese-japanese-korean" font_italic=no font_size=18 html=yes show_if=always text="N:不想要" x=128 y=128 z_index=0
+
+define keyboard_response ACC_response
+	set timeout infinite
+	set flush yes
+	set event_type keypress
+	set duration keypress
+	set description "Collects keyboard responses"
+	set allowed_responses "y;n"
+
+define sequence ACC_sequence
+	set flush_keyboard yes
+	set description "Runs a number of items in sequence"
+	run ACC_board always
+	run ACC_response always
+	run Study_logger always
+
+define loop EES
+	set source table
+	set repeat 1
+	set order random
+	set description "Repeatedly runs another item"
+	set cycles 4
+	set continuous no
+	set break_if_on_first yes
+	set break_if never
+	setcycle 0 Q_type Curious
+	setcycle 0 Q_probe "請同時說明您在閱讀摘要時所經歷的感受。請為每一種情感指出您經歷的強烈程度。"
+	setcycle 0 Q_options "1:  非常不好奇<br/> 2 <br/> 3 <br/> 4 <br/> 5 <br/> 6 <br/> 7 <br/> 8: 非常好奇"
+	setcycle 1 Q_type Bored
+	setcycle 1 Q_probe "請同時說明您在閱讀摘要時所經歷的感受。請為每一種情感指出您經歷的強烈程度。"
+	setcycle 1 Q_options "1:  非常無聊<br/> 2 <br/> 3 <br/> 4 <br/> 5 <br/> 6 <br/> 7 <br/> 8: 非常有趣"
+	setcycle 2 Q_type Confused
+	setcycle 2 Q_probe "請同時說明您在閱讀摘要時所經歷的感受。請為每一種情感指出您經歷的強烈程度。"
+	setcycle 2 Q_options "1:  非常困惑<br/> 2 <br/> 3 <br/> 4 <br/> 5 <br/> 6 <br/> 7 <br/> 8: 非常了解"
+	setcycle 3 Q_type Frustrated
+	setcycle 3 Q_probe "請同時說明您在閱讀摘要時所經歷的感受。請為每一種情感指出您經歷的強烈程度。"
+	setcycle 3 Q_options "1:  非常沮喪<br/> 2 <br/> 3 <br/> 4 <br/> 5 <br/> 6 <br/> 7 <br/> 8: 非常開心"
+	run EES_sequence
+
+define sketchpad EES_board
+	set duration 0
+	set description "Displays stimuli"
+	draw textline center=1 color=black font_bold=no font_family="chinese-japanese-korean" font_italic=no font_size=24 html=yes show_if=always text="[Q_probe]" x=0 y=-96 z_index=0
+	draw textline center=1 color=black font_bold=no font_family="chinese-japanese-korean" font_italic=no font_size=16 html=yes show_if=always text="[Q_options]" x=0 y=64 z_index=0
+
+define keyboard_response EES_response
+	set timeout infinite
+	set flush yes
+	set event_type keypress
+	set duration keypress
+	set description "Collects keyboard responses"
+	set allowed_responses "1;2;3;4;5;6;7;8"
+
+define sequence EES_sequence
+	set flush_keyboard yes
+	set description "Runs a number of items in sequence"
+	run EES_board always
+	run EES_response always
+	run Study_logger always
+
+define sketchpad End_of_Study
+	set duration keypress
+	set description "Displays stimuli"
+	draw textline center=1 color=black font_bold=no font_family="chinese-japanese-korean" font_italic=no font_size=18 html=yes show_if=always text=實驗結束 x=0 y=-96 z_index=0
+
+define loop JB
+	set source table
+	set repeat 1
+	set order random
+	set description "Repeatedly runs another item"
+	set cycles 9
+	set continuous no
+	set break_if_on_first yes
+	set break_if never
+	setcycle 0 Question "Psychologisches Wissen setzt sich zusammen aus persönlichen  Meinungen von Forscher/-innen, da es in der Psychologie keine  Tatsachen gibt."
+	setcycle 0 Options "1:not true at all <br/>2:largely untrue <br/>3:not likely to be true <br/>4:a little bit true <br/>5:largely true <br/>6:totally true"
+	setcycle 0 Q_type Belief
+	setcycle 0 Topic j_pj_01
+	setcycle 1 Question " In der Psychologie geben Wissenschaftler/-innen lediglich ihre eigene Ansicht als wissenschaftliche Erkenntnis aus."
+	setcycle 1 Options "1:not true at all <br/>2:largely untrue <br/>3:not likely to be true <br/>4:a little bit true <br/>5:largely true <br/>6:totally true"
+	setcycle 1 Q_type Belief
+	setcycle 1 Topic j_pj_02
+	setcycle 2 Question "Im Folgenden finden Sie einige Aussagen zur Psychologie als Wissenschaft. Bitte geben Sie an, in welchem Ausmaß Sie den Aussagen zustimmen, von „stimmt überhaupt nicht“ bis hin zu „stimmt genau“ . Bitte bedenken Sie dabei, dass sich alle Aussagen stets auf die Psychologie als Wissenschaft beziehen. [In the following you will find some statements about psychology as a science. Please indicate the extent to which you agree with the statements, from 'not true at all' to 'totally true'. Please keep in mind that all statements always refer to psychology as a science.] In der Psychologie entstehen wissenschaftliche Erkenntnisse  hauptsächlich aus den Ansichten des/-r jeweiligen Forschers/-in. [see Braten et al. (2013) for a (domain-general) English version of the justification questionnaire.]"
+	setcycle 2 Options "1:not true at all <br/>2:largely untrue <br/>3:not likely to be true <br/>4:a little bit true <br/>5:largely true <br/>6:totally true"
+	setcycle 2 Q_type Belief
+	setcycle 2 Topic j_pj_03
+	setcycle 3 Question "Im Folgenden finden Sie einige Aussagen zur Psychologie als Wissenschaft. Bitte geben Sie an, in welchem Ausmaß Sie den Aussagen zustimmen, von „stimmt überhaupt nicht“ bis hin zu „stimmt genau“ . Bitte bedenken Sie dabei, dass sich alle Aussagen stets auf die Psychologie als Wissenschaft beziehen. [In the following you will find some statements about psychology as a science. Please indicate the extent to which you agree with the statements, from 'not true at all' to 'totally true'. Please keep in mind that all statements always refer to psychology as a science.]  Wenn ein(e) Wissenschaftler/-in aus der Psychologie sagt, dass in der Psychologie etwas korrekt ist, dann glaube ich das. [see Braten et al. (2013) for a (domain-general) English version of the justification questionnaire.] "
+	setcycle 3 Options "1:not true at all <br/>2:largely untrue <br/>3:not likely to be true <br/>4:a little bit true <br/>5:largely true <br/>6:totally true"
+	setcycle 3 Q_type Belief
+	setcycle 3 Topic j_ja_01
+	setcycle 4 Question "Im Folgenden finden Sie einige Aussagen zur Psychologie als Wissenschaft. Bitte geben Sie an, in welchem Ausmaß Sie den Aussagen zustimmen, von „stimmt überhaupt nicht“ bis hin zu „stimmt genau“ . Bitte bedenken Sie dabei, dass sich alle Aussagen stets auf die Psychologie als Wissenschaft beziehen. [In the following you will find some statements about psychology as a science. Please indicate the extent to which you agree with the statements, from 'not true at all' to 'totally true'. Please keep in mind that all statements always refer to psychology as a science.] Wenn mir ein(e) Wissenschaftler/-in aus der Psychologie etwas über einen psychologischen Sachverhalt erzählt, dann glaube ich das. [see Braten et al. (2013) for a (domain-general) English version of the justification questionnaire.]"
+	setcycle 4 Options "1:not true at all <br/>2:largely untrue <br/>3:not likely to be true <br/>4:a little bit true <br/>5:largely true <br/>6:totally true"
+	setcycle 4 Q_type Belief
+	setcycle 4 Topic j_ja_02
+	setcycle 5 Question "Im Folgenden finden Sie einige Aussagen zur Psychologie als Wissenschaft. Bitte geben Sie an, in welchem Ausmaß Sie den Aussagen zustimmen, von „stimmt überhaupt nicht“ bis hin zu „stimmt genau“ . Bitte bedenken Sie dabei, dass sich alle Aussagen stets auf die Psychologie als Wissenschaft beziehen. [In the following you will find some statements about psychology as a science. Please indicate the extent to which you agree with the statements, from 'not true at all' to 'totally true'. Please keep in mind that all statements always refer to psychology as a science.] Wenn ich etwas lese, das auf psychologischer Forschung beruht,  dann weiß ich, dass es stimmt. [see Braten et al. (2013) for a (domain-general) English version of the justification questionnaire.]"
+	setcycle 5 Options "1:not true at all <br/>2:largely untrue <br/>3:not likely to be true <br/>4:a little bit true <br/>5:largely true <br/>6:totally true"
+	setcycle 5 Q_type Belief
+	setcycle 5 Topic j_ja_03
+	setcycle 6 Question "Im Folgenden finden Sie einige Aussagen zur Psychologie als Wissenschaft. Bitte geben Sie an, in welchem Ausmaß Sie den Aussagen zustimmen, von „stimmt überhaupt nicht“ bis hin zu „stimmt genau“ . Bitte bedenken Sie dabei, dass sich alle Aussagen stets auf die Psychologie als Wissenschaft beziehen. [In the following you will find some statements about psychology as a science. Please indicate the extent to which you agree with the statements, from 'not true at all' to 'totally true'. Please keep in mind that all statements always refer to psychology as a science.] Um in der Psychologie wissenschaftlichen Behauptungen trauen zu können, müssen verschiedene Quellen überprüft werden. [see Braten et al. (2013) for a (domain-general) English version of the justification questionnaire.]"
+	setcycle 6 Options "1:not true at all <br/>2:largely untrue <br/>3:not likely to be true <br/>4:a little bit true <br/>5:largely true <br/>6:totally true"
+	setcycle 6 Q_type Belief
+	setcycle 6 Topic j_ms_01
+	setcycle 7 Question "Im Folgenden finden Sie einige Aussagen zur Psychologie als Wissenschaft. Bitte geben Sie an, in welchem Ausmaß Sie den Aussagen zustimmen, von „stimmt überhaupt nicht“ bis hin zu „stimmt genau“ . Bitte bedenken Sie dabei, dass sich alle Aussagen stets auf die Psychologie als Wissenschaft beziehen. [In the following you will find some statements about psychology as a science. Please indicate the extent to which you agree with the statements, from 'not true at all' to 'totally true'. Please keep in mind that all statements always refer to psychology as a science.] Ich kann mir bei einer wissenschaftlichen Behauptung aus der Psychologie nie sicher sein, solange ich nicht wenigstens eine weitere Quelle überprüft habe. [see Braten et al. (2013) for a (domain-general) English version of the justification questionnaire.]"
+	setcycle 7 Options "1:not true at all <br/>2:largely untrue <br/>3:not likely to be true <br/>4:a little bit true <br/>5:largely true <br/>6:totally true"
+	setcycle 7 Q_type Belief
+	setcycle 7 Topic j_ms_02
+	setcycle 8 Question "Im Folgenden finden Sie einige Aussagen zur Psychologie als Wissenschaft. Bitte geben Sie an, in welchem Ausmaß Sie den Aussagen zustimmen, von „stimmt überhaupt nicht“ bis hin zu „stimmt genau“ . Bitte bedenken Sie dabei, dass sich alle Aussagen stets auf die Psychologie als Wissenschaft beziehen. [In the following you will find some statements about psychology as a science. Please indicate the extent to which you agree with the statements, from 'not true at all' to 'totally true'. Please keep in mind that all statements always refer to psychology as a science.] Eine Quelle allein ist in der Psychologie niemals genug um zu  entscheiden, was wissenschaftlich richtig ist. [see Braten et al. (2013) for a (domain-general) English version of the justification questionnaire.]"
+	setcycle 8 Options "1:not true at all <br/>2:largely untrue <br/>3:not likely to be true <br/>4:a little bit true <br/>5:largely true <br/>6:totally true"
+	setcycle 8 Q_type Belief
+	setcycle 8 Topic j_ms_03
+	run JB_seq
+
+define sketchpad JB_board
+	set duration 0
+	set description "Displays stimuli"
+	draw textline center=1 color=black font_bold=no font_family="chinese-japanese-korean" font_italic=no font_size=18 html=yes show_if=always text="[Question]" x=0 y=-96 z_index=0
+	draw textline center=1 color=black font_bold=no font_family="chinese-japanese-korean" font_italic=no font_size=18 html=yes show_if=always text="[Options]" x=0 y=32 z_index=0
+	draw textline center=1 color=black font_bold=no font_family="chinese-japanese-korean" font_italic=no font_size=18 html=yes show_if=always text="" x=-672 y=-256 z_index=0
+
+define keyboard_response JB_response
+	set timeout infinite
+	set flush yes
+	set event_type keypress
+	set duration keypress
+	set description "Collects keyboard responses"
+	set allowed_responses "1;2;3;4;5;6"
+
+define sequence JB_seq
+	set flush_keyboard yes
+	set description "Runs a number of items in sequence"
+	run JB_board always
+	run JB_response always
+	run Study_logger always
+
+define sketchpad Q_board
+	set duration 0
+	set description "Displays stimuli"
+	draw textline center=1 color=black font_bold=no font_family="chinese-japanese-korean" font_italic=no font_size=24 html=yes show_if=always text="[Q_probe]" x=0 y=-96 z_index=0
+	draw textline center=1 color=black font_bold=no font_family="chinese-japanese-korean" font_italic=no font_size=16 html=yes show_if=always text="[Q_options]" x=0 y=64 z_index=0
+
+define keyboard_response Q_response
+	set timeout infinite
+	set flush yes
+	set event_type keypress
+	set duration keypress
+	set description "Collects keyboard responses"
+	set allowed_responses "1;2;3;4;5;6;7;8"
+
+define sequence Q_sequence
+	set flush_keyboard yes
+	set description "Runs a number of items in sequence"
+	run Q_board always
+	run Q_response always
+	run Study_logger always
+
+define loop Questions
+	set source_file ""
+	set source table
+	set repeat 1
+	set order sequential
+	set description "Repeatedly runs another item"
+	set cycles 5
+	set continuous no
+	set break_if_on_first yes
+	set break_if never
+	setcycle 0 Q_type Comprehensibility
+	setcycle 0 Q_probe "How do you rate this summary? <br/>Please indicate your assessment of the summary on the following scale."
+	setcycle 0 Q_options "1:  完全無法理解內容<br/> 2 <br/> 3 <br/> 4 <br/> 5 <br/> 6 <br/> 7 <br/> 8: 完全能理解內容"
+	setcycle 1 Q_type Scientificness
+	setcycle 1 Q_probe "How do you rate this summary? <br/>Please indicate your assessment of the summary on the following scale."
+	setcycle 1 Q_options "1:  完全沒有科學價值內容<br/> 2 <br/> 3 <br/> 4 <br/> 5 <br/> 6 <br/> 7 <br/> 8: 完全有科學價值內容"
+	setcycle 2 Q_type Credibility
+	setcycle 2 Q_probe "How do you rate this summary? <br/>Please indicate your assessment of the summary on the following scale."
+	setcycle 2 Q_options "1:  摘要完全沒有信用<br/> 2 <br/> 3 <br/> 4 <br/> 5 <br/> 6 <br/> 7 <br/> 8: 摘要完全有信用"
+	setcycle 3 Q_type Veracity
+	setcycle 3 Q_probe "Based on this summary, I am able to evaluate the veracity of the corresponding study. Please indicate your agreement with the following statements."
+	setcycle 3 Q_options "1:  完全沒有真實性<br/> 2 <br/> 3 <br/> 4 <br/> 5 <br/> 6 <br/> 7 <br/> 8: 完全有真實性"
+	setcycle 4 Q_type Decision
+	setcycle 4 Q_probe "Based on this summary, I am able to make a decision without needing any further information (i.e., reading the full text or talking to an expert). Please indicate your agreement with the following statements."
+	setcycle 4 Q_options "1:  完全無法做決定<br/> 2 <br/> 3 <br/> 4 <br/> 5 <br/> 6 <br/> 7 <br/> 8: 完全能自己做決定"
+	run Q_sequence
+
+define logger Study_logger
+	set description "Logs experimental data"
+	set auto_log yes
+
+define sketchpad Test_board
+	set duration 0
+	set description "Displays stimuli"
+	draw textline center=1 color=black font_bold=no font_family="chinese-japanese-korean" font_italic=no font_size=18 html=yes show_if=always text="[Text_test_Q]" x=0 y=-96 z_index=0
+	draw textline center=1 color=black font_bold=no font_family="chinese-japanese-korean" font_italic=no font_size=18 html=yes show_if=always text="Y:是" x=-160 y=128 z_index=0
+	draw textline center=1 color=black font_bold=no font_family="chinese-japanese-korean" font_italic=no font_size=18 html=yes show_if=always text="N:否" x=128 y=128 z_index=0
+
+define keyboard_response Test_response
+	set timeout infinite
+	set flush yes
+	set event_type keypress
+	set duration keypress
+	set description "Collects keyboard responses"
+	set allowed_responses "y;n"
+
+define loop block
+	set source_file ""
+	set source table
+	set repeat 1
+	set order random
+	set description "Repeatedly runs another item"
+	set cycles 24
+	set continuous no
+	set break_if_on_first yes
+	set break_if never
+	setcycle 0 Text_test_Q Text01_Q1
+	setcycle 0 correct_response y
+	setcycle 0 Test_id 1
+	setcycle 0 Q_type Knowledge
+	setcycle 1 Text_test_Q Text01_Q2
+	setcycle 1 correct_response y
+	setcycle 1 Test_id 1
+	setcycle 1 Q_type Knowledge
+	setcycle 2 Text_test_Q Text02_Q1
+	setcycle 2 correct_response n
+	setcycle 2 Test_id 2
+	setcycle 2 Q_type Knowledge
+	setcycle 3 Text_test_Q Text02_Q2
+	setcycle 3 correct_response y
+	setcycle 3 Test_id 2
+	setcycle 3 Q_type Knowledge
+	setcycle 4 Text_test_Q Text03_Q1
+	setcycle 4 correct_response n
+	setcycle 4 Test_id 3
+	setcycle 4 Q_type Knowledge
+	setcycle 5 Text_test_Q Text03_Q2
+	setcycle 5 correct_response y
+	setcycle 5 Test_id 3
+	setcycle 5 Q_type Knowledge
+	setcycle 6 Text_test_Q Text04_Q1
+	setcycle 6 correct_response y
+	setcycle 6 Test_id 4
+	setcycle 6 Q_type Knowledge
+	setcycle 7 Text_test_Q Text04_Q2
+	setcycle 7 correct_response y
+	setcycle 7 Test_id 4
+	setcycle 7 Q_type Knowledge
+	setcycle 8 Text_test_Q Text05_Q1
+	setcycle 8 correct_response n
+	setcycle 8 Test_id 5
+	setcycle 8 Q_type Knowledge
+	setcycle 9 Text_test_Q Text05_Q2
+	setcycle 9 correct_response y
+	setcycle 9 Test_id 5
+	setcycle 9 Q_type Knowledge
+	setcycle 10 Text_test_Q Text06_Q1
+	setcycle 10 correct_response n
+	setcycle 10 Test_id 6
+	setcycle 10 Q_type Knowledge
+	setcycle 11 Text_test_Q Text06_Q2
+	setcycle 11 correct_response y
+	setcycle 11 Test_id 6
+	setcycle 11 Q_type Knowledge
+	setcycle 12 Text_test_Q Text07_Q1
+	setcycle 12 correct_response y
+	setcycle 12 Test_id 7
+	setcycle 12 Q_type Knowledge
+	setcycle 13 Text_test_Q Text07_Q2
+	setcycle 13 correct_response y
+	setcycle 13 Test_id 7
+	setcycle 13 Q_type Knowledge
+	setcycle 14 Text_test_Q Text08_Q1
+	setcycle 14 correct_response n
+	setcycle 14 Test_id 8
+	setcycle 14 Q_type Knowledge
+	setcycle 15 Text_test_Q Text08_Q2
+	setcycle 15 correct_response y
+	setcycle 15 Test_id 8
+	setcycle 15 Q_type Knowledge
+	setcycle 16 Text_test_Q Text09_Q1
+	setcycle 16 correct_response n
+	setcycle 16 Test_id 9
+	setcycle 16 Q_type Knowledge
+	setcycle 17 Text_test_Q Text09_Q2
+	setcycle 17 correct_response y
+	setcycle 17 Test_id 9
+	setcycle 17 Q_type Knowledge
+	setcycle 18 Text_test_Q Text10_Q1
+	setcycle 18 correct_response y
+	setcycle 18 Test_id 10
+	setcycle 18 Q_type Knowledge
+	setcycle 19 Text_test_Q Text10_Q2
+	setcycle 19 correct_response y
+	setcycle 19 Test_id 10
+	setcycle 19 Q_type Knowledge
+	setcycle 20 Text_test_Q Text11_Q1
+	setcycle 20 correct_response n
+	setcycle 20 Test_id 11
+	setcycle 20 Q_type Knowledge
+	setcycle 21 Text_test_Q Text11_Q2
+	setcycle 21 correct_response y
+	setcycle 21 Test_id 11
+	setcycle 21 Q_type Knowledge
+	setcycle 22 Text_test_Q Text12_Q1
+	setcycle 22 correct_response n
+	setcycle 22 Test_id 12
+	setcycle 22 Q_type Knowledge
+	setcycle 23 Text_test_Q Text12_Q2
+	setcycle 23 correct_response y
+	setcycle 23 Test_id 12
+	setcycle 23 Q_type Knowledge
+	run block_test
+
+define sequence block_test
+	set flush_keyboard yes
+	set description "Runs a number of items in sequence"
+	run Test_board "([Test_id]=[Qid01]) or ([Test_id]=[Qid02]) or ([Test_id]=[Qid03])"
+	run Test_response "([Test_id]=[Qid01]) or ([Test_id]=[Qid02]) or ([Test_id]=[Qid03])"
+	run Study_logger always
+
+define loop covariates
+	set source_file ""
+	set source table
+	set repeat 1
+	set order sequential
+	set description "Repeatedly runs another item"
+	set cycles 2
+	set continuous no
+	set break_if_on_first yes
+	set break_if never
+	setcycle 0 Question "您已經與科學研究取得了多少聯繫？請按以下等級說明您的評估。"
+	setcycle 0 Options "1: very little <br/> 2 <br/> 3 <br/> 4 <br/> 5 <br/> 6 <br/> 7 <br/> 8: very much"
+	setcycle 0 Q_type self_eval
+	setcycle 0 Topic familiarity
+	setcycle 1 Question "您如何評估自己判斷科學研究真實性的能力？ 請按以下標准說明您的評估"
+	setcycle 1 Options "1: very little <br/> 2 <br/> 3 <br/> 4 <br/> 5 <br/> 6 <br/> 7 <br/> 8: very much"
+	setcycle 1 Q_type self_eval
+	setcycle 1 Topic ability
+	run covariates_seq
+
+define sketchpad covariates_board
+	set duration 0
+	set description "Displays stimuli"
+	draw textline center=1 color=black font_bold=no font_family="chinese-japanese-korean" font_italic=no font_size=18 html=yes show_if=always text="[Question]" x=0 y=-96 z_index=0
+	draw textline center=1 color=black font_bold=no font_family="chinese-japanese-korean" font_italic=no font_size=18 html=yes show_if=always text="[Options]" x=0 y=32 z_index=0
+	draw textline center=1 color=black font_bold=no font_family="chinese-japanese-korean" font_italic=no font_size=18 html=yes show_if=always text="" x=-672 y=-256 z_index=0
+
+define keyboard_response covariates_response
+	set timeout infinite
+	set flush yes
+	set event_type keypress
+	set duration keypress
+	set description "Collects keyboard responses"
+	set allowed_responses "1;2;3;4;5;6;7;8"
+
+define sequence covariates_seq
+	set flush_keyboard yes
+	set description "Runs a number of items in sequence"
+	run covariates_board always
+	run covariates_response always
+	run Study_logger always
+
+define sequence experiment
+	set flush_keyboard yes
+	set description 主程序
+	run welcome always
+	run main always
+
+define inline_javascript id_recording
+	set description "Executes JavaScript code (ECMA 5.1)"
+	___run__
+	// Save the original text id to access the Questions in an end of block
+	if((vars.count_text_seq%3)===0) {
+	  vars.Qid01 = vars.O_id
+	} else if((vars.count_text_seq%3)===1) {
+	  vars.Qid02 = vars.O_id
+	} else {
+	  vars.Qid03 = vars.O_id
+	}
+	__end__
+	set _prepare ""
+
+define sequence main
+	set flush_keyboard yes
+	set description 分支程序
+	run survey always
+	run JB always
+	run covariates always
+	run shuffle_block always
+	run text_CB1 "[CB]=1"
+	run text_CB2 "[CB]=2"
+	run text_CB3 "[CB]=3"
+	run End_of_Study always
+
+define inline_javascript shuffle_block
+	set description "Executes JavaScript code (ECMA 5.1)"
+	___run__
+	// getRndInteger(min, max) returns a random number between min and max (both included):
+	function getRndInteger(min, max) {
+	  return Math.floor(Math.random() * (max - min + 1) ) + min;
+	}
+	
+	vars.CB = getRndInteger(1,3);
+	__end__
+	set _prepare ""
+
+define loop survey
+	set source table
+	set repeat 1
+	set order sequential
+	set description "Repeatedly runs another item"
+	set cycles 3
+	set continuous no
+	set break_if_on_first yes
+	set break_if never
+	setcycle 0 Question "您的性別？<br/>請輸入符合選項的代表數字或符號"
+	setcycle 0 Options "1: 女性<br/>2:男性<br/>3:跨性別<br/>4:非二元性別<br>x:不想回答"
+	setcycle 0 Q_type demographics
+	setcycle 0 Topic gender
+	setcycle 1 Question "請輸入出生西元年份的第三個數字：<br/>例如， 出生年是2001，請輸入0"
+	setcycle 1 Options "注意: 如果您不想回答，請輸入x "
+	setcycle 1 Q_type demographics
+	setcycle 1 Topic birth_3
+	setcycle 2 Question "請輸入出生西元年份的第四個數字：<br/>例如， 出生年是2001，請輸入1"
+	setcycle 2 Options "注意: 如果您不想回答，請輸入x "
+	setcycle 2 Q_type demographics
+	setcycle 2 Topic birth_4
+	run survey_seq
+
+define sketchpad survey_board
+	set duration 0
+	set description "Displays stimuli"
+	draw textline center=1 color=black font_bold=no font_family="chinese-japanese-korean" font_italic=no font_size=18 html=yes show_if=always text="[Question]" x=0 y=-96 z_index=0
+	draw textline center=1 color=black font_bold=no font_family="chinese-japanese-korean" font_italic=no font_size=18 html=yes show_if=always text="[Options]" x=0 y=32 z_index=0
+	draw textline center=1 color=black font_bold=no font_family="chinese-japanese-korean" font_italic=no font_size=18 html=yes show_if=always text="" x=-672 y=-256 z_index=0
+
+define keyboard_response survey_response
+	set timeout infinite
+	set flush yes
+	set event_type keypress
+	set duration keypress
+	set description "Collects keyboard responses"
+	set allowed_responses "1;2;3;4;5;6;7;8;9;0;x"
+
+define sequence survey_seq
+	set flush_keyboard yes
+	set description "Runs a number of items in sequence"
+	run survey_board always
+	run survey_response always
+	run Study_logger always
+
+define loop text_CB1
+	set source_file ""
+	set source table
+	set repeat 1
+	set order random
+	set description "Repeatedly runs another item"
+	set cycles 36
+	set continuous no
+	set break_if_on_first yes
+	set break_if never
+	setcycle 0 Content "(001 to be fill)"
+	setcycle 0 NH Y
+	setcycle 0 OSA N
+	setcycle 0 Text_id 1
+	setcycle 0 BLOCK 1
+	setcycle 0 O_id 1
+	setcycle 1 Content "對現代強調進步、超越有限性等價值的反思，最受大眾矚目的應該是來自現代醫學的反思。現代醫學透過新的儀器、科技及藥物的發明，寄望消除疾病與痛苦，人類的平均壽命史無前例地大幅提高。然而，死亡與衰老是人們唯一無法擺脫的事情。隨著臨終前進行的侵入性急救，身體扭曲及痛苦的畫面不斷被報導及揭露，病人及家屬的痛苦與悲傷在現代的社會中被忽略，甚至旁人也不知該如何進行陪伴與撫慰。德國社會學家Armin Nassehi指出，這並不是因為死亡消失了，而是社會在某一段時間中尚未發展出適當的有關死亡的現代溝通形式。然而，正因為死亡在現代社會中具有不可溝通性，反而鼓動著人們去討論它。這種「死亡溝通的弔詭性」正如Michel Foucault所指出，對於性的壓抑反而使性無所不在，人們時時刻刻意識到性的禁忌，小心翼翼不違反這些禁忌，發展出一整套技術、技巧、論述或信念來掩蓋它，但壓抑反而使其存在更明顯。"
+	setcycle 1 NH N
+	setcycle 1 OSA N
+	setcycle 1 Text_id 1
+	setcycle 1 BLOCK 2
+	setcycle 1 O_id 1
+	setcycle 2 Content "本文將安寧照顧視為一個社會系統，透過語意的分析來討論關於安寧照顧這個論題的社會溝通。我將指出，安寧照顧的成功依賴於將「善終」視為重要的溝通議題。在經久的溝通嘗試中，社會沉澱出「自主善終」這個新的歷史語意，更新傳統的善終意義，建立新的行為期待架構。在每次的運作中，安寧照顧必須一再區分好死／不得好死、尊嚴／喪失尊嚴、自主／失去自主。這確保了當下情境的動態性，同時保留說明在現代醫學及安寧照顧中不安寧、不得善終及不自主等照顧黑暗面及壓迫的可能性。一旦形成自主善終的期待框架及心理的感知結構，同時也會引入實際狀況的失望潛能，進而提供支持安樂死的可能條件。"
+	setcycle 2 NH N
+	setcycle 2 OSA Y
+	setcycle 2 Text_id 1
+	setcycle 2 BLOCK 3
+	setcycle 2 O_id 1
+	setcycle 3 Content "(002 to be fill)"
+	setcycle 3 NH Y
+	setcycle 3 OSA N
+	setcycle 3 Text_id 2
+	setcycle 3 BLOCK 1
+	setcycle 3 O_id 2
+	setcycle 4 Content "(002 to be fill)"
+	setcycle 4 NH N
+	setcycle 4 OSA N
+	setcycle 4 Text_id 2
+	setcycle 4 BLOCK 3
+	setcycle 4 O_id 2
+	setcycle 5 Content "(002 to be fill)"
+	setcycle 5 NH N
+	setcycle 5 OSA Y
+	setcycle 5 Text_id 2
+	setcycle 5 BLOCK 2
+	setcycle 5 O_id 2
+	setcycle 6 Content "(003 to be fill)"
+	setcycle 6 NH Y
+	setcycle 6 OSA N
+	setcycle 6 Text_id 3
+	setcycle 6 BLOCK 2
+	setcycle 6 O_id 3
+	setcycle 7 Content "(003 to be fill)"
+	setcycle 7 NH N
+	setcycle 7 OSA N
+	setcycle 7 Text_id 3
+	setcycle 7 BLOCK 1
+	setcycle 7 O_id 3
+	setcycle 8 Content "(003 to be fill)"
+	setcycle 8 NH N
+	setcycle 8 OSA Y
+	setcycle 8 Text_id 3
+	setcycle 8 BLOCK 3
+	setcycle 8 O_id 3
+	setcycle 9 Content "(004 to be fill)"
+	setcycle 9 NH Y
+	setcycle 9 OSA N
+	setcycle 9 Text_id 4
+	setcycle 9 BLOCK 2
+	setcycle 9 O_id 4
+	setcycle 10 Content "(004 to be fill)"
+	setcycle 10 NH N
+	setcycle 10 OSA N
+	setcycle 10 Text_id 4
+	setcycle 10 BLOCK 3
+	setcycle 10 O_id 4
+	setcycle 11 Content "(004 to be fill)"
+	setcycle 11 NH N
+	setcycle 11 OSA Y
+	setcycle 11 Text_id 4
+	setcycle 11 BLOCK 1
+	setcycle 11 O_id 4
+	setcycle 12 Content "(005 to be fill)"
+	setcycle 12 NH Y
+	setcycle 12 OSA N
+	setcycle 12 Text_id 5
+	setcycle 12 BLOCK 3
+	setcycle 12 O_id 5
+	setcycle 13 Content "(005 to be fill)"
+	setcycle 13 NH N
+	setcycle 13 OSA N
+	setcycle 13 Text_id 5
+	setcycle 13 BLOCK 1
+	setcycle 13 O_id 5
+	setcycle 14 Content "(005 to be fill)"
+	setcycle 14 NH N
+	setcycle 14 OSA Y
+	setcycle 14 Text_id 5
+	setcycle 14 BLOCK 2
+	setcycle 14 O_id 5
+	setcycle 15 Content "(006 to be fill)"
+	setcycle 15 NH Y
+	setcycle 15 OSA N
+	setcycle 15 Text_id 6
+	setcycle 15 BLOCK 3
+	setcycle 15 O_id 6
+	setcycle 16 Content "(006 to be fill)"
+	setcycle 16 NH N
+	setcycle 16 OSA N
+	setcycle 16 Text_id 6
+	setcycle 16 BLOCK 2
+	setcycle 16 O_id 6
+	setcycle 17 Content "(006 to be fill)"
+	setcycle 17 NH N
+	setcycle 17 OSA Y
+	setcycle 17 Text_id 6
+	setcycle 17 BLOCK 1
+	setcycle 17 O_id 6
+	setcycle 18 Content "(007 to be fill)"
+	setcycle 18 NH Y
+	setcycle 18 OSA N
+	setcycle 18 Text_id 7
+	setcycle 18 BLOCK 1
+	setcycle 18 O_id 7
+	setcycle 19 Content "(007 to be fill)"
+	setcycle 19 NH N
+	setcycle 19 OSA N
+	setcycle 19 Text_id 7
+	setcycle 19 BLOCK 2
+	setcycle 19 O_id 7
+	setcycle 20 Content "(007 to be fill)"
+	setcycle 20 NH N
+	setcycle 20 OSA Y
+	setcycle 20 Text_id 7
+	setcycle 20 BLOCK 3
+	setcycle 20 O_id 7
+	setcycle 21 Content "(008 to be fill)"
+	setcycle 21 NH Y
+	setcycle 21 OSA N
+	setcycle 21 Text_id 8
+	setcycle 21 BLOCK 1
+	setcycle 21 O_id 8
+	setcycle 22 Content "(008 to be fill)"
+	setcycle 22 NH N
+	setcycle 22 OSA N
+	setcycle 22 Text_id 8
+	setcycle 22 BLOCK 3
+	setcycle 22 O_id 8
+	setcycle 23 Content "(008 to be fill)"
+	setcycle 23 NH N
+	setcycle 23 OSA Y
+	setcycle 23 Text_id 8
+	setcycle 23 BLOCK 2
+	setcycle 23 O_id 8
+	setcycle 24 Content "(009 to be fill)"
+	setcycle 24 NH Y
+	setcycle 24 OSA N
+	setcycle 24 Text_id 9
+	setcycle 24 BLOCK 2
+	setcycle 24 O_id 9
+	setcycle 25 Content "(009 to be fill)"
+	setcycle 25 NH N
+	setcycle 25 OSA N
+	setcycle 25 Text_id 9
+	setcycle 25 BLOCK 1
+	setcycle 25 O_id 9
+	setcycle 26 Content "(009 to be fill)"
+	setcycle 26 NH N
+	setcycle 26 OSA Y
+	setcycle 26 Text_id 9
+	setcycle 26 BLOCK 3
+	setcycle 26 O_id 9
+	setcycle 27 Content "(010 to be fill)"
+	setcycle 27 NH Y
+	setcycle 27 OSA N
+	setcycle 27 Text_id 10
+	setcycle 27 BLOCK 2
+	setcycle 27 O_id 10
+	setcycle 28 Content "(010 to be fill)"
+	setcycle 28 NH N
+	setcycle 28 OSA N
+	setcycle 28 Text_id 10
+	setcycle 28 BLOCK 3
+	setcycle 28 O_id 10
+	setcycle 29 Content "(010 to be fill)"
+	setcycle 29 NH N
+	setcycle 29 OSA Y
+	setcycle 29 Text_id 10
+	setcycle 29 BLOCK 1
+	setcycle 29 O_id 10
+	setcycle 30 Content "(011 to be fill)"
+	setcycle 30 NH Y
+	setcycle 30 OSA N
+	setcycle 30 Text_id 11
+	setcycle 30 BLOCK 3
+	setcycle 30 O_id 11
+	setcycle 31 Content "(011 to be fill)"
+	setcycle 31 NH N
+	setcycle 31 OSA N
+	setcycle 31 Text_id 11
+	setcycle 31 BLOCK 1
+	setcycle 31 O_id 11
+	setcycle 32 Content "(011 to be fill)"
+	setcycle 32 NH N
+	setcycle 32 OSA Y
+	setcycle 32 Text_id 11
+	setcycle 32 BLOCK 2
+	setcycle 32 O_id 11
+	setcycle 33 Content "(012 to be fill)"
+	setcycle 33 NH Y
+	setcycle 33 OSA N
+	setcycle 33 Text_id 12
+	setcycle 33 BLOCK 3
+	setcycle 33 O_id 12
+	setcycle 34 Content "(012 to be fill)"
+	setcycle 34 NH N
+	setcycle 34 OSA N
+	setcycle 34 Text_id 12
+	setcycle 34 BLOCK 2
+	setcycle 34 O_id 12
+	setcycle 35 Content "(012 to be fill)"
+	setcycle 35 NH N
+	setcycle 35 OSA Y
+	setcycle 35 Text_id 12
+	setcycle 35 BLOCK 1
+	setcycle 35 O_id 12
+	sortby BLOCK
+	slice 0 12
+	shuffle Text_id
+	run text_seq
+
+define loop text_CB2
+	set source_file ""
+	set source table
+	set repeat 1
+	set order random
+	set description "Repeatedly runs another item"
+	set cycles 36
+	set continuous no
+	set break_if_on_first yes
+	set break_if never
+	setcycle 0 Content "(001 to be fill)"
+	setcycle 0 NH Y
+	setcycle 0 OSA N
+	setcycle 0 Text_id 1
+	setcycle 0 BLOCK 2
+	setcycle 0 O_id 1
+	setcycle 1 Content "對現代強調進步、超越有限性等價值的反思，最受大眾矚目的應該是來自現代醫學的反思。現代醫學透過新的儀器、科技及藥物的發明，寄望消除疾病與痛苦，人類的平均壽命史無前例地大幅提高。然而，死亡與衰老是人們唯一無法擺脫的事情。隨著臨終前進行的侵入性急救，身體扭曲及痛苦的畫面不斷被報導及揭露，病人及家屬的痛苦與悲傷在現代的社會中被忽略，甚至旁人也不知該如何進行陪伴與撫慰。德國社會學家Armin Nassehi指出，這並不是因為死亡消失了，而是社會在某一段時間中尚未發展出適當的有關死亡的現代溝通形式。然而，正因為死亡在現代社會中具有不可溝通性，反而鼓動著人們去討論它。這種「死亡溝通的弔詭性」正如Michel Foucault所指出，對於性的壓抑反而使性無所不在，人們時時刻刻意識到性的禁忌，小心翼翼不違反這些禁忌，發展出一整套技術、技巧、論述或信念來掩蓋它，但壓抑反而使其存在更明顯。"
+	setcycle 1 NH N
+	setcycle 1 OSA N
+	setcycle 1 Text_id 1
+	setcycle 1 BLOCK 3
+	setcycle 1 O_id 1
+	setcycle 2 Content "本文將安寧照顧視為一個社會系統，透過語意的分析來討論關於安寧照顧這個論題的社會溝通。我將指出，安寧照顧的成功依賴於將「善終」視為重要的溝通議題。在經久的溝通嘗試中，社會沉澱出「自主善終」這個新的歷史語意，更新傳統的善終意義，建立新的行為期待架構。在每次的運作中，安寧照顧必須一再區分好死／不得好死、尊嚴／喪失尊嚴、自主／失去自主。這確保了當下情境的動態性，同時保留說明在現代醫學及安寧照顧中不安寧、不得善終及不自主等照顧黑暗面及壓迫的可能性。一旦形成自主善終的期待框架及心理的感知結構，同時也會引入實際狀況的失望潛能，進而提供支持安樂死的可能條件。"
+	setcycle 2 NH N
+	setcycle 2 OSA Y
+	setcycle 2 Text_id 1
+	setcycle 2 BLOCK 1
+	setcycle 2 O_id 1
+	setcycle 3 Content "(002 to be fill)"
+	setcycle 3 NH Y
+	setcycle 3 OSA N
+	setcycle 3 Text_id 2
+	setcycle 3 BLOCK 2
+	setcycle 3 O_id 2
+	setcycle 4 Content "(002 to be fill)"
+	setcycle 4 NH N
+	setcycle 4 OSA N
+	setcycle 4 Text_id 2
+	setcycle 4 BLOCK 1
+	setcycle 4 O_id 2
+	setcycle 5 Content "(002 to be fill)"
+	setcycle 5 NH N
+	setcycle 5 OSA Y
+	setcycle 5 Text_id 2
+	setcycle 5 BLOCK 3
+	setcycle 5 O_id 2
+	setcycle 6 Content "(003 to be fill)"
+	setcycle 6 NH Y
+	setcycle 6 OSA N
+	setcycle 6 Text_id 3
+	setcycle 6 BLOCK 3
+	setcycle 6 O_id 3
+	setcycle 7 Content "(003 to be fill)"
+	setcycle 7 NH N
+	setcycle 7 OSA N
+	setcycle 7 Text_id 3
+	setcycle 7 BLOCK 2
+	setcycle 7 O_id 3
+	setcycle 8 Content "(003 to be fill)"
+	setcycle 8 NH N
+	setcycle 8 OSA Y
+	setcycle 8 Text_id 3
+	setcycle 8 BLOCK 1
+	setcycle 8 O_id 3
+	setcycle 9 Content "(004 to be fill)"
+	setcycle 9 NH Y
+	setcycle 9 OSA N
+	setcycle 9 Text_id 4
+	setcycle 9 BLOCK 3
+	setcycle 9 O_id 4
+	setcycle 10 Content "(004 to be fill)"
+	setcycle 10 NH N
+	setcycle 10 OSA N
+	setcycle 10 Text_id 4
+	setcycle 10 BLOCK 1
+	setcycle 10 O_id 4
+	setcycle 11 Content "(004 to be fill)"
+	setcycle 11 NH N
+	setcycle 11 OSA Y
+	setcycle 11 Text_id 4
+	setcycle 11 BLOCK 2
+	setcycle 11 O_id 4
+	setcycle 12 Content "(005 to be fill)"
+	setcycle 12 NH Y
+	setcycle 12 OSA N
+	setcycle 12 Text_id 5
+	setcycle 12 BLOCK 1
+	setcycle 12 O_id 5
+	setcycle 13 Content "(005 to be fill)"
+	setcycle 13 NH N
+	setcycle 13 OSA N
+	setcycle 13 Text_id 5
+	setcycle 13 BLOCK 2
+	setcycle 13 O_id 5
+	setcycle 14 Content "(005 to be fill)"
+	setcycle 14 NH N
+	setcycle 14 OSA Y
+	setcycle 14 Text_id 5
+	setcycle 14 BLOCK 3
+	setcycle 14 O_id 5
+	setcycle 15 Content "(006 to be fill)"
+	setcycle 15 NH Y
+	setcycle 15 OSA N
+	setcycle 15 Text_id 6
+	setcycle 15 BLOCK 1
+	setcycle 15 O_id 6
+	setcycle 16 Content "(006 to be fill)"
+	setcycle 16 NH N
+	setcycle 16 OSA N
+	setcycle 16 Text_id 6
+	setcycle 16 BLOCK 3
+	setcycle 16 O_id 6
+	setcycle 17 Content "(006 to be fill)"
+	setcycle 17 NH N
+	setcycle 17 OSA Y
+	setcycle 17 Text_id 6
+	setcycle 17 BLOCK 2
+	setcycle 17 O_id 6
+	setcycle 18 Content "(007 to be fill)"
+	setcycle 18 NH Y
+	setcycle 18 OSA N
+	setcycle 18 Text_id 7
+	setcycle 18 BLOCK 2
+	setcycle 18 O_id 7
+	setcycle 19 Content "(007 to be fill)"
+	setcycle 19 NH N
+	setcycle 19 OSA N
+	setcycle 19 Text_id 7
+	setcycle 19 BLOCK 3
+	setcycle 19 O_id 7
+	setcycle 20 Content "(007 to be fill)"
+	setcycle 20 NH N
+	setcycle 20 OSA Y
+	setcycle 20 Text_id 7
+	setcycle 20 BLOCK 1
+	setcycle 20 O_id 7
+	setcycle 21 Content "(008 to be fill)"
+	setcycle 21 NH Y
+	setcycle 21 OSA N
+	setcycle 21 Text_id 8
+	setcycle 21 BLOCK 2
+	setcycle 21 O_id 8
+	setcycle 22 Content "(008 to be fill)"
+	setcycle 22 NH N
+	setcycle 22 OSA N
+	setcycle 22 Text_id 8
+	setcycle 22 BLOCK 1
+	setcycle 22 O_id 8
+	setcycle 23 Content "(008 to be fill)"
+	setcycle 23 NH N
+	setcycle 23 OSA Y
+	setcycle 23 Text_id 8
+	setcycle 23 BLOCK 3
+	setcycle 23 O_id 8
+	setcycle 24 Content "(009 to be fill)"
+	setcycle 24 NH Y
+	setcycle 24 OSA N
+	setcycle 24 Text_id 9
+	setcycle 24 BLOCK 3
+	setcycle 24 O_id 9
+	setcycle 25 Content "(009 to be fill)"
+	setcycle 25 NH N
+	setcycle 25 OSA N
+	setcycle 25 Text_id 9
+	setcycle 25 BLOCK 2
+	setcycle 25 O_id 9
+	setcycle 26 Content "(009 to be fill)"
+	setcycle 26 NH N
+	setcycle 26 OSA Y
+	setcycle 26 Text_id 9
+	setcycle 26 BLOCK 1
+	setcycle 26 O_id 9
+	setcycle 27 Content "(010 to be fill)"
+	setcycle 27 NH Y
+	setcycle 27 OSA N
+	setcycle 27 Text_id 10
+	setcycle 27 BLOCK 3
+	setcycle 27 O_id 10
+	setcycle 28 Content "(010 to be fill)"
+	setcycle 28 NH N
+	setcycle 28 OSA N
+	setcycle 28 Text_id 10
+	setcycle 28 BLOCK 1
+	setcycle 28 O_id 10
+	setcycle 29 Content "(010 to be fill)"
+	setcycle 29 NH N
+	setcycle 29 OSA Y
+	setcycle 29 Text_id 10
+	setcycle 29 BLOCK 2
+	setcycle 29 O_id 10
+	setcycle 30 Content "(011 to be fill)"
+	setcycle 30 NH Y
+	setcycle 30 OSA N
+	setcycle 30 Text_id 11
+	setcycle 30 BLOCK 1
+	setcycle 30 O_id 11
+	setcycle 31 Content "(011 to be fill)"
+	setcycle 31 NH N
+	setcycle 31 OSA N
+	setcycle 31 Text_id 11
+	setcycle 31 BLOCK 2
+	setcycle 31 O_id 11
+	setcycle 32 Content "(011 to be fill)"
+	setcycle 32 NH N
+	setcycle 32 OSA Y
+	setcycle 32 Text_id 11
+	setcycle 32 BLOCK 3
+	setcycle 32 O_id 11
+	setcycle 33 Content "(012 to be fill)"
+	setcycle 33 NH Y
+	setcycle 33 OSA N
+	setcycle 33 Text_id 12
+	setcycle 33 BLOCK 1
+	setcycle 33 O_id 12
+	setcycle 34 Content "(012 to be fill)"
+	setcycle 34 NH N
+	setcycle 34 OSA N
+	setcycle 34 Text_id 12
+	setcycle 34 BLOCK 3
+	setcycle 34 O_id 12
+	setcycle 35 Content "(012 to be fill)"
+	setcycle 35 NH N
+	setcycle 35 OSA Y
+	setcycle 35 Text_id 12
+	setcycle 35 BLOCK 2
+	setcycle 35 O_id 12
+	sortby BLOCK
+	slice 0 12
+	shuffle Text_id
+	run text_seq
+
+define loop text_CB3
+	set source_file ""
+	set source table
+	set repeat 1
+	set order random
+	set description "Repeatedly runs another item"
+	set cycles 36
+	set continuous no
+	set break_if_on_first yes
+	set break_if never
+	setcycle 0 Content "(001 to be fill)"
+	setcycle 0 NH Y
+	setcycle 0 OSA N
+	setcycle 0 Text_id 1
+	setcycle 0 BLOCK 3
+	setcycle 0 O_id 1
+	setcycle 1 Content "對現代強調進步、超越有限性等價值的反思，最受大眾矚目的應該是來自現代醫學的反思。現代醫學透過新的儀器、科技及藥物的發明，寄望消除疾病與痛苦，人類的平均壽命史無前例地大幅提高。然而，死亡與衰老是人們唯一無法擺脫的事情。隨著臨終前進行的侵入性急救，身體扭曲及痛苦的畫面不斷被報導及揭露，病人及家屬的痛苦與悲傷在現代的社會中被忽略，甚至旁人也不知該如何進行陪伴與撫慰。德國社會學家Armin Nassehi指出，這並不是因為死亡消失了，而是社會在某一段時間中尚未發展出適當的有關死亡的現代溝通形式。然而，正因為死亡在現代社會中具有不可溝通性，反而鼓動著人們去討論它。這種「死亡溝通的弔詭性」正如Michel Foucault所指出，對於性的壓抑反而使性無所不在，人們時時刻刻意識到性的禁忌，小心翼翼不違反這些禁忌，發展出一整套技術、技巧、論述或信念來掩蓋它，但壓抑反而使其存在更明顯。"
+	setcycle 1 NH N
+	setcycle 1 OSA N
+	setcycle 1 Text_id 1
+	setcycle 1 BLOCK 1
+	setcycle 1 O_id 1
+	setcycle 2 Content "本文將安寧照顧視為一個社會系統，透過語意的分析來討論關於安寧照顧這個論題的社會溝通。我將指出，安寧照顧的成功依賴於將「善終」視為重要的溝通議題。在經久的溝通嘗試中，社會沉澱出「自主善終」這個新的歷史語意，更新傳統的善終意義，建立新的行為期待架構。在每次的運作中，安寧照顧必須一再區分好死／不得好死、尊嚴／喪失尊嚴、自主／失去自主。這確保了當下情境的動態性，同時保留說明在現代醫學及安寧照顧中不安寧、不得善終及不自主等照顧黑暗面及壓迫的可能性。一旦形成自主善終的期待框架及心理的感知結構，同時也會引入實際狀況的失望潛能，進而提供支持安樂死的可能條件。"
+	setcycle 2 NH N
+	setcycle 2 OSA Y
+	setcycle 2 Text_id 1
+	setcycle 2 BLOCK 2
+	setcycle 2 O_id 1
+	setcycle 3 Content "(002 to be fill)"
+	setcycle 3 NH Y
+	setcycle 3 OSA N
+	setcycle 3 Text_id 2
+	setcycle 3 BLOCK 3
+	setcycle 3 O_id 2
+	setcycle 4 Content "(002 to be fill)"
+	setcycle 4 NH N
+	setcycle 4 OSA N
+	setcycle 4 Text_id 2
+	setcycle 4 BLOCK 2
+	setcycle 4 O_id 2
+	setcycle 5 Content "(002 to be fill)"
+	setcycle 5 NH N
+	setcycle 5 OSA Y
+	setcycle 5 Text_id 2
+	setcycle 5 BLOCK 1
+	setcycle 5 O_id 2
+	setcycle 6 Content "(003 to be fill)"
+	setcycle 6 NH Y
+	setcycle 6 OSA N
+	setcycle 6 Text_id 3
+	setcycle 6 BLOCK 1
+	setcycle 6 O_id 3
+	setcycle 7 Content "(003 to be fill)"
+	setcycle 7 NH N
+	setcycle 7 OSA N
+	setcycle 7 Text_id 3
+	setcycle 7 BLOCK 3
+	setcycle 7 O_id 3
+	setcycle 8 Content "(003 to be fill)"
+	setcycle 8 NH N
+	setcycle 8 OSA Y
+	setcycle 8 Text_id 3
+	setcycle 8 BLOCK 2
+	setcycle 8 O_id 3
+	setcycle 9 Content "(004 to be fill)"
+	setcycle 9 NH Y
+	setcycle 9 OSA N
+	setcycle 9 Text_id 4
+	setcycle 9 BLOCK 1
+	setcycle 9 O_id 4
+	setcycle 10 Content "(004 to be fill)"
+	setcycle 10 NH N
+	setcycle 10 OSA N
+	setcycle 10 Text_id 4
+	setcycle 10 BLOCK 2
+	setcycle 10 O_id 4
+	setcycle 11 Content "(004 to be fill)"
+	setcycle 11 NH N
+	setcycle 11 OSA Y
+	setcycle 11 Text_id 4
+	setcycle 11 BLOCK 3
+	setcycle 11 O_id 4
+	setcycle 12 Content "(005 to be fill)"
+	setcycle 12 NH Y
+	setcycle 12 OSA N
+	setcycle 12 Text_id 5
+	setcycle 12 BLOCK 2
+	setcycle 12 O_id 5
+	setcycle 13 Content "(005 to be fill)"
+	setcycle 13 NH N
+	setcycle 13 OSA N
+	setcycle 13 Text_id 5
+	setcycle 13 BLOCK 3
+	setcycle 13 O_id 5
+	setcycle 14 Content "(005 to be fill)"
+	setcycle 14 NH N
+	setcycle 14 OSA Y
+	setcycle 14 Text_id 5
+	setcycle 14 BLOCK 1
+	setcycle 14 O_id 5
+	setcycle 15 Content "(006 to be fill)"
+	setcycle 15 NH Y
+	setcycle 15 OSA N
+	setcycle 15 Text_id 6
+	setcycle 15 BLOCK 2
+	setcycle 15 O_id 6
+	setcycle 16 Content "(006 to be fill)"
+	setcycle 16 NH N
+	setcycle 16 OSA N
+	setcycle 16 Text_id 6
+	setcycle 16 BLOCK 1
+	setcycle 16 O_id 6
+	setcycle 17 Content "(006 to be fill)"
+	setcycle 17 NH N
+	setcycle 17 OSA Y
+	setcycle 17 Text_id 6
+	setcycle 17 BLOCK 3
+	setcycle 17 O_id 6
+	setcycle 18 Content "(007 to be fill)"
+	setcycle 18 NH Y
+	setcycle 18 OSA N
+	setcycle 18 Text_id 7
+	setcycle 18 BLOCK 3
+	setcycle 18 O_id 7
+	setcycle 19 Content "(007 to be fill)"
+	setcycle 19 NH N
+	setcycle 19 OSA N
+	setcycle 19 Text_id 7
+	setcycle 19 BLOCK 1
+	setcycle 19 O_id 7
+	setcycle 20 Content "(007 to be fill)"
+	setcycle 20 NH N
+	setcycle 20 OSA Y
+	setcycle 20 Text_id 7
+	setcycle 20 BLOCK 2
+	setcycle 20 O_id 7
+	setcycle 21 Content "(008 to be fill)"
+	setcycle 21 NH Y
+	setcycle 21 OSA N
+	setcycle 21 Text_id 8
+	setcycle 21 BLOCK 3
+	setcycle 21 O_id 8
+	setcycle 22 Content "(008 to be fill)"
+	setcycle 22 NH N
+	setcycle 22 OSA N
+	setcycle 22 Text_id 8
+	setcycle 22 BLOCK 2
+	setcycle 22 O_id 8
+	setcycle 23 Content "(008 to be fill)"
+	setcycle 23 NH N
+	setcycle 23 OSA Y
+	setcycle 23 Text_id 8
+	setcycle 23 BLOCK 1
+	setcycle 23 O_id 8
+	setcycle 24 Content "(009 to be fill)"
+	setcycle 24 NH Y
+	setcycle 24 OSA N
+	setcycle 24 Text_id 9
+	setcycle 24 BLOCK 1
+	setcycle 24 O_id 9
+	setcycle 25 Content "(009 to be fill)"
+	setcycle 25 NH N
+	setcycle 25 OSA N
+	setcycle 25 Text_id 9
+	setcycle 25 BLOCK 3
+	setcycle 25 O_id 9
+	setcycle 26 Content "(009 to be fill)"
+	setcycle 26 NH N
+	setcycle 26 OSA Y
+	setcycle 26 Text_id 9
+	setcycle 26 BLOCK 2
+	setcycle 26 O_id 9
+	setcycle 27 Content "(010 to be fill)"
+	setcycle 27 NH Y
+	setcycle 27 OSA N
+	setcycle 27 Text_id 10
+	setcycle 27 BLOCK 1
+	setcycle 27 O_id 10
+	setcycle 28 Content "(010 to be fill)"
+	setcycle 28 NH N
+	setcycle 28 OSA N
+	setcycle 28 Text_id 10
+	setcycle 28 BLOCK 2
+	setcycle 28 O_id 10
+	setcycle 29 Content "(010 to be fill)"
+	setcycle 29 NH N
+	setcycle 29 OSA Y
+	setcycle 29 Text_id 10
+	setcycle 29 BLOCK 3
+	setcycle 29 O_id 10
+	setcycle 30 Content "(011 to be fill)"
+	setcycle 30 NH Y
+	setcycle 30 OSA N
+	setcycle 30 Text_id 11
+	setcycle 30 BLOCK 2
+	setcycle 30 O_id 11
+	setcycle 31 Content "(011 to be fill)"
+	setcycle 31 NH N
+	setcycle 31 OSA N
+	setcycle 31 Text_id 11
+	setcycle 31 BLOCK 3
+	setcycle 31 O_id 11
+	setcycle 32 Content "(011 to be fill)"
+	setcycle 32 NH N
+	setcycle 32 OSA Y
+	setcycle 32 Text_id 11
+	setcycle 32 BLOCK 1
+	setcycle 32 O_id 11
+	setcycle 33 Content "(012 to be fill)"
+	setcycle 33 NH Y
+	setcycle 33 OSA N
+	setcycle 33 Text_id 12
+	setcycle 33 BLOCK 2
+	setcycle 33 O_id 12
+	setcycle 34 Content "(012 to be fill)"
+	setcycle 34 NH N
+	setcycle 34 OSA N
+	setcycle 34 Text_id 12
+	setcycle 34 BLOCK 1
+	setcycle 34 O_id 12
+	setcycle 35 Content "(012 to be fill)"
+	setcycle 35 NH N
+	setcycle 35 OSA Y
+	setcycle 35 Text_id 12
+	setcycle 35 BLOCK 3
+	setcycle 35 O_id 12
+	sortby BLOCK
+	slice 0 12
+	shuffle Text_id
+	run text_seq
+
+define sketchpad text_display
+	set duration 1000
+	set description "Displays stimuli"
+	draw textline center=1 color=black font_bold=yes font_family="chinese-japanese-korean" font_italic=no font_size=36 html=yes show_if=always text="[Content]" x=0 y=-96 z_index=0
+
+define keyboard_response text_end
+	set timeout infinite
+	set flush yes
+	set event_type keypress
+	set duration keypress
+	set description "Collects keyboard responses"
+	set allowed_responses SPACE
+
+define sequence text_seq
+	set flush_keyboard yes
+	set description "Runs a number of items in sequence"
+	run text_display always
+	run text_end always
+	run id_recording always
+	run Questions always
+	run EES always
+	run ACC always
+	run block "([count_text_seq]%3)=2"
+
+define sketchpad welcome
+	set start_response_interval no
+	set reset_variables no
+	set duration keypress
+	set description 歡迎畫面
+	draw textline center=1 color=black font_bold=no font_family="chinese-japanese-korean" font_italic=no font_size=32 html=yes show_if=always text=科學文獻閱讀模式測試 x=0 y=-96 z_index=0
+

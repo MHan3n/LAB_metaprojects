@@ -1,0 +1,714 @@
+---
+title: "Straight from the scientist's mouth - Plain language summaries promote laypeople's comprehension and knowledge acquisition when reading about individual research findings in psychology: Code"
+author: "Martin Kerwer"
+date: "September 21, 2020"
+output:
+  html_document:
+    toc: yes
+    toc_depth: 3
+    toc_float: yes
+  word_document:
+    toc: yes
+    toc_depth: '3'
+---
+
+
+<!-- more -->
+# SessionInfo
+
+
+```{r echo=TRUE, message=TRUE, warning=TRUE, include=T, results='show'}
+
+sessionInfo()
+
+```
+
+# Read Data
+
+
+```{r, echo=TRUE, results='show', message=TRUE, warning=TRUE, include=T}
+
+
+df <- read.csv("Gesamtdatensatz_Total_Dataset_Matrix.csv", na.strings = c("-999"))
+
+
+df_wiss <- read.csv("Wissenstestdatensatz_Knowledge_Test_Dataset_Matrix.csv", na.strings = c("-999"))
+
+
+```
+
+
+
+# Confirmatory Analyses
+
+## H1 Comprehensibility
+
+```{r, echo=TRUE, results='show', message=TRUE, warning=TRUE, include=T}
+
+
+
+df$PLS <- factor(df$PLS, levels = c("PLS", "No Heading", "Non PLS"))
+
+df$NH <- df$PLS == "No Heading"
+df$OSA <- df$PLS == "Non PLS"
+
+
+require(lme4)
+require(lmerTest)
+require(sjstats)
+require(MuMIn)
+library(multcomp)
+
+
+
+m0 <- lmer(vst ~ (1 | id), data = df)
+m00 <- lmer(vst ~ (1 | study), data = df)
+
+#ICC Subject
+summary(m0)
+performance::icc(m0)
+
+#ICC Study
+summary(m00)
+performance::icc(m00)
+
+
+m1 <- lmer(vst ~ (1 | study) +PLS + (1 | id), data = df)
+
+summary(m1)
+
+
+test = glht(m1,linfct=mcp(PLS="Tukey"))
+summary(test, test = adjusted("none"))
+
+
+
+r.squaredGLMM(m1)
+
+
+
+```
+
+## H2 Knowledge Test
+
+```{r, echo=TRUE, results='show', message=TRUE, warning=TRUE, include=T}
+
+
+
+names(df_wiss)
+
+
+
+table(df_wiss$test)
+table(df_wiss$test)/sum(table(df_wiss$test))
+table(df_wiss$test, df_wiss$PLS)[1,]/colSums(table(df_wiss$test, df_wiss$PLS))
+table(df_wiss$test, df_wiss$PLS)[2,]/colSums(table(df_wiss$test, df_wiss$PLS))
+
+df_wiss$PLS <- factor(df_wiss$PLS, levels = c("PLS", "No Heading", "Non PLS"))
+
+m0 <- glmer(test ~ (1 | id), family = binomial("logit"), data = df_wiss)
+
+summary(m0)
+
+
+m <- glmer(test ~ (1 | study) + (1 | id), family = binomial("logit"), data = df_wiss)
+
+summary(m)
+
+
+m1 <- glmer(test ~ (1 | study) + PLS + (1 | id), family = binomial("logit"), data = df_wiss)
+  
+
+summary(m1)
+
+
+m2 <- glmer(test ~ (1 | study/item) + PLS + (1 | id), family = binomial("logit"), data = df_wiss)
+  
+
+summary(m2)
+
+
+anova(m0, m , m1, m2)
+
+
+m1 <- glmer(test~ (1 | study/item) + PLS + (1 | id), family = binomial("logit"), data = df_wiss)
+test = glht(m1,linfct=mcp(PLS="Tukey"))
+summary(test, test = adjusted("none"))
+
+
+r.squaredGLMM(m1)
+
+
+```
+
+
+## H3 Credibility
+
+```{r, echo=TRUE, results='show', message=TRUE, warning=TRUE, include=T}
+
+
+m0 <- lmer(vtr ~ (1 | id), data = df)
+m00 <- lmer(vtr ~ (1 | study), data = df)
+
+#ICC Subject
+summary(m0)
+performance::icc(m0)
+
+#ICC Study
+summary(m00)
+performance::icc(m00)
+
+
+
+m1 <- lmer(vtr ~ (1 | study) +PLS + (1 | id), data = df)
+
+summary(m1)
+
+anova(m0, m1)
+
+m1 <- lmer(vtr ~ (1 | study) +PLS + (1 | id), data = df)
+test = glht(m1,linfct=mcp(PLS="Tukey"))
+summary(test, test = adjusted("none"))
+
+
+
+r.squaredGLMM(m1)
+
+
+
+```
+
+## H4 Ability to Evaluate
+
+```{r, echo=TRUE, results='show', message=TRUE, warning=TRUE, include=T}
+
+
+m0 <- lmer(wahr ~ (1 | id), data = df)
+m00 <- lmer(wahr ~ (1 | study), data = df)
+
+#ICC Subject
+summary(m0)
+performance::icc(m0)
+
+#ICC Study
+summary(m00)
+performance::icc(m00)
+
+
+m1 <- lmer(wahr ~ (1 | study) +PLS + (1 | id), data = df)
+
+summary(m1)
+
+
+m1 <- lmer(wahr ~ (1 | study) +PLS + (1 | id), data = df)
+test = glht(m1,linfct=mcp(PLS="Tukey"))
+summary(test, test = adjusted("none"))
+
+
+
+r.squaredGLMM(m1)
+
+
+```
+
+## H5 Ability to Make a Decision
+
+```{r, echo=TRUE, results='show', message=TRUE, warning=TRUE, include=T}
+
+
+m0 <- lmer(ent ~ (1 | id), data = df)
+m00 <- lmer(ent ~ (1 | study), data = df)
+
+#ICC Subject
+summary(m0)
+performance::icc(m0)
+
+#ICC Study
+summary(m00)
+performance::icc(m00)
+
+
+m1 <- lmer(ent ~ (1 | study) +PLS + (1 | id), data = df)
+
+summary(m1)
+
+test = glht(m1,linfct=mcp(PLS="Tukey"))
+summary(test, test = adjusted("none"))
+
+
+
+r.squaredGLMM(m1)
+
+
+```
+
+# Exploratory
+
+## Scientificness
+
+```{r, echo=TRUE, results='show', message=TRUE, warning=TRUE, include=T}
+
+
+m0 <- lmer(wis ~ (1 | id), data = df)
+m00 <- lmer(wis ~ (1 | study), data = df)
+
+#ICC Subject
+summary(m0)
+performance::icc(m0)
+
+#ICC Study
+summary(m00)
+performance::icc(m00)
+
+
+m1 <- lmer(wis ~ (1 | study) +PLS + (1 | id), data = df)
+
+summary(m1)
+
+test = glht(m1,linfct=mcp(PLS="Tukey"))
+summary(test, test = adjusted("none"))
+
+
+r.squaredGLMM(m1)
+
+
+
+```
+
+
+
+
+
+## Curiosity
+
+```{r, echo=TRUE, results='show', message=TRUE, warning=TRUE, include=T}
+
+
+m0 <- lmer(cur ~ (1 | id), data = df)
+m00 <- lmer(cur ~ (1 | study), data = df)
+
+#ICC Subject
+summary(m0)
+performance::icc(m0)
+
+#ICC Study
+summary(m00)
+performance::icc(m00)
+
+m1 <- lmer(cur ~ (1 | study) +PLS + (1 | id), data = df)
+
+summary(m1)
+
+test = glht(m1,linfct=mcp(PLS="Tukey"))
+summary(test, test = adjusted("none"))
+
+
+r.squaredGLMM(m1)
+
+
+```
+
+
+## Boredom
+
+```{r, echo=TRUE, results='show', message=TRUE, warning=TRUE, include=T}
+
+
+m0 <- lmer(bor ~ (1 | id), data = df)
+m00 <- lmer(bor ~ (1 | study), data = df)
+
+#ICC Subject
+summary(m0)
+performance::icc(m0)
+
+#ICC Study
+summary(m00)
+performance::icc(m00)
+
+
+m <- lmer(bor ~ (1 | study)  + (1 | id), data = df)
+
+anova(m,m00)
+anova(m,m0)
+
+
+m1a <- lmer(bor ~ (1 | study) +PLS + (1 | id), data = df)
+
+summary(m1a)
+
+m1 <- lmer(bor ~ (1 | study) +PLS + (1 | id), data = df, REML = F)
+summary(m1)
+
+anova(m,m1)
+
+
+test = glht(m1,linfct=mcp(PLS="Tukey"))
+summary(test, test = adjusted("none"))
+
+
+r.squaredGLMM(m1)
+
+
+
+
+```
+
+## Confusion
+
+```{r, echo=TRUE, results='show', message=TRUE, warning=TRUE, include=T}
+
+
+m0 <- lmer(con ~ (1 | id), data = df)
+m00 <- lmer(con ~ (1 | study), data = df)
+
+#ICC Subject
+summary(m0)
+performance::icc(m0)
+
+#ICC Study
+summary(m00)
+performance::icc(m00)
+
+
+m1 <- lmer(con ~ (1 | study) +PLS + (1 | id), data = df)
+
+summary(m1)
+
+test = glht(m1,linfct=mcp(PLS="Tukey"))
+summary(test, test = adjusted("none"))
+
+
+r.squaredGLMM(m1)
+
+
+
+```
+
+## Frustration
+
+```{r, echo=TRUE, results='show', message=TRUE, warning=TRUE, include=T}
+
+
+
+m0 <- lmer(frust ~ (1 | id), data = df)
+m00 <- lmer(frust ~ (1 | study), data = df)
+
+#ICC Subject
+summary(m0)
+performance::icc(m0)
+
+#ICC Study
+summary(m00)
+performance::icc(m00)
+
+
+m1 <- lmer(frust ~ (1 | study) +PLS + (1 | id), data = df)
+
+summary(m1)
+
+
+test = glht(m1,linfct=mcp(PLS="Tukey"))
+summary(test, test = adjusted("none"))
+
+r.squaredGLMM(m1)
+
+
+
+
+```
+
+
+
+
+
+## Full Text Access
+
+```{r, echo=TRUE, results='show', message=TRUE, warning=TRUE, include=T}
+
+table(df$link)
+table(df$link)/sum(table(df$link))
+
+sum(table(df$link, df$id)[2,] > 0)
+sort(table(df$link, df$id)[2,])
+table(df$link, df$study)
+
+
+table(df$link, df$PLS)
+table(df$link, df$PLS)[1,]/colSums(table(df$link, df$PLS))
+table(df$link, df$PLS)[2,]/colSums(table(df$link, df$PLS))
+
+
+
+
+
+m1 <- glmer(link ~ (1 | study) + PLS + (1 | id), family = binomial("logit"), data = df)
+  
+
+summary(m1)
+
+test = glht(m1,linfct=mcp(PLS="Tukey"))
+summary(test, test = adjusted("none"))
+
+
+r.squaredGLMM(m1)
+
+
+```
+
+
+# Model Tests Interindividuell Differences
+
+
+## Comprehensibility
+
+```{r, echo=TRUE, results='show', message=TRUE, warning=TRUE, include=T}
+
+
+require(sjstats)
+require(MuMIn)
+
+# Random Intercepts
+
+m00 <- lmer(vst ~ NH + OSA +(1 | study), data = df)
+
+m1 <- lmer(vst ~(1 | study) + NH + OSA +  (1 | id), data = df)
+
+anova(m00, m1)
+
+# Random Slopes
+
+m2a <- lmer(vst ~(1 | study) + NH + OSA +   (OSA | id), data = df)
+
+
+m2b <- lmer(vst ~(1 | study) + NH + OSA +   (NH | id), data = df, REML = F)
+summary(m2b)
+
+
+
+anova(m2a, m1)
+anova(m2b, m1)
+summary(m2a)
+
+
+
+
+m3a <- lmer(vst ~(1 | study) + NH+ OSA + j_ja   + j_pj + j_ms +   (OSA | id), data = df)
+m3b <- lmer(vst ~(1 | study) + NH+ OSA * j_ja   + OSA * j_pj + OSA * j_ms +   (OSA | id), data = df)
+
+
+anova(m2a,m3a)
+anova(m2a,m3b)
+
+
+
+
+summary(m3b)
+
+
+m3a <- lmer(vst ~(1 | study) + NH+ OSA + Englisch +   (OSA | id), data = df)
+m3b <- lmer(vst ~(1 | study) + NH+ OSA * Englisch +   (OSA | id), data = df)
+
+
+anova(m2a,m3a)
+anova(m3a,m3b)
+
+
+summary(m3a)
+
+
+```
+
+
+## Knowledge Test
+
+
+```{r, echo=TRUE, results='show', message=TRUE, warning=TRUE, include=T}
+
+df_wiss$NH <- df_wiss$PLS == "No Heading"
+df_wiss$OSA <- df_wiss$PLS == "Non PLS"
+
+#Random Intercept
+
+m00 <- glmer(test ~ NH + OSA +(1 | study/item), data = df_wiss, family = binomial("logit"))
+m1 <- glmer(test ~ NH + OSA + (1 | study/item) + (1 | id), data = df_wiss, family = binomial("logit"))
+
+anova(m00, m1)
+
+m1 <- glmer(test ~ (1 | study/item) + NH + OSA  + (1 | id), data = df_wiss, family = binomial("logit"))
+
+#non-convergence
+m2a <- glmer(test ~ (1 | study/item) + NH + OSA + (OSA | id), data = df_wiss, family = binomial("logit"))
+summary(m2a)
+
+m2b <- glmer(test ~ (1 | study/item) + NH + OSA + (NH | id), data = df_wiss, family = binomial("logit"))
+summary(m2b)
+
+anova(m1, m2b)
+
+m3 <- glmer(test ~ (1 | study/item) + NH + OSA + j_pj + j_ja + j_ms  + (1 | id), data = df_wiss, family = binomial("logit"))
+
+anova(m1, m3)
+
+
+summary(m3)
+
+
+m3 <- glmer(test ~ (1 | study/item) + NH + OSA + Englisch + (1 | id), data = df_wiss, family = binomial("logit"))
+
+anova(m1, m3)
+
+
+summary(m3)
+
+
+```
+
+## Credibility
+
+```{r, echo=TRUE, results='show', message=TRUE, warning=TRUE, include=T}
+
+
+
+#Random Intercept
+
+m00 <- lmer(vtr ~ NH + OSA + (1 | study), data = df)
+
+m <- lmer(vtr ~ NH + OSA + (1 | study) +  (1 | id), data = df)
+
+anova(m00, m)
+
+#Random Slopes
+
+m2a <- lmer(vtr ~(1 | study) + NH + OSA +   (OSA | id), data = df)
+
+m2b <- lmer(vtr ~(1 | study) + NH + OSA +   (NH | id), data = df)
+m2b <- lmer(vtr ~(1 | study) + NH + OSA +   (NH | id), data = df, REML = F)
+
+summary(m2b)
+
+
+anova(m2a, m)
+anova(m2b,m)
+
+summary(m2a)
+
+
+m3a <- lmer(vtr ~(1 | study) + NH + OSA + j_ja   + j_pj +  j_ms +   (OSA | id), data = df)
+m3b <- lmer(vtr ~(1 | study) + NH + OSA * j_ja   + OSA * j_pj + OSA * j_ms +   (OSA | id), data = df)
+
+anova(m2a,m3a,m3b)
+
+summary(m3a)
+
+
+#non-convergence
+m3a <- lmer(vtr ~(1 | study) + NH+ OSA + Englisch +   (OSA | id), data = df, REML = F)
+m3b <- lmer(vtr ~(1 | study) + NH+ OSA * Englisch +   (OSA | id), data = df)
+
+
+anova(m2a,m3a, m3b)
+anova(m2a,m3b)
+
+
+
+```
+
+
+
+
+## Ability to Evaluate
+
+```{r, echo=TRUE, results='show', message=TRUE, warning=TRUE, include=T}
+
+
+# Random Intercept
+
+m00 <- lmer(wahr ~ NH + OSA + (1 | study), data = df)
+
+m <- lmer(wahr ~ NH + OSA + (1 | study) +  (1 | id), data = df)
+
+anova(m00, m)
+
+# Random Slopes
+
+m2a <- lmer(wahr ~(1 | study) + NH + OSA +   (OSA | id), data = df)
+
+#non-convergence
+m2b <- lmer(wahr ~(1 | study) + NH + OSA +   (NH | id), data = df, REML = T)
+m2b <- lmer(wahr ~(1 | study) + NH + OSA +   (NH | id), data = df, REML = F)
+summary(m2b)
+
+
+anova(m2a, m)
+summary(m2a)
+
+
+m3a <- lmer(wahr ~(1 | study) + NH + OSA + j_ja   + j_pj +  j_ms +   (OSA | id), data = df)
+m3b <- lmer(wahr ~(1 | study) + NH + OSA * j_ja   + OSA * j_pj + OSA * j_ms +   (OSA | id), data = df)
+
+anova(m2a,m3a,m3b)
+
+summary(m3a)
+
+
+m3a <- lmer(wahr ~(1 | study) + NH+ OSA + Englisch +   (OSA | id), data = df)
+m3b <- lmer(wahr ~(1 | study) + NH+ OSA * Englisch +   (OSA | id), data = df)
+
+
+anova(m2a,m3a)
+anova(m2a,m3b)
+
+
+
+
+
+```
+
+## Ability to Make Decision
+
+```{r, echo=TRUE, results='show', message=TRUE, warning=TRUE, include=T}
+
+# Random Intercept
+
+m00 <- lmer(ent ~ NH + OSA + (1 | study), data = df)
+
+m <- lmer(ent ~ NH + OSA + (1 | study) +  (1 | id), data = df)
+
+anova(m00, m)
+
+# Random Slopes
+
+# Non-convergence
+
+m2a <- lmer(ent ~(1 | study) + NH + OSA +   (OSA | id), data = df)
+m2a <- lmer(ent ~(1 | study) + NH + OSA +   (OSA | id), data = df, REML = F)
+
+#converged nicht
+m2b <- lmer(ent ~(1 | study) + NH + OSA +   (NH | id), data = df)
+summary(m2b)
+m2b <- lmer(ent ~(1 | study) + NH + OSA +   (NH | id), data = df, REML = F)
+summary(m2b)
+
+anova(m, m2b)
+
+summary(m)
+
+
+m3a <- lmer(ent ~(1 | study) + NH + OSA + j_ja   + j_pj +  j_ms +   (1 | id), data = df)
+
+
+anova(m,m3a)
+
+summary(m3a)
+
+
+m3a <- lmer(ent ~(1 | study) + NH+ OSA + Englisch +   (1 | id), data = df)
+
+
+anova(m,m3a)
+
+
+
+```
+
+

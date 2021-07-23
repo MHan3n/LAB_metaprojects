@@ -30,3 +30,11 @@ origin_files %>% filter( grepl(".csv$|.xlsx$|rmd",name)) %>%
   print("all files were downloaded")
 }
 ```
+
+
+```{r}
+list.files(pattern="Subject_Dataset_Codebook.csv") %>%
+  read_csv() %>%
+  rmarkdown::paged_table(options = list(rows.print = 20))
+```
+
