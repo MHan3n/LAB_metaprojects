@@ -1,8 +1,7 @@
 ---
 title: "原始資料重製分析及問卷中文化建置"
 date: "`r Sys.Date()`"
-output: 
-  html_document
+output: html_document
 ---
 
 若要取得專案資料，可由[github倉庫](https://github.com/SCgeeker/LAB_metaprojects/tree/main/Projects/202107_CM)下載。

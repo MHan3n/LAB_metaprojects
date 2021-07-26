@@ -1,0 +1,24 @@
+---
+title: "計畫書"
+author: "陳紹慶, "
+date: "2021/7/26"
+bibliography: ref.bib
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## 緒論
+
+本研究重製 @bootGatheringProcessingInterpreting2021 的問卷調查及假設分析，探討台灣地區民眾相信正確及錯誤疫情資訊的認知動機。
+
+## 方法
+
+
+
+## 分析計畫
+
+
+### 參考文獻
