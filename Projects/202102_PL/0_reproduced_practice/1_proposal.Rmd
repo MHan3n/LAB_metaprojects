@@ -1,0 +1,55 @@
+---
+title: "Kerwer et al.(2020)重製研究計畫"
+author: "Students' names"
+date: "`r Sys.Date()`"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+(轉換[Replication project plan](https://docs.google.com/document/d/1Wqn6bZf1RAHOS7qpg_IZaNtExV3ise_W/edit)為一般APA格式的計畫書)
+
+# 緒論
+
+
+重製研究的重要性：相關的中文研究? 
+
+
+[原研究預先註冊計畫](https://pada.psycharchives.org/bitstream/9679d985-50a8-4b7b-a317-14a12f4fe5ea)
+
+
+[原研究論文全文](https://doi.org/10.1525/collabra.18898)
+
+
+## 研究問題
+
+1. "Plain language summary vs. Ordinary abstract" on comprehensibility & knowledge and knowledge acquisition  
+2. "Plain with sub-heading vs. Plain without sub-heading" on comprehensibility & knowledge and knowledge acquisition  
+3. Easiness effects: Credibility, Confidence to evaluate, Need for corss-evaluation
+
+## 研究假設
+
+
+
+# 方法
+
+
+
+## 設計
+
+
+
+## 材料
+
+
+
+## 參與者人數估計
+
+(Power analysis)
+
+# 分析計畫
+
+(重製原論文Table 3 & 6, 提示: [公開Rmarkdown](20200921_Analysis.rmd)有需要的R code )
+
