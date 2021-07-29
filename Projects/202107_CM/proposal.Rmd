@@ -1,6 +1,6 @@
 ---
 title: "計畫書"
-author: "陳紹慶, "
+author: "(待補上)"
 date: "2021/7/26"
 bibliography: ref.bib
 output: word_document
@@ -15,8 +15,15 @@ knitr::opts_chunk$set(echo = TRUE)
 本研究重製 @bootGatheringProcessingInterpreting2021 的問卷調查及假設分析，探討台灣地區民眾相信正確及錯誤疫情資訊的認知動機因素。
 
 認知動機是什麼？
-Need for cognition
-Need for cognitive closure
+Need for cognition(認知需求)
+
+問卷來源文獻: @cacioppoNeedCognition1982;  @cacioppoEfficientAssessmentNeed1984
+
+Need for cognitive closure(認知停歇需求)
+
+問卷來源文獻: @kruglanskiPsychologicalTheoryTesting1997
+
+> 尋找有引用上述文獻的中文文獻；整理曾被用來探討的主題。
 
 疫情資訊的樣態
 
