@@ -20,22 +20,33 @@ osf_retrieve_file("he2v7") %>%
   osf_download()
 load(list.files(recursive = TRUE,full.names = TRUE,include.dirs = TRUE,pattern = "*.Rdata"))
 file.remove(list.files(recursive = TRUE,full.names = TRUE,include.dirs = TRUE,pattern = "*.Rdata"))
+
+## Import Backward translation questions
+backward_T <- read_csv(file = "C_to_E.csv")
 ```
 
 
 ### NC 問卷題目
 
+取得[原始問卷](https://www.midss.org/content/need-cognition-scale)
+
 ```{r}
-subset(items, key %in% grep("^Q16_",key,value=TRUE) )%>%
-  select(value) %>% gsub(pattern = "For each of the statements below, please indicate whether or not the statement is characteristic of you or of what you believe. - ",replacement = "")
+bind_cols( subset(items, key %in% grep("^Q16_",key,value=TRUE) )%>%
+  pull(value) %>% gsub(pattern = "For each of the statements below, please indicate whether or not the statement is characteristic of you or of what you believe. - ",replacement = "") ,
+  slice(backward_T,1:18)) %>% rename(`Original Questions` = `...1`,`Forward Translation` =`Source segment`, `Backward Translation` = `Target segment`) %>%
+  rmarkdown::paged_table(options = list(rows.print = 10))
 ```
 
 
 ### NCC 問卷題目
 
+取得[原始問卷](https://www.midss.org/content/need-closure-scale-nfc)
+
 ```{r}
-subset(items, key %in% grep("^Q17_",key,value=TRUE) )%>%
-  select(value) %>% gsub(pattern = "Read each of the following statements and decide how much you agree with each according to your beliefs and experiences. - ",replacement = "")
+bind_cols( subset(items, key %in% grep("^Q17_",key,value=TRUE) )%>%
+  pull(value) %>% gsub(pattern = "Read each of the following statements and decide how much you agree with each according to your beliefs and experiences. - ",replacement = "") ,
+  slice(backward_T,-1:-18)) %>% rename(`Original Questions` = `...1`,`Forward Translation` =`Source segment`, `Backward Translation` = `Target segment`) %>%
+  rmarkdown::paged_table(options = list(rows.print = 10))
 ```
 
 ### 匯入wave 1 認知動機資料
