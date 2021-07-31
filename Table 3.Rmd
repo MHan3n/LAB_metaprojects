@@ -1,0 +1,142 @@
+---
+title: "descriptive statistics"
+author: "Hsieh M.H"
+date: "2021/7/31"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### 下載原始資料映像檔
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+## Download and load W1 rawdata from OSF
+osf_retrieve_file("he2v7") %>%
+  osf_download()
+## Download and load W2 rawdata from OSF
+osf_retrieve_file("ch68a") %>%
+  osf_download() 
+```
+
+### 載入原始資料物件
+
+```{r message=FALSE, warning=FALSE}
+load(list.files(recursive = TRUE,full.names = TRUE,include.dirs = TRUE,pattern = "*.Rdata")[1])
+load(list.files(recursive = TRUE,full.names = TRUE,include.dirs = TRUE,pattern = "*.Rdata")[2])
+ls()
+file.remove(list.files(recursive = TRUE,full.names = TRUE,include.dirs = TRUE,pattern = "*.Rdata"))
+```
+
+### Wave 1原始資料欄位說明清單
+
+```{r}
+items %>% rmarkdown::paged_table(options = list(rows.print = 20))
+```
+```
+Q1: 第一波疫情資訊可信度評分 = Table 3
+Q2~Q7: 參與者背景資訊調查
+Q8~Q10: 媒體使用習慣調查 => Figure 2
+Q12,Q14,Q15: 疫情資訊更新管道及頻率 => Table4, Figure 3, Table 5
+Q16: Need for Cognition scale
+Q17: Need for Cognitive Closure scale
+```
+###重製原始論文統計資料數據 
+Table 3 描述統計(預備搬移到“第一波疫情資訊可信度重製分析”)
+```{r approach01}
+## True statement "I am sure this is true"
+
+## Approach 1, my favor
+wave1_rawdata %>%
+  select(ID,Q1_1:Q1_12) %>%
+  pivot_longer(cols = starts_with("Q1_"), names_to = "True_statment", values_to = "rating") %>%
+  group_by(ID) %>%
+  summarise(True_statement_5 = mean(rating == 5),
+            True_statement_4 = mean(rating == 4),
+            True_statement_3 = mean(rating == 3),
+            True_statement_2 = mean(rating == 2),
+            True_statement_1 = mean(rating == 1)) %>%
+  pivot_longer(cols = starts_with("True_statement_"), names_to = "Options",values_to = "Percentage") %>%
+  group_by(Options) %>%
+  summarise(Mean = round(mean(Percentage)*100,1), 
+            SD = round(sd(Percentage)*100,1),
+            CI_L = round(Mean + qnorm(.025)*SD/sqrt(length(unique(ID))),1),
+            CI_U = round(Mean + qnorm(.975)*SD/sqrt(length(unique(ID))),1),
+            MIN = min(Percentage),
+            MAX = max(Percentage)) %>%
+  arrange(desc(Options))
+```
+
+```{r}
+# False statement
+
+# Approach 1, my favor
+wave1_rawdata %>%
+  select(ID,Q1_13R:Q1_24R) %>%
+  pivot_longer(cols = starts_with("Q1_"), names_to = "False_statement", values_to = "rating") %>%
+  group_by(ID) %>%
+  summarise(False_statement_5 = mean(rating == 5),
+            False_statement_4 = mean(rating == 4),
+            False_statement_3 = mean(rating == 3),
+            False_statement_2 = mean(rating == 2),
+            False_statement_1 = mean(rating == 1)) %>%
+  pivot_longer(cols = starts_with("False_statement"), names_to = "Options", values_to = "Percentage") %>%
+  group_by(Options) %>%
+   summarise(Mean = round(mean(Percentage)*100,1), 
+            SD = round(sd(Percentage)*100,1),
+            CI_L = round(Mean + qnorm(.025)*SD/sqrt(length(unique(ID))),1),
+            CI_U = round(Mean + qnorm(.975)*SD/sqrt(length(unique(ID))),1),
+            MIN = min(Percentage),
+            MAX = max(Percentage)) %>%
+  arrange(desc(Options))
+```
+
+```{r}
+# Conspiracy statement
+
+# Approach 1, my favor
+   wave1_rawdata %>%
+   select(ID,Q1_1CONSR:Q1_7CONSR) %>%
+   pivot_longer(cols = starts_with("Q1_"), names_to = "Conspiracy_Rejection", values_to = "rating") %>%
+  group_by(ID) %>%
+   summarise(Conspiracy_statement_5 = mean(rating == 5),
+             Conspiracy_statement_4 = mean(rating == 4),
+             Conspiracy_statement_3 = mean(rating == 3),
+             Conspiracy_statement_2 = mean(rating == 2),
+             Conspiracy_statement_1 = mean(rating == 1)) %>%
+  pivot_longer(cols = starts_with("Conspiracy_statement_"),
+               names_to = "Options", values_to = "Percentage") %>% 
+  group_by(Options) %>%
+   summarise(Mean = round(mean(Percentage)*100,1), 
+            SD = round(sd(Percentage)*100,1),
+            CI_L = round(Mean + qnorm(.025)*SD/sqrt(length(unique(ID))),1),
+            CI_U = round(Mean + qnorm(.975)*SD/sqrt(length(unique(ID))),1),
+            MIN = min(Percentage),
+            MAX = max(Percentage)) %>%
+  arrange(desc(Options))
+```
+```{r}
+# Negated conspiracy statement
+
+# Approach 1, my favor
+  wave1_rawdata %>%
+  select(ID,Q1_8CONS) %>%
+  pivot_longer(cols = starts_with("Q1_"), names_to = "Negated_ conspiracy_statement", values_to = "rating") %>%
+  group_by(ID) %>%
+  summarise(Negated_conspiracy_statement_5 = mean(rating == 5),
+            Negated_conspiracy_statement_4 = mean(rating == 4),
+            Negated_conspiracy_statement_3 = mean(rating == 3),
+            Negated_conspiracy_statement_2 = mean(rating == 2),
+            Negated_conspiracy_statement_1 = mean(rating == 1)) %>%
+  pivot_longer(cols = starts_with("Negated_conspiracy_statement_"), names_to = "Options", values_to = "Percentage") %>%
+  group_by(Options) %>%
+  summarise(Mean = round(mean(Percentage)*100,1), 
+            SD = round(sd(Percentage)*100,1),
+            CI_L = round(Mean + qnorm(.025)*SD/sqrt(length(unique(ID))),1),
+            CI_U = round(Mean + qnorm(.975)*SD/sqrt(length(unique(ID))),1),
+            MIN = min(Percentage),
+            MAX = max(Percentage)) %>%
+  arrange(desc(Options))
+```
+
