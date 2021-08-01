@@ -1,0 +1,110 @@
+---
+title: "Motivations for COVID-19-related information acquisition."
+author: "Hsieh M.H"
+date: "2021/8/1"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(osfr)
+```
+
+### 下載原始資料映像檔
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+## Download and load W1 rawdata from OSF
+osf_retrieve_file("he2v7") %>%
+  osf_download()
+## Download and load W2 rawdata from OSF
+osf_retrieve_file("ch68a") %>%
+  osf_download() 
+```
+
+### 載入原始資料物件
+
+```{r message=FALSE, warning=FALSE}
+load(list.files(recursive = TRUE,full.names = TRUE,include.dirs = TRUE,pattern = "*.Rdata")[1])
+load(list.files(recursive = TRUE,full.names = TRUE,include.dirs = TRUE,pattern = "*.Rdata")[2])
+ls()
+file.remove(list.files(recursive = TRUE,full.names = TRUE,include.dirs = TRUE,pattern = "*.Rdata"))
+```
+
+### Wave 1原始資料欄位說明清單
+
+```{r}
+items %>% rmarkdown::paged_table(options = list(rows.print = 20))
+```
+```
+Q1: 第一波疫情資訊可信度評分 = Table 3
+Q2~Q7: 參與者背景資訊調查
+Q8~Q10: 媒體使用習慣調查 => Figure 2
+Q12,Q14,Q15: 疫情資訊更新管道及頻率 => Table4, Figure 3, Table 5
+Q16: Need for Cognition scale
+Q17: Need for Cognitive Closure scale
+
+```
+### Wave 1 正式分析資料
+
+根據以下描述，篩選納入正式分析的資料：
+
+"Five hundred and twenty-six respondents completed the Wave 1 survey via the Prolific.com platform. Sixteen respondents were excluded for spending too much time on the survey("Duration..in.seconds." -> "Q1T_Page.Submit"). Another nine respondents were excluded for failing the catch question("Q1_CATCH1")."
+
+由於初次嘗試發現分組人數與論文不一致，聯絡論文第一作者Arnout Boot，得知16位被排除的參與者是根據完成"Knowledge Test"的秒數。
+
+```{r message=FALSE, warning=FALSE}
+## check the equality of two data sets
+sum(data_factors$Q1T_Page.Submit != data_numeric$Q1T_Page.Submit)
+## Boxplot for test duration
+boxplot(data_numeric$Q1T_Page.Submit)
+
+wave1_rawdata <- data_numeric %>% 
+## exclude the participants who spent more than 999 seconds on the knowledge test
+  filter(Q1T_Page.Submit < 999) %>%
+## exclude the participants who failed the catch question
+  filter(Q1_CATCH1 == 5) %>%
+## ## exclude the participants who spent time on the knowledge test longer than 3.29 standardized time
+  filter(scale(Q1T_Page.Submit)<3.29)
+## How many participants' data are analyzed?
+wave1_rawdata %>%
+  summarise(N=n())
+```
+
+
+```{r appro "I want to be informed about the coronavirus"ach01}
+# information acquisition
+  ##轉換嘗試
+ #前面pivot_longer是想先轉長表格，放在第一列item的主要變項欄位
+ #後面pivot_wider是在同一列其他欄位，因此使用寬表格，將某一變項的同意程度放在同一列。
+  #目前尚未理解這樣的程式碼設定不能跑成功的原因?
+
+ wave1_rawdata %>%
+  select(ID,Q14_1) %>%
+  pivot_longer(cols =starts_with("Q14_") , names_to = "I want to be informed about the coronavirus", values_to = "rating" ) %>%
+  group_by(ID) %>%
+  summarise(Agree_degree_5 = mean(rating == 5),
+            Agree_degree_4 = mean(rating == 4),
+            Agree_degree_3 = mean(rating == 3),
+            Agree_degree_2 = mean(rating == 2),
+            Agree_degree_1 = mean(rating == 1)) %>%
+ pivot_wider(names_from = c(Strongly_agree, Somewhat_agree, Neither_agree_nor_disagree, Somewhat_disagree, Strongly_disagree), values_from = score, names_sep = "") %>%
+ group_by(Options) %>%
+  summarise(Mean = round(mean(Percentage)*100,1)) %>%
+  arrange(desc(Options))
+```
+
+```{r}
+# 另一個錯誤的程式碼狀況
+
+wave1_rawdata %>%
+  select(ID,Q14_1) %>%
+  summarise(Q14_1_5 = sum(Q14_1==5)/length(Q14_1),
+            Q14_1_4 = sum(Q14_1==4)/length(Q14_1),
+            Q14_1_3 = sum(Q14_1==3)/length(Q14_1),
+            Q14_1_2 = sum(Q14_1==2)/length(Q14_1),
+            Q14_1_1 = sum(Q14_1==1)/length(Q14_1)) %>%
+   pivot_longer(cols = starts_with("Q14_"),names_to = "I want to be informed about the coronavirus", values_to = "Percentage") %>%
+  summarise(Average = round(mean(Percentage)*100,1))
+```
+
