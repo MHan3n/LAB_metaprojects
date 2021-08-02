@@ -1,7 +1,7 @@
 ---
-title: "Motivations for COVID-19-related information acquisition."
+title: "news encounters"
 author: "Hsieh M.H"
-date: "2021/8/1"
+date: "2021/8/2"
 output: html_document
 ---
 
@@ -43,7 +43,6 @@ Q8~Q10: 媒體使用習慣調查 => Figure 2
 Q12,Q14,Q15: 疫情資訊更新管道及頻率 => Table4, Figure 3, Table 5
 Q16: Need for Cognition scale
 Q17: Need for Cognitive Closure scale
-
 ```
 ### Wave 1 正式分析資料
 
@@ -71,40 +70,68 @@ wave1_rawdata %>%
   summarise(N=n())
 ```
 
-
-```{r appro "I want to be informed about the coronavirus"ach01}
-# information acquisition
-  ##轉換嘗試
- #前面pivot_longer是想先轉長表格，放在第一列item的主要變項欄位
- #後面pivot_wider是在同一列其他欄位，因此使用寬表格，將某一變項的同意程度放在同一列。
-  #目前尚未理解這樣的程式碼設定不能跑成功的原因?
-
- wave1_rawdata %>%
-  select(ID,Q14_1) %>%
-  pivot_longer(cols =starts_with("Q14_") , names_to = "I want to be informed about the coronavirus", values_to = "rating" ) %>%
-  group_by(ID) %>%
-  summarise(Agree_degree_5 = mean(rating == 5),
-            Agree_degree_4 = mean(rating == 4),
-            Agree_degree_3 = mean(rating == 3),
-            Agree_degree_2 = mean(rating == 2),
-            Agree_degree_1 = mean(rating == 1)) %>%
- pivot_wider(names_from = c(Strongly_agree, Somewhat_agree, Neither_agree_nor_disagree, Somewhat_disagree, Strongly_disagree), values_from = score, names_sep = "") %>%
- group_by(Options) %>%
-  summarise(Mean = round(mean(Percentage)*100,1)) %>%
-  arrange(desc(Options))
-```
-
+重製Table 4 
 ```{r}
-# 另一個錯誤的程式碼狀況
-
+# I actively search for updates about the coronavirus
 wave1_rawdata %>%
-  select(ID,Q14_1) %>%
-  summarise(Q14_1_5 = sum(Q14_1==5)/length(Q14_1),
-            Q14_1_4 = sum(Q14_1==4)/length(Q14_1),
-            Q14_1_3 = sum(Q14_1==3)/length(Q14_1),
-            Q14_1_2 = sum(Q14_1==2)/length(Q14_1),
-            Q14_1_1 = sum(Q14_1==1)/length(Q14_1)) %>%
-   pivot_longer(cols = starts_with("Q14_"),names_to = "I want to be informed about the coronavirus", values_to = "Percentage") %>%
-  summarise(Average = round(mean(Percentage)*100,1))
+ select(ID,Q10_1.1) %>%
+ pivot_longer(cols = starts_with("Q10_1"), names_to = "Table4.1_", values_to = "rating") %>% 
+ group_by(ID) %>%
+ summarise(Table4.1_5_StronglyAgree = mean(rating == 5), 
+           Table4.1_4_SomewhatAgree = mean(rating == 4), 
+ Table4.1_3_NeitherAgreeNorDisagree = mean(rating == 3), 
+        Table4.1_2_SomewhatDisagree = mean(rating == 2),
+        Table4.1_1_StronglyDisagree = mean(rating == 1)) %>%
+ pivot_longer(cols = starts_with("Table4.1_"), names_to = "Options", values_to = "Percentage") %>%
+ group_by(Options) %>% 
+ summarise(Mean = round(mean(Percentage)*100,1)) %>% 
+ arrange(desc(Options))
+
+#I coincidentally read news about the coronavirus when I`m browsing online
+ wave1_rawdata %>%
+ select(ID,Q10_2.1) %>%
+ pivot_longer(cols = starts_with("Q10_2"), names_to = "Table4.2_", values_to = "rating") %>% 
+ group_by(ID) %>%
+ summarise(Table4.2_5_StronglyAgree = mean(rating == 5), 
+           Table4.2_4_SomewhatAgree = mean(rating == 4), 
+ Table4.2_3_NeitherAgreeNorDisagree = mean(rating == 3), 
+        Table4.2_2_SomewhatDisagree = mean(rating == 2),
+        Table4.2_1_StronglyDisagree = mean(rating == 1)) %>%
+ pivot_longer(cols = starts_with("Table4.2_"), names_to = "Options", values_to = "Percentage") %>%
+ group_by(Options) %>% 
+ summarise(Mean = round(mean(Percentage)*100,1)) %>% 
+ arrange(desc(Options))
+ 
+ # I get updates about the coronavirus from other people (friends, family, coworkers)
+ wave1_rawdata %>%
+ select(ID,Q10_3.1) %>%
+ pivot_longer(cols = starts_with("Q10_3"), names_to = "Table4.3_", values_to = "rating") %>% 
+ group_by(ID) %>%
+ summarise(Table4.3_5_StronglyAgree = mean(rating == 5), 
+           Table4.3_4_SomewhatAgree = mean(rating == 4), 
+ Table4.3_3_NeitherAgreeNorDisagree = mean(rating == 3), 
+        Table4.3_2_SomewhatDisagree = mean(rating == 2),
+        Table4.3_1_StronglyDisagree = mean(rating == 1)) %>%
+ pivot_longer(cols = starts_with("Table4.3_"), names_to = "Options", values_to = "Percentage") %>%
+ group_by(Options) %>% 
+ summarise(Mean = round(mean(Percentage)*100,1)) %>% 
+ arrange(desc(Options))
+ # I ignore news about the coronavirus
+ wave1_rawdata %>%
+ select(ID,Q10_4.1) %>%
+ pivot_longer(cols = starts_with("Q10_4"), names_to = "Table4.4_", values_to = "rating") %>% 
+ group_by(ID) %>%
+ summarise(Table4.4_5_StronglyAgree = mean(rating == 5), 
+           Table4.4_4_SomewhatAgree = mean(rating == 4), 
+ Table4.4_3_NeitherAgreeNorDisagree = mean(rating == 3), 
+        Table4.4_2_SomewhatDisagree = mean(rating == 2),
+        Table4.4_1_StronglyDisagree = mean(rating == 1)) %>%
+ pivot_longer(cols = starts_with("Table4.4_"), names_to = "Options", values_to = "Percentage") %>%
+ group_by(Options) %>% 
+ summarise(Mean = round(mean(Percentage)*100,1)) %>% 
+ arrange(desc(Options))
 ```
+
+
+
 
