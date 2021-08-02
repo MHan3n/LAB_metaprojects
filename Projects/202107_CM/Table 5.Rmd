@@ -72,14 +72,14 @@ wave1_rawdata %>%
 ```
 
 
-```{r appro "I want to be informed about the coronavirus"ach01}
+```{r approach01, eval=FALSE, include=FALSE}
 # information acquisition
   ##轉換嘗試
  #前面pivot_longer是想先轉長表格，放在第一列item的主要變項欄位
  #後面pivot_wider是在同一列其他欄位，因此使用寬表格，將某一變項的同意程度放在同一列。
   #目前尚未理解這樣的程式碼設定不能跑成功的原因?
 
- wave1_rawdata %>%
+wave1_rawdata %>%
   select(ID,Q14_1) %>%
   pivot_longer(cols =starts_with("Q14_") , names_to = "I want to be informed about the coronavirus", values_to = "rating" ) %>%
   group_by(ID) %>%
@@ -108,8 +108,17 @@ wave1_rawdata %>%
    pivot_longer(cols = starts_with("Q14_"),names_to = "I want to be informed about the coronavirus", values_to = "Percentage") %>%
   summarise(Average = round(mean(Percentage)*100,1))
 ```
+
 重製 Table 5 數據皆成功顯示，但是Rchunk以後，題號錯亂
         表單形式與原作者表單呈現略有不同。
+
+
+```{r}
+## 檢視題號及題目 
+knitr::kable(subset(items, key %in% paste0("Q14_",1:5) ))
+```
+
+
 ```{r}
 # I want to be informed about the coronavirus
  wave1_rawdata %>%
