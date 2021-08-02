@@ -1,7 +1,6 @@
 # 信息處理 true & false statement
 |item_var_tag|info|category|wave|
 |------------|----|--------|----|
-|ID|Prolific ID number|NA|NA|
 |Q1_1|已知的首例冠狀病毒病例發生在中國武漢。|True statement|1|
 |Q1_2|冠狀病毒主要通過咳嗽和打噴嚏傳播。|True statement|1|
 |Q1_3|冠狀病毒對老年人尤其致命。|True statement|1|
@@ -26,5 +25,13 @@
 |Q1_22R|只有在您已經生病的情況下，您才能死于冠狀病毒。|False statement|1|
 |Q1_23R|感染冠狀病毒的人只能感染 2-3 個人。|False statement|1|
 |Q1_24R|乾手器可有效殺死冠狀病毒。|False statement|1|
+|Q1_25R|中國政府發布了冠狀病毒以防止地球人口過剩。|Conspiracy|1|
+|Q1_26R|冠狀病毒是在實驗室中創建的，因此製藥行業可以銷售疫苗。|Conspiracy|1|
+|Q1_27R|冠狀病毒是神派來懲罰人類的。|Conspiracy|1|
+|Q1_28R|臺灣政府不積極購買疫苗是擁護國產疫苗上市。|Conspiracy|1|
+|Q1_29R|冠狀病毒是中國政府為了統治台灣而製造的生化武器。|Conspiracy|1|
+|Q1_30R|冠狀病毒是美國故意製造和傳播用以銷售疫苗的。|Conspiracy|1|
+|Q1_31R|冠狀病毒是來自武漢的地下實驗室。|Conspiracy|1|
+|Q1_32R|日本提供給台灣AZ疫苗是為了反抗中國。|Conspiracy|1|
 
  *R為反向題目
