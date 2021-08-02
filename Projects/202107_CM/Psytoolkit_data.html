@@ -10,7 +10,7 @@
 
 
 
-<meta name="date" content="2021-07-19" />
+<meta name="date" content="2021-08-02" />
 
 <title>Psytoolkit data processing</title>
 
@@ -165,19 +165,19 @@ pre code {
 
 
 <h1 class="title toc-ignore">Psytoolkit data processing</h1>
-<h4 class="date">2021-07-19</h4>
+<h4 class="date">2021-08-02</h4>
 
 </div>
 
 
 <p>匯入下載的資料壓縮檔</p>
 <pre class="r"><code>## path to the latest downloaded raw data
-downloaded_rawdata &lt;- &quot;0_reproduce_training/data.zip&quot;
+downloaded_rawdata &lt;- &quot;0_reproduce_training/xinxi_data.zip&quot;
 ## Check the downloaded data files
 datafiles &lt;- unzip(downloaded_rawdata, list = TRUE)
 ## Check the time of latest data 
 subset(datafiles, Name == &quot;data.csv&quot;)$Date</code></pre>
-<pre><code>## [1] &quot;2021-07-15 14:42:00 UTC&quot;</code></pre>
+<pre><code>## [1] &quot;2021-07-30 07:25:00 UTC&quot;</code></pre>
 <pre class="r"><code>## Import data
 datarows &lt;- read_csv(unz(downloaded_rawdata,filename = &quot;data.csv&quot;)) %&gt;%
 ## Erase empty responses
@@ -185,17 +185,104 @@ datarows &lt;- read_csv(unz(downloaded_rawdata,filename = &quot;data.csv&quot;))
 ## Remove the time columns
    select(-starts_with(&quot;TIME_&quot;))</code></pre>
 <pre><code>## 
-## -- Column specification -------------------------------------------------------------------------
+## -- Column specification --------------------------------------------------------
 ## cols(
 ##   .default = col_double(),
 ##   participant = col_character(),
 ##   TIME_start = col_character(),
 ##   TIME_end = col_character()
 ## )
-## i&lt;U+00A0&gt;Use `spec()` for the full column specifications.</code></pre>
-<pre><code>## Warning: 1 parsing failure.
+## i Use `spec()` for the full column specifications.</code></pre>
+<pre><code>## Warning: 4 parsing failures.
 ## row col   expected     actual         file
-##   1  -- 70 columns 71 columns &lt;connection&gt;</code></pre>
+##   3  -- 36 columns 37 columns &lt;connection&gt;
+##   9  -- 36 columns 37 columns &lt;connection&gt;
+##  10  -- 36 columns 37 columns &lt;connection&gt;
+##  12  -- 36 columns 37 columns &lt;connection&gt;</code></pre>
+<pre class="r"><code>TRUE_state &lt;- datarows %&gt;%
+  select(&quot;participant&quot;,`1_xinxi_Q1:1`:`1_xinxi_Q1:12`) %&gt;%
+  pivot_longer(cols = starts_with(&quot;1_xinxi_Q1&quot;), names_to = &quot;True_statment&quot;, values_to = &quot;rating&quot;) %&gt;%
+  group_by(participant) %&gt;%
+  summarise(True_statement_5 = mean(rating == 5),
+            True_statement_4 = mean(rating == 4),
+            True_statement_3 = mean(rating == 3),
+            True_statement_2 = mean(rating == 2),
+            True_statement_1 = mean(rating == 1)) %&gt;%
+  pivot_longer(cols = starts_with(&quot;True_statement_&quot;), names_to = &quot;Options&quot;,values_to = &quot;Percentage&quot;) %&gt;%
+  group_by(Options) %&gt;%
+  summarise(Mean = round(mean(Percentage)*100,1), 
+            SD = round(sd(Percentage)*100,1),
+            CI_L = round(Mean + qnorm(.025)*SD/sqrt(length(unique(participant))),1),
+            CI_U = round(Mean + qnorm(.975)*SD/sqrt(length(unique(participant))),1),
+            MIN = min(Percentage),
+            MAX = max(Percentage)) %&gt;%
+  arrange(desc(Options))
+
+TRUE_state</code></pre>
+<pre><code>## # A tibble: 5 x 7
+##   Options           Mean    SD  CI_L  CI_U   MIN    MAX
+##   &lt;chr&gt;            &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+## 1 True_statement_5  29.2  24.1   5.6  52.8 0     0.583 
+## 2 True_statement_4  29.2   8.3  21.1  37.3 0.25  0.417 
+## 3 True_statement_3  29.2  19.8   9.8  48.6 0.167 0.583 
+## 4 True_statement_2   8.3   6.8   1.6  15   0     0.167 
+## 5 True_statement_1   4.2   4.8  -0.5   8.9 0     0.0833</code></pre>
+<pre class="r"><code>FALSE_state &lt;- datarows %&gt;%
+  select(&quot;participant&quot;,`1_xinxi_Q1:13`:`1_xinxi_Q1:24`) %&gt;%
+  pivot_longer(cols = starts_with(&quot;1_xinxi_Q1&quot;), names_to = &quot;True_statment&quot;, values_to = &quot;rating&quot;) %&gt;%
+  group_by(participant) %&gt;%
+  summarise(False_statement_5 = mean(rating == 5),
+            False_statement_4 = mean(rating == 4),
+            False_statement_3 = mean(rating == 3),
+            False_statement_2 = mean(rating == 2),
+            False_statement_1 = mean(rating == 1)) %&gt;%
+  pivot_longer(cols = starts_with(&quot;False_statement_&quot;), names_to = &quot;Options&quot;,values_to = &quot;Percentage&quot;) %&gt;%
+  group_by(Options) %&gt;%
+  summarise(Mean = round(mean(Percentage)*100,1), 
+            SD = round(sd(Percentage)*100,1),
+            CI_L = round(Mean + qnorm(.025)*SD/sqrt(length(unique(participant))),1),
+            CI_U = round(Mean + qnorm(.975)*SD/sqrt(length(unique(participant))),1),
+            MIN = min(Percentage),
+            MAX = max(Percentage)) %&gt;%
+  arrange(desc(Options))
+
+FALSE_state</code></pre>
+<pre><code>## # A tibble: 5 x 7
+##   Options            Mean    SD  CI_L  CI_U    MIN    MAX
+##   &lt;chr&gt;             &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+## 1 False_statement_5  58.3  19.2  39.5  77.1 0.417  0.75  
+## 2 False_statement_4  12.5  10.8   1.9  23.1 0      0.25  
+## 3 False_statement_3  20.8  10.8  10.2  31.4 0.0833 0.333 
+## 4 False_statement_2   6.2   8    -1.6  14   0      0.167 
+## 5 False_statement_1   2.1   4.2  -2     6.2 0      0.0833</code></pre>
+<pre class="r"><code>Conspiracy &lt;- datarows %&gt;%
+  select(&quot;participant&quot;,`1_xinxi_Q1:25`:`1_xinxi_Q1:32`) %&gt;%
+  pivot_longer(cols = starts_with(&quot;1_xinxi_Q1&quot;), names_to = &quot;True_statment&quot;, values_to = &quot;rating&quot;) %&gt;%
+  group_by(participant) %&gt;%
+  summarise(Conspiracy_5 = mean(rating == 5),
+            Conspiracy_4 = mean(rating == 4),
+            Conspiracy_3 = mean(rating == 3),
+            Conspiracy_2 = mean(rating == 2),
+            Conspiracy_1 = mean(rating == 1)) %&gt;%
+  pivot_longer(cols = starts_with(&quot;Conspiracy_&quot;), names_to = &quot;Options&quot;,values_to = &quot;Percentage&quot;) %&gt;%
+  group_by(Options) %&gt;%
+  summarise(Mean = round(mean(Percentage)*100,1), 
+            SD = round(sd(Percentage)*100,1),
+            CI_L = round(Mean + qnorm(.025)*SD/sqrt(length(unique(participant))),1),
+            CI_U = round(Mean + qnorm(.975)*SD/sqrt(length(unique(participant))),1),
+            MIN = min(Percentage),
+            MAX = max(Percentage)) %&gt;%
+  arrange(desc(Options))
+
+Conspiracy</code></pre>
+<pre><code>## # A tibble: 5 x 7
+##   Options       Mean    SD  CI_L  CI_U   MIN   MAX
+##   &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 Conspiracy_5  56.2  21.7  34.9  77.5 0.375 0.75 
+## 2 Conspiracy_4   6.2  12.5  -6    18.4 0     0.25 
+## 3 Conspiracy_3  37.5  30.6   7.5  67.5 0     0.625
+## 4 Conspiracy_2   0     0     0     0   0     0    
+## 5 Conspiracy_1   0     0     0     0   0     0</code></pre>
 <p>提取NC資料</p>
 <pre class="r"><code>NC_data &lt;- datarows %&gt;% 
   ## 挑出ID及NC資料
@@ -215,11 +302,10 @@ datarows &lt;- read_csv(unz(downloaded_rawdata,filename = &quot;data.csv&quot;))
   filter(LIE != &quot;Y&quot;) %&gt;%
   group_by(Qtype) %&gt;%
   summarise(score = sum(Response))</code></pre>
-<pre><code>## # A tibble: 2 x 2
-##   Qtype  score
-##   &lt;chr&gt;  &lt;dbl&gt;
-## 1 16_NC     56
-## 2 17_NCC   147</code></pre>
+<pre><code>## # A tibble: 1 x 2
+##   Qtype      score
+##   &lt;chr&gt;      &lt;dbl&gt;
+## 1 1_xinxi_Q1   513</code></pre>
 
 
 
