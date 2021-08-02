@@ -108,7 +108,7 @@ wave1_rawdata %>%
    pivot_longer(cols = starts_with("Q14_"),names_to = "I want to be informed about the coronavirus", values_to = "Percentage") %>%
   summarise(Average = round(mean(Percentage)*100,1))
 ```
-Table 5 數據皆成功顯示，但是Rchunk以後，題號錯亂
+重製 Table 5 數據皆成功顯示，但是Rchunk以後，題號錯亂
         表單形式與原作者表單呈現略有不同。
 ```{r}
 # I want to be informed about the coronavirus
