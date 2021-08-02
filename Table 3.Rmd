@@ -7,8 +7,9 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(osfr)
 ```
-再上傳一次
 
 ### 下載原始資料映像檔
 
@@ -43,6 +44,33 @@ Q12,Q14,Q15: 疫情資訊更新管道及頻率 => Table4, Figure 3, Table 5
 Q16: Need for Cognition scale
 Q17: Need for Cognitive Closure scale
 ```
+### Wave 1 正式分析資料
+
+根據以下描述，篩選納入正式分析的資料：
+
+"Five hundred and twenty-six respondents completed the Wave 1 survey via the Prolific.com platform. Sixteen respondents were excluded for spending too much time on the survey("Duration..in.seconds." -> "Q1T_Page.Submit"). Another nine respondents were excluded for failing the catch question("Q1_CATCH1")."
+
+由於初次嘗試發現分組人數與論文不一致，聯絡論文第一作者Arnout Boot，得知16位被排除的參與者是根據完成"Knowledge Test"的秒數。
+
+```{r message=FALSE, warning=FALSE}
+## check the equality of two data sets
+sum(data_factors$Q1T_Page.Submit != data_numeric$Q1T_Page.Submit)
+## Boxplot for test duration
+boxplot(data_numeric$Q1T_Page.Submit)
+
+wave1_rawdata <- data_numeric %>% 
+## exclude the participants who spent more than 999 seconds on the knowledge test
+  filter(Q1T_Page.Submit < 999) %>%
+## exclude the participants who failed the catch question
+  filter(Q1_CATCH1 == 5) %>%
+## ## exclude the participants who spent time on the knowledge test longer than 3.29 standardized time
+  filter(scale(Q1T_Page.Submit)<3.29)
+## How many participants' data are analyzed?
+wave1_rawdata %>%
+  summarise(N=n())
+```
+
+重製原始論文 Table 3描述統計(預備搬移到“第一波疫情資訊可信度重製分析”)
 ###重製原始論文統計資料數據 
 Table 3 描述統計(預備搬移到“第一波疫情資訊可信度重製分析”)
 ```{r approach01}
