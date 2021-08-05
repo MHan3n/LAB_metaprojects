@@ -1,0 +1,123 @@
+---
+title: "Searching frequency"
+author: "Hsieh M.H"
+date: "2021/8/5"
+output: html_document
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(osfr)
+library(plotly)  # 製造互動式統計圖
+library(cowplot)  # 製造組合式統計圖
+install.packages(dataskills)
+```
+
+匯入原始文獻資料
+### 下載原始資料映像檔
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+## Download and load W1 rawdata from OSF
+osf_retrieve_file("he2v7") %>%
+  osf_download()
+## Download and load W2 rawdata from OSF
+osf_retrieve_file("ch68a") %>%
+  osf_download() 
+```
+### 載入原始資料物件
+
+```{r message=FALSE, warning=FALSE}
+load(list.files(recursive = TRUE,full.names = TRUE,include.dirs = TRUE,pattern = "*.Rdata")[1])
+load(list.files(recursive = TRUE,full.names = TRUE,include.dirs = TRUE,pattern = "*.Rdata")[2])
+ls()
+file.remove(list.files(recursive = TRUE,full.names = TRUE,include.dirs = TRUE,pattern = "*.Rdata"))
+```
+### Wave 1原始資料欄位說明清單
+
+```{r}
+items %>% rmarkdown::paged_table(options = list(rows.print = 20))
+```
+### Wave 2 原始資料欄位說明清單
+
+```{r}
+tag_info %>% rmarkdown::paged_table(options = list(rows.print = 20))
+```
+
+### Wave 1 正式分析資料
+
+根據以下描述，篩選納入正式分析的資料：
+
+"Five hundred and twenty-six respondents completed the Wave 1 survey via the Prolific.com platform. Sixteen respondents were excluded for spending too much time on the survey("Duration..in.seconds." -> "Q1T_Page.Submit"). Another nine respondents were excluded for failing the catch question("Q1_CATCH1")."
+
+由於初次嘗試發現分組人數與論文不一致，聯絡論文第一作者Arnout Boot，得知16位被排除的參與者是根據完成"Knowledge Test"的秒數。
+
+```{r message=FALSE, warning=FALSE}
+## check the equality of two data sets
+sum(data_factors$Q1T_Page.Submit != data_numeric$Q1T_Page.Submit)
+## Boxplot for test duration
+boxplot(data_numeric$Q1T_Page.Submit)
+
+wave1_rawdata <- data_numeric %>% 
+## exclude the participants who spent more than 999 seconds on the knowledge test
+  filter(Q1T_Page.Submit < 999) %>%
+## exclude the participants who failed the catch question
+  filter(Q1_CATCH1 == 5) %>%
+## ## exclude the participants who spent time on the knowledge test longer than 3.29 standardized time
+  filter(scale(Q1T_Page.Submit)<3.29)
+## How many participants' data are analyzed?
+wave1_rawdata %>%
+  summarise(N=n())
+```
+
+```{r}
+#嘗試用tibble做表單
+
+Q12_Pinlu <- tibble(
+            frequency = rep(c("Never", "Once every few days", "Once a day", "Once per hour", "Multiple times per hour"),c(12,51,225,98,14)),
+                score = c("1","2","3","4","5")
+            )
+```
+
+
+```{r}
+  wave1_rawdata %>%
+  select(ID,Q12) %>%
+  pivot_longer(cols = starts_with("Q12"), names_to = "Fig3_", values_to = "rating") %>%
+  group_by(ID) %>%
+  summarise(Fig3_MultipleTimesPerHour_5 = mean(rating == 5),
+                     Fig3_OncePerHour_4 = mean(rating == 4),
+                        Fig3_OnceADay_3 = mean(rating == 3),
+                Fig3_OnceEveryFewDays_2 = mean(rating == 2),
+                           Fig3_Never_1 = mean(rating == 1)) %>%
+  pivot_longer(cols = starts_with("Fig3_"), names_to = "Options", values_to = "Percentage") %>%
+  group_by(Options) %>%
+  arrange(desc(Options))
+```
+
+```{r}
+##指定Media_use_frequency為Q12 Wave1_rawdata的某一項資料
+Media_use_frequency <- wave1_rawdata %>%
+  select(ID,Q12) %>%
+  pivot_longer(cols = starts_with("Q12"), names_to = "Fig3_", values_to = "rating") %>%
+  group_by(ID) %>%
+  summarise(Fig3_MultipleTimesPerHour_5 = mean(rating == 5),
+                     Fig3_OncePerHour_4 = mean(rating == 4),
+                        Fig3_OnceADay_3 = mean(rating == 3),
+                Fig3_OnceEveryFewDays_2 = mean(rating == 2),
+                           Fig3_Never_1 = mean(rating == 1)) %>%
+  pivot_longer(cols = starts_with("Fig3_"), names_to = "Options", values_to = "Percentage") %>%
+  group_by(Options) %>%
+  arrange(desc(Options))
+```
+
+#設定Fig3的基本布局
+```{r}
+Media_use_f <- aes(x = time, 
+               y = score , 
+               colour = group, 
+               fill = group)
+ggplot(data = wave1_rawdata, mapping = mapping)
+
+```
+
+
