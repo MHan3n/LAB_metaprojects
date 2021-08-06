@@ -4,6 +4,8 @@ l: 1_message
 t: info
 q: 您目前對以下有關冠狀病毒及疫苗的說法有何看法？（嘗試根據您的第一直覺及時回答）
 
+random: begin
+
 scale: 確定這是真的
 item: 問題
 - {score=1} 我確定這不是真的
@@ -11,8 +13,6 @@ item: 問題
 - {score=3} 我不知道
 - {score=4} 我認為這是真的
 - {score=5} 我確信這是真的
-
-random: begin
 
 l: 1_xinxi_Q1_1
 q:   
@@ -201,7 +201,7 @@ o: width 50%
 - {reverse}冠狀病毒是來自武漢的地下實驗室。
 
 l: 1_xinxi_Q1_32
-q:   
+q:    
 t: scale 確定這是真的
 o: width 50%
 - {reverse}日本特定選在6月4日贈送給台灣疫苗是為了挑釁中國。
@@ -342,61 +342,61 @@ item: 項目
 l: 10_laiyuan_Q10_1
 q:   
 t: scale 次數
-o: width 50
+o: width 55
 - 電視
 
 l: 10_laiyuan_Q10_2
 q:   
 t: scale 次數
-o: width 50
+o: width 55
 - 收音機
 
 l: 10_laiyuan_Q10_3
 q:   
 t: scale 次數
-o: width 50
+o: width 55
 - 印刷報紙
 
 l: 10_laiyuan_Q10_4
 q:   
 t: scale 次數
-o: width 50
+o: width 55
 - 新聞網站（例如，東森新聞、yahoo奇摩新聞、LINE TODAY、ET TODAY）
 
 l: 10_laiyuan_Q10_5
 q:   
 t: scale 次數
-o: width 50
+o: width 55
 - 社交網站（例如，Facebook、Twitter、Instagram）
 
 l: 10_laiyuan_Q10_6
 q:   
 t: scale 次數
-o: width 50
+o: width 55
 - 影片分享平台（例如，YouTube）
 
 l: 10_laiyuan_Q10_7
 q:   
 t: scale 次數
-o: width 50
+o: width 55
 - 影片串流平台（例如，Netflix）
 
 l: 10_laiyuan_Q10_8
 q:   
 t: scale 次數
-o: width 50
+o: width 55
 - 朋友和/或家人（個人互動）
 
 l: 10_laiyuan_Q10_9
 q:   
 t: scale 次數
-o: width 50
+o: width 55
 - 訊息軟體（例如，LINE、Whatsapp、Facebook messenger）
 
 l: 10_laiyuan_Q10_10
 q:   
 t: scale 次數
-o: width 50
+o: width 55
 - 社交新聞聚合網站（例如，PTT、Dcard、卡提諾）
 
 page: end
@@ -418,25 +418,25 @@ item: 問題
 l: 11_qingkuang_Q10_1
 q:    
 t: scale 同意2
-o: width 50%
+o: width 45
 - 我積極搜索有關冠狀病毒的更新。
 
 l: 11_qingkuang_Q10_2
 q:    
 t: scale 同意2
-o: width 50%
+o: width 45
 - 我在網上瀏覽時偶然閱讀了有關冠狀病毒的新聞。
 
 l: 11_qingkuang_Q10_3
 q:    
 t: scale 同意2
-o: width 50%
+o: width 45
 - 我從其他人（朋友、家人同事）那裡獲得有關冠狀病毒的最新消息。
 
 l: 11_qingkuang_Q10_4
 q:    
 t: scale 同意2
-o: width 50%
+o: width 45
 - 我忽略有關冠狀病毒的消息。
 
 page: end
@@ -452,7 +452,7 @@ item: 問題
 l: 12_pinlyu_Q12
 q:    
 t: scale 時間
-o: width 50%
+o: width 45
 - 您多久在線查看一次有關冠狀病毒的更新？
 
 page: begin
@@ -464,31 +464,31 @@ q: 您查看有關冠狀病毒的更新的原因是什麼？
 l: 13_dongji_Q14_1
 q:    
 t: scale 同意2
-o: width 50%
+o: width 45
 - 我想了解冠狀病毒。
 
 l: 13_dongji_Q14_2
 q:   
 t: scale 同意2
-o: width 50%
+o: width 45
 - 我擔心自己的健康。
 
 l: 13_dongji_Q14_3
 q:   
 t: scale 同意2
-o: width 50%
+o: width 45
 - 我擔心身邊人的健康。
 
 l: 13_dongji_Q14_4
 q:   
 t: scale 同意2
-o: width 50%
+o: width 45
 - 我擔心公眾的健康。
 
 l: 13_dongji_Q14_5
 q:    
 t: scale 同意2
-o: width 50%
+o: width 45
 - 我想教育其他人有關冠狀病毒的知識。
 
 page: end
@@ -521,117 +521,117 @@ random: begin
 
 scale: 符合
 item: 問題
-- {score=1} 非常不符合我的特點。
-- {score=2} 有點不符合我的特點。
-- {score=3} 不確定。
-- {score=4} 有點符合我的特點。
-- {score=5} 非常符合我的特點。
+- {score=1} 非常不符合我的特點
+- {score=2} 有點不符合我的特點
+- {score=3} 不確定
+- {score=4} 有點符合我的特點
+- {score=5} 非常符合我的特點
 
 l: 16_NC_Q16_1
 q:   
-o: width 40
+o: width 45
 t: scale 符合
 - 比起簡單的問題，我更喜歡複雜的問題。
 
 l: 16_NC_Q16_2
 q:   
-o: width 40
+o: width 45
 t: scale 符合
 - 對於非常需要動腦的事情，我相當有責任感。
 
 l: 16_NC_Q16_3
 q:   
-o: width 40
+o: width 45
 t: scale 符合
 - {reverse}思考事情不是我的個人興趣。
 
 l: 16_NC_Q16_4
 q:   
-o: width 40
+o: width 45
 t: scale 符合
 - {reverse}比起挑戰自己的思維能力，我寧願做些不需要思考的事情。
 
 l: 16_NC_Q16_5
 q:   
-o: width 40
+o: width 45
 t: scale 符合
 - {reverse}我會評估並且避免可能需要深入思考的事情。
 
 l: 16_NC_Q16_6
 q:   
-o: width 40
+o: width 45
 t: scale 符合
 - 我能從長時間的深思熟慮獲得滿足感。
 
 l: 16_NC_Q16_7
 q:   
-o: width 40
+o: width 45
 t: scale 符合
 - {reverse}我只會考慮一個人必須面對的事情。
 
 l: 16_NC_Q16_8
 q:   
-o: width 40
+o: width 45
 t: scale 符合
 - {reverse}比起長期目標，我比較喜歡思考日常要處理的項目。
 
 l: 16_NC_Q16_9
 q:   
-o: width 40
+o: width 45
 t: scale 符合
 - {reverse}我喜歡一旦學會了就不需要太多思考的工作。
 
 l: 16_NC_Q16_10
 q:   
-o: width 40
+o: width 45
 t: scale 符合
 - 靠著思考就能圓滿達成所有目標的想法令我著迷。
 
 l: 16_NC_Q16_11
 q:   
-o: width 40
+o: width 45
 t: scale 符合
 - 我很享受為解決問題找出新方案的工作。
 
 l: 16_NC_Q16_12
 q:   
-o: width 40
+o: width 45
 t: scale 符合
 - {reverse}學習新的思考方式並不會讓我感到高興。
 
 l: 16_NC_Q16_13
 q:   
-o: width 40
+o: width 45
 t: scale 符合
 - 我喜歡充滿必須解決的難題的生活。
 
 l: 16_NC_Q16_14
 q:   
-o: width 40
+o: width 45
 t: scale 符合
 - 需要抽象思考的觀念令我著迷。
 
 l: 16_NC_Q16_15
 q:   
-o: width 40
+o: width 45
 t: scale 符合
 - 我喜歡挑戰智力、有困難性及重要性的工作，而不是有點重要又不需要太多思考的工作。
 
 l: 16_NC_Q16_16
 q:   
-o: width 40
+o: width 45
 t: scale 符合
 - {reverse}完成一項需要大量腦力的工作後，我會感到解脫而不是滿足。
 
 l: 16_NC_Q16_17
 q:   
-o: width 40
+o: width 45
 t: scale 符合
 - {reverse}對我來說，完成工作就足夠了；我不在乎工作的理由和效用。
 
 l: 16_NC_Q16_18
 q:   
-o: width 40
+o: width 45
 t: scale 符合
 - 即使是對我沒什麼影響的問題，我都會深思熟慮解決方法。
 
