@@ -1,0 +1,943 @@
+page: begin
+
+l: 1_message
+t: info
+q: 您目前對以下有關冠狀病毒及疫苗的說法有何看法？（嘗試根據您的第一直覺及時回答）
+
+scale: 確定這是真的
+item: 問題
+- {score=1} 我確定這不是真的
+- {score=2} 我認為這不是真的
+- {score=3} 我不知道
+- {score=4} 我認為這是真的
+- {score=5} 我確信這是真的
+
+random: begin
+
+l: 1_xinxi_Q1_1
+q:   
+t: scale 確定這是真的
+o: width 50%
+- 若本身有慢性病但控制穩定，依舊可以接種冠狀病毒疫苗。
+
+l: 1_xinxi_Q1_2
+q:   
+t: scale 確定這是真的
+o: width 50%
+- AZ與莫德納的疫苗在第一劑接種完，可於接種後第10至12週接種第二劑。
+
+l: 1_xinxi_Q1_3
+q:   
+t: scale 確定這是真的
+o: width 50%
+- 對流感疫苗有過敏反應，依舊可以接種冠狀病毒的疫苗。
+
+l: 1_xinxi_Q1_4
+q:   
+t: scale 確定這是真的
+o: width 50%
+- 施打完疫苗後身體出現胸痛、心悸或下肢疼痛的狀況是不正常的要盡快就醫。
+
+l: 1_xinxi_Q1_5
+q:   
+t: scale 確定這是真的
+o: width 50%
+- 注射疫苗前不能服用止痛藥(例如，普拿疼)、消炎藥或退燒藥等藥物，因為會降低免疫反應。
+
+l: 1_xinxi_Q1_6
+q:   
+t: scale 確定這是真的
+o: width 50%
+- 施打疫苗並不會造成不孕。
+
+l: 1_xinxi_Q1_7
+q:   
+t: scale 確定這是真的
+o: width 50%
+- 發燒是感染冠狀病毒的潛在症狀。
+
+l: 1_xinxi_Q1_8
+q:   
+t: scale 確定這是真的
+o: width 50%
+- 沒有出現症狀的人能傳播冠狀病毒。
+
+l: 1_xinxi_Q1_9
+q:   
+t: scale 確定這是真的
+o: width 50%
+- 最早的冠狀病毒患者來源於中國。
+
+l: 1_xinxi_Q1_10
+q:   
+t: scale 確定這是真的
+o: width 50%
+- 感染冠狀病毒後會有14天的潛伏期。
+
+l: 1_xinxi_Q1_11
+q:   
+t: scale 確定這是真的
+o: width 50%
+- 冠狀病毒患者康復後若沒有做好防疫措施(例：戴口罩、勤洗手)，依舊有可能會再次受到感染。
+
+l: 1_xinxi_Q1_12
+q:   
+t: scale 確定這是真的
+o: width 50%
+- 若使用家用快篩試劑呈現陽性，需盡快聯繫當地衛生局或播打1922。
+
+l: 1_xinxi_Q1_13
+q:   
+t: scale 確定這是真的
+o: width 50%
+- {reverse}懷孕婦女不宜接種任何疫苗。
+
+l: 1_xinxi_Q1_14
+q:   
+t: scale 確定這是真的
+o: width 50%
+- {reverse}輝瑞、莫德納的mRNA疫苗是帶有遺傳因子的疫苗，會影響人體基因，有高度致命風險。
+
+l: 1_xinxi_Q1_15
+q:   
+t: scale 確定這是真的
+o: width 50%
+- {reverse}流感疫苗可以保護一般人免受冠狀病毒的侵害。
+
+l: 1_xinxi_Q1_16
+q:   
+t: scale 確定這是真的
+o: width 50%
+- {reverse}若接種完第一劑疫苗，身體已經有100%的保護力，不怕受到感染。
+
+l: 1_xinxi_Q1_17
+q:   
+t: scale 確定這是真的
+o: width 50%
+- {reverse}疫苗的副作用可能會導致血栓、心肌炎，所以要打在右手遠離心臟已降低副作用。
+
+l: 1_xinxi_Q1_18
+q:   
+t: scale 確定這是真的
+o: width 50%
+- {reverse}注射輝瑞或莫德納疫苗會讓身體產生磁性。
+
+l: 1_xinxi_Q1_19
+q:   
+t: scale 確定這是真的
+o: width 50%
+- {reverse}醫療口罩不能阻隔冠狀變種病毒的侵害，需配戴N95口罩才可以。
+
+l: 1_xinxi_Q1_20
+q:   
+t: scale 確定這是真的
+o: width 50%
+- {reverse}冠狀病毒更容易在下雨天傳播，所以在下雨天更不要出門。
+
+l: 1_xinxi_Q1_21
+q:   
+t: scale 確定這是真的
+o: width 50%
+- {reverse}冠狀病毒在抵達肺部前會停留在喉嚨四天，如果喝大量的水，並且以溫水加鹽巴或醋來漱口，可以消除病毒。
+
+l: 1_xinxi_Q1_22
+q:   
+t: scale 確定這是真的
+o: width 50%
+- {reverse}配戴兩層醫用口罩的防護力比內層戴醫用口罩、外層戴布料口罩的防謢力好。
+
+l: 1_xinxi_Q1_23
+q:   
+t: scale 確定這是真的
+o: width 50%
+- {reverse}暫時沒有嗅覺或味覺代表你已經感染到冠狀病毒。
+
+l: 1_xinxi_Q1_24
+q:   
+t: scale 確定這是真的
+o: width 50%
+- {reverse}若蔬果表面上有冠狀病毒，食用後並不會感染，可以放心食用。
+
+l: 1_xinxi_Q1_25
+q:   
+t: scale 確定這是真的
+o: width 50%
+- {reverse}中國政府發布了冠狀病毒以防止地球人口過剩。
+
+l: 1_xinxi_Q1_26
+q:   
+t: scale 確定這是真的
+o: width 50%
+- {reverse}冠狀病毒是人類所創造的，用以讓製藥行業銷售疫苗並撈取利益。
+
+l: 1_xinxi_Q1_27
+q:   
+t: scale 確定這是真的
+o: width 50%
+- {reverse}冠狀病毒是神派來懲罰人類的。
+
+l: 1_xinxi_Q1_28
+q:   
+t: scale 確定這是真的
+o: width 50%
+- {reverse}臺灣政府不積極購買疫苗是擁護國產疫苗上市。
+
+l: 1_xinxi_Q1_29
+q:   
+t: scale 確定這是真的
+o: width 50%
+- {reverse}冠狀病毒是中國政府為了觸發第三次世界大戰而製造的生化武器。
+
+l: 1_xinxi_Q1_30
+q:   
+t: scale 確定這是真的
+o: width 50%
+- {reverse}冠狀病毒是美國故意製造和傳播用以銷售疫苗的。
+
+l: 1_xinxi_Q1_31
+q:   
+t: scale 確定這是真的
+o: width 50%
+- {reverse}冠狀病毒是來自武漢的地下實驗室。
+
+l: 1_xinxi_Q1_32
+q:   
+t: scale 確定這是真的
+o: width 50%
+- {reverse}日本特定選在6月4日贈送給台灣疫苗是為了挑釁中國。
+
+random: end
+
+page: end
+
+page: begin
+
+l: 2_renkou_Q2_1
+t: textline
+q: 你幾歲？
+o: require
+- {min=0,max=100}
+
+l: 3_renkou_Q3
+t: radio
+q: 你的性別是什麼？
+- 男
+- 女
+- 寧可不說
+- 跨性別者
+- {other} 其他
+
+l: 4_renkou_Q4	
+t: radio
+q: 你的國籍是？
+- 台灣
+- 中國
+- 馬來西亞
+- 印尼
+- 韓國
+- 日本
+- 韓國
+- 紐西蘭
+- 帛琉
+- 澳大利亞
+- 汶萊
+- 菲律賓
+- 泰國
+- 俄羅斯
+- 新加坡
+- 加拿大
+- 美國
+- 英國
+- {other} 其他
+
+l: 5_renkou_Q5
+t: radio
+q: 什麼是你的母語？
+- 中文
+- 英語
+- 日語
+- {other}其他
+
+l: 6_renkou_Q6
+t: radio
+q: 您完成的最高級別的學校或獲得的最高學位是什麼？	
+- 國小畢業
+- 國中畢業
+- 高中畢業
+- 大學畢業
+- 碩士畢業
+- 博士畢業
+
+l: 7_renkou_Q7
+t: radio
+q: 你目前的職業領域是什麼？
+- 軍警
+- 公務人員
+- 教育
+- 商
+- 工
+- 農
+- 醫療
+- 服務業
+- 家管
+- 學生
+- 退休
+- 無
+- {other} 其他
+
+page: end
+
+l: 8_pingtai_Q8
+q: 您每周至少使用一次哪些線上媒體平台?
+t: check
+o: require 1
+- Youtube
+- WhatsApp
+- facebook
+- Facebook messenger
+- LINE
+- Twitter
+- Netflix
+- Discord
+- PTT
+- Tinder(或其他交友軟體)
+- Instagram
+- Pinterest
+- Dcard
+- Spotify
+- TikTok
+- Tumblr
+- podcast
+- Skype(或其他視頻通話服務)
+- {other} 其他。請明確說明
+
+l: 9_shijian_Q9
+q: 您平均每天在上題選擇的線上媒體平台上花費多少時間？
+t: radio
+- 0-15分鐘
+- 15-60分鐘
+- 1-2小時
+- 2-3小時
+- 3-4小時
+- 4-5小時
+- 5-6小時
+- 6-7小時
+- 7-8小時
+- 8小時以上
+
+page: begin
+
+l: 10_message
+t: info
+q: 您使用以下哪些來源獲取有關冠狀病毒的最新消息？
+
+scale: 次數
+item: 項目
+- {score=1} 完全沒有
+- {score=2} 較少
+- {score=3} 中間
+- {score=4} 很多
+- {score=5} 大量
+
+l: 10_laiyuan_Q10_1
+q:   
+t: scale 次數
+o: width 50
+- 電視
+
+l: 10_laiyuan_Q10_2
+q:   
+t: scale 次數
+o: width 50
+- 收音機
+
+l: 10_laiyuan_Q10_3
+q:   
+t: scale 次數
+o: width 50
+- 印刷報紙
+
+l: 10_laiyuan_Q10_4
+q:   
+t: scale 次數
+o: width 50
+- 新聞網站（例如，東森新聞、yahoo奇摩新聞、LINE TODAY、ET TODAY）
+
+l: 10_laiyuan_Q10_5
+q:   
+t: scale 次數
+o: width 50
+- 社交網站（例如，Facebook、Twitter、Instagram）
+
+l: 10_laiyuan_Q10_6
+q:   
+t: scale 次數
+o: width 50
+- 影片分享平台（例如，YouTube）
+
+l: 10_laiyuan_Q10_7
+q:   
+t: scale 次數
+o: width 50
+- 影片串流平台（例如，Netflix）
+
+l: 10_laiyuan_Q10_8
+q:   
+t: scale 次數
+o: width 50
+- 朋友和/或家人（個人互動）
+
+l: 10_laiyuan_Q10_9
+q:   
+t: scale 次數
+o: width 50
+- 訊息軟體（例如，LINE、Whatsapp、Facebook messenger）
+
+l: 10_laiyuan_Q10_10
+q:   
+t: scale 次數
+o: width 50
+- 社交新聞聚合網站（例如，PTT、Dcard、卡提諾）
+
+page: end
+
+page: begin
+
+l: 11_message
+t: info
+q: 您是如何看到有關冠狀病毒的消息的？
+
+scale: 同意2
+item: 問題
+- {score=1} 非常不同意
+- {score=2} 有點不同意
+- {score=3} 既不同意也不反對
+- {score=4} 有點同意
+- {score=5} 非常同意
+
+l: 11_qingkuang_Q10_1
+q:    
+t: scale 同意2
+o: width 50%
+- 我積極搜索有關冠狀病毒的更新。
+
+l: 11_qingkuang_Q10_2
+q:    
+t: scale 同意2
+o: width 50%
+- 我在網上瀏覽時偶然閱讀了有關冠狀病毒的新聞。
+
+l: 11_qingkuang_Q10_3
+q:    
+t: scale 同意2
+o: width 50%
+- 我從其他人（朋友、家人同事）那裡獲得有關冠狀病毒的最新消息。
+
+l: 11_qingkuang_Q10_4
+q:    
+t: scale 同意2
+o: width 50%
+- 我忽略有關冠狀病毒的消息。
+
+page: end
+
+scale: 時間
+item: 問題
+- {score=1} 從不
+- {score=2} 每隔幾天一次
+- {score=3} 每天一次
+- {score=4} 每小時一次
+- {score=5} 每小時多次
+
+l: 12_pinlyu_Q12
+q:    
+t: scale 時間
+o: width 50%
+- 您多久在線查看一次有關冠狀病毒的更新？
+
+page: begin
+
+l: 13_message
+t: info
+q: 您查看有關冠狀病毒的更新的原因是什麼？
+
+l: 13_dongji_Q14_1
+q:    
+t: scale 同意2
+o: width 50%
+- 我想了解冠狀病毒。
+
+l: 13_dongji_Q14_2
+q:   
+t: scale 同意2
+o: width 50%
+- 我擔心自己的健康。
+
+l: 13_dongji_Q14_3
+q:   
+t: scale 同意2
+o: width 50%
+- 我擔心身邊人的健康。
+
+l: 13_dongji_Q14_4
+q:   
+t: scale 同意2
+o: width 50%
+- 我擔心公眾的健康。
+
+l: 13_dongji_Q14_5
+q:    
+t: scale 同意2
+o: width 50%
+- 我想教育其他人有關冠狀病毒的知識。
+
+page: end
+
+l: 14_dongji_Q14_1
+q: 我使用以下的來源/網站，更新最新疫情資訊。最多輸入五個回應。
+t: textline
+- {maxchar=10} 請輸入第一個回應
+- {maxchar=10} 請輸入第二個回應
+- {maxchar=10} 請輸入第三個回應
+- {maxchar=10} 請輸入第四個回應
+- {maxchar=10} 請輸入第五個回應
+
+l: 15_dongji_Q15
+q: 請將上一題輸入的項目，依照您的使用頻率由高至低，拖放橫條由上而下排列。 <br> 英文代號代表您上一題的回應 A:{$14_dongji_Q14_1.1} B:{$14_dongji_Q14_1.2} C:{$14_dongji_Q14_1.3} D:{$14_dongji_Q14_1.4} E:{$14_dongji_Q14_1.5}
+t: rank
+- A
+- B
+- C
+- D
+- E
+
+page: begin
+
+l: 16_message
+t: info
+q: 對於下面的每一個陳述，請說明該陳述是否是您的特徵或您所相信的。
+
+random: begin
+
+scale: 符合
+item: 問題
+- {score=1} 非常不符合我的特點。
+- {score=2} 有點不符合我的特點。
+- {score=3} 不確定。
+- {score=4} 有點符合我的特點。
+- {score=5} 非常符合我的特點。
+
+l: 16_NC_Q16_1
+q:   
+o: width 40
+t: scale 符合
+- 比起簡單的問題，我更喜歡複雜的問題。
+
+l: 16_NC_Q16_2
+q:   
+o: width 40
+t: scale 符合
+- 對於非常需要動腦的事情，我相當有責任感。
+
+l: 16_NC_Q16_3
+q:   
+o: width 40
+t: scale 符合
+- {reverse}思考事情不是我的個人興趣。
+
+l: 16_NC_Q16_4
+q:   
+o: width 40
+t: scale 符合
+- {reverse}比起挑戰自己的思維能力，我寧願做些不需要思考的事情。
+
+l: 16_NC_Q16_5
+q:   
+o: width 40
+t: scale 符合
+- {reverse}我會評估並且避免可能需要深入思考的事情。
+
+l: 16_NC_Q16_6
+q:   
+o: width 40
+t: scale 符合
+- 我能從長時間的深思熟慮獲得滿足感。
+
+l: 16_NC_Q16_7
+q:   
+o: width 40
+t: scale 符合
+- {reverse}我只會考慮一個人必須面對的事情。
+
+l: 16_NC_Q16_8
+q:   
+o: width 40
+t: scale 符合
+- {reverse}比起長期目標，我比較喜歡思考日常要處理的項目。
+
+l: 16_NC_Q16_9
+q:   
+o: width 40
+t: scale 符合
+- {reverse}我喜歡一旦學會了就不需要太多思考的工作。
+
+l: 16_NC_Q16_10
+q:   
+o: width 40
+t: scale 符合
+- 靠著思考就能圓滿達成所有目標的想法令我著迷。
+
+l: 16_NC_Q16_11
+q:   
+o: width 40
+t: scale 符合
+- 我很享受為解決問題找出新方案的工作。
+
+l: 16_NC_Q16_12
+q:   
+o: width 40
+t: scale 符合
+- {reverse}學習新的思考方式並不會讓我感到高興。
+
+l: 16_NC_Q16_13
+q:   
+o: width 40
+t: scale 符合
+- 我喜歡充滿必須解決的難題的生活。
+
+l: 16_NC_Q16_14
+q:   
+o: width 40
+t: scale 符合
+- 需要抽象思考的觀念令我著迷。
+
+l: 16_NC_Q16_15
+q:   
+o: width 40
+t: scale 符合
+- 我喜歡挑戰智力、有困難性及重要性的工作，而不是有點重要又不需要太多思考的工作。
+
+l: 16_NC_Q16_16
+q:   
+o: width 40
+t: scale 符合
+- {reverse}完成一項需要大量腦力的工作後，我會感到解脫而不是滿足。
+
+l: 16_NC_Q16_17
+q:   
+o: width 40
+t: scale 符合
+- {reverse}對我來說，完成工作就足夠了；我不在乎工作的理由和效用。
+
+l: 16_NC_Q16_18
+q:   
+o: width 40
+t: scale 符合
+- 即使是對我沒什麼影響的問題，我都會深思熟慮解決方法。
+
+random: end
+
+page: end
+
+page: begin
+
+l: 17_message
+t: info
+q: 閱讀以下每個陳述，並根據你的信念和經驗決定你對每個陳述的同意程度。
+
+random: begin
+
+scale: 同意
+item: 問題
+- {score=1} 非常不同意
+- {score=2} 不同意
+- {score=3} 稍微不同意
+- {score=4} 稍微同意
+- {score=5} 同意
+- {score=6} 非常同意
+
+l: 17_NCC_Q17_1
+q:   
+t: scale 同意
+o: width 50%
+- 我認為有明確的規則和秩序是在工作成功的必要條件。
+
+l: 17_NCC_Q17_2
+q:   
+t: scale 同意
+o: width 50%
+- {reverse}即便我已經有了定見，我也總是考慮其他可能的選項。
+
+l: 17_NCC_Q17_3
+q:   
+t: scale 同意
+o: width 50%
+- 我不擅長處理不確定的狀況。
+
+l: 17_NCC_Q17_4
+q:   
+t: scale 同意
+o: width 50%
+- 我不喜歡沒有標準答案的問題。
+
+l: 17_NCC_Q17_5
+q:   
+t: scale 同意
+o: width 50%
+- {reverse}我喜歡和行為無法預測的人做朋友。
+
+l: 17_NCC_Q17_6
+q:   
+t: scale 同意
+o: width 50%
+- 我認為我的性格適合有規律的日常作息。
+
+l: 17_NCC_Q17_7
+q:   
+t: scale 同意
+o: width 50%
+- {reverse}就算不知會發生什麼事，我能享受身處一個新環境的不確定性。
+
+l: 17_NCC_Q17_8
+q:   
+t: scale 同意
+o: width 50%
+- 在外用餐，我喜歡選曾經去過的餐廳，可以知道要點什麼。
+
+l: 17_NCC_Q17_9
+q:   
+t: scale 同意
+o: width 50%
+- 當我不明白日常生活的某件事為什麼會發生，我會感到不舒服。
+
+l: 17_NCC_Q17_10
+q:   
+t: scale 同意
+o: width 50%
+- 當團隊中某個人的意見與其他人不一樣時，我會感到生氣。
+
+l: 17_NCC_Q17_11
+q:   
+t: scale 同意
+o: width 50%
+- 我不喜歡在最後一刻改變原訂計劃。
+
+l: 17_NCC_Q17_12
+q:   
+t: scale 同意
+o: width 50%
+- {reverse}我覺得自己是優柔寡斷的人。
+
+l: 17_NCC_Q17_13
+q:   
+t: scale 同意
+o: width 50%
+- {reverse}逛購物中心時，我經常很難決定要買什麼。
+
+l: 17_NCC_Q17_14
+q:   
+t: scale 同意
+o: width 50%
+- 遇到問題時，我通常很快就找到最佳解決方案。
+
+l: 17_NCC_Q17_15
+q:   
+t: scale 同意
+o: width 50%
+- 當一個重要問題令我感到困惑時，我會覺得非常沮喪。
+
+l: 17_NCC_Q17_16
+q:   
+t: scale 同意
+o: width 50%
+- {reverse}我習慣拖到最後一刻才做出重要決定。
+
+l: 17_NCC_Q17_17
+q:   
+t: scale 同意
+o: width 50%
+- 我經常能迅速且自信地做出重要決定。
+
+l: 17_NCC_Q17_18
+q:   
+t: scale 同意
+o: width 50%
+- 無論是約會或工作，我從不遲到。
+
+l: 17_NCC_Q17_19
+q:   
+t: scale 同意
+o: width 50%
+- {reverse}我覺得在最後一刻改變原訂計劃很有趣。
+
+l: 17_NCC_Q17_20
+q:   
+t: scale 同意
+o: width 50%
+- {reverse}我的個人空間通常雜亂無章。
+
+l: 17_NCC_Q17_21
+q:   
+t: scale 同意
+o: width 50%
+- 在許多社會衝突事件中，我能輕易看出那一方是對的，那一方是錯的。
+
+l: 17_NCC_Q17_22
+q:   
+t: scale 同意
+o: width 50%
+- 我認識的人之中沒有令我討厭的人。
+
+l: 17_NCC_Q17_23
+q:   
+t: scale 同意
+o: width 50%
+- {reverse}我經常會掙扎於要做許多決定的狀況。
+
+l: 17_NCC_Q17_24
+q:   
+t: scale 同意
+o: width 50%
+- 我相信要成為好學生，最重要是守秩序和積極參與組織。
+
+l: 17_NCC_Q17_25
+q:   
+t: scale 同意
+o: width 50%
+- {reverse}遇見衝突狀況時，我通常覺得雙方可能都是對的。
+
+l: 17_NCC_Q17_26
+q:   
+t: scale 同意
+o: width 50%
+- 我不擅長和行動無法預測的人相處。
+
+l: 17_NCC_Q17_27
+q:   
+t: scale 同意
+o: width 50%
+- 在社交場合我喜歡和熟識的人聊天，因為我比較知道他們在想甚麼。
+
+l: 17_NCC_Q17_28
+q:   
+t: scale 同意
+o: width 50%
+- {reverse}我覺得上課沒有明確規定目標和要求，自己的學習狀況會更好。
+
+l: 17_NCC_Q17_29
+q:   
+t: scale 同意
+o: width 50%
+- {reverse}就某項議題思考問題時，我會盡可能考慮各方面的不同意見。
+
+l: 17_NCC_Q17_30
+q:   
+t: scale 同意
+o: width 50%
+- 我不擅長處理一個不知預期結果的狀況。
+
+l: 17_NCC_Q17_31
+q:   
+t: scale 同意
+o: width 50%
+- 我隨時都想知道別人在想什麼。
+
+l: 17_NCC_Q17_32
+q:   
+t: scale 同意
+o: width 50%
+- 我不喜歡聽什麼事情都能說得通的說法。
+
+l: 17_NCC_Q17_33
+q:   
+t: scale 同意
+o: width 50%
+- 聽一個沒有主見的人說話，很讓人煩躁。
+
+l: 17_NCC_Q17_34
+q:   
+t: scale 同意
+o: width 50%
+- 遵循每天一致的行程過日子，能讓我更享受生活。
+
+l: 17_NCC_Q17_35
+q:   
+t: scale 同意
+o: width 50%
+- 我喜歡有清楚且有條理的生活方式。
+
+l: 17_NCC_Q17_36
+q:   
+t: scale 同意
+o: width 50%
+- {reverse}我很愛與不同觀點的人互動。
+
+l: 17_NCC_Q17_37
+q:   
+t: scale 同意
+o: width 50%
+- 我喜歡一切事情都井然有序。
+
+l: 17_NCC_Q17_38
+q:   
+t: scale 同意
+o: width 50%
+- 當我不清楚別人的意思或意圖時，我會感到不舒服。
+
+l: 17_NCC_Q17_39
+q:   
+t: scale 同意
+o: width 50%
+- 我認為每個人都不應該從事休閒活動。
+
+l: 17_NCC_Q17_40
+q:   
+t: scale 同意
+o: width 50%
+- {reverse}如果一個問題有很多可能的解決方案，經常會讓我感到困惑。
+
+l: 17_NCC_Q17_41
+q:   
+t: scale 同意
+o: width 50%
+- {reverse}我總是能看到許多可以解決目前問題的方案。
+
+l: 17_NCC_Q17_42
+q:   
+t: scale 同意
+o: width 50%
+- 我寧可知道壞消息也不想一無所知。
+
+l: 17_NCC_Q17_43
+q:   
+t: scale 同意
+o: width 50%
+- 我覺得沒有所謂的無心之過。
+
+l: 17_NCC_Q17_44
+q:   
+t: scale 同意
+o: width 50%
+- 確定自己的觀點之前，我通常不會探詢各種不同的意見。
+
+l: 17_NCC_Q17_45
+q:   
+t: scale 同意
+o: width 50%
+- 我不喜歡無法預測的狀況。
+
+l: 17_NCC_Q17_46
+q:   
+t: scale 同意
+o: width 50%
+- 我從來沒有傷害別人的感受。
+
+l: 17_NCC_Q17_47
+q:   
+t: scale 同意
+o: width 50%
+- {reverse}我不愛按照著例行公事工作或學習。
+
+random: end
+
+page: end
