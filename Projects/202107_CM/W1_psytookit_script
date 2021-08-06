@@ -12,7 +12,7 @@ item: 問題
 - {score=2} 我認為這不是真的
 - {score=3} 我不知道
 - {score=4} 我認為這是真的
-- {score=5} 我確信這是真的
+- {score=5} 我確定這是真的
 
 l: 1_xinxi_Q1_1
 q:   
@@ -206,6 +206,12 @@ t: scale 確定這是真的
 o: width 50%
 - {reverse}日本特定選在6月4日贈送給台灣疫苗是為了挑釁中國。
 
+l: 1_xinxi_Q1_33
+q:    
+t: scale 確定這是真的
+o: width 50%
+- 請務必注意本調查中的問題。 請勾選“我確定這是真的”
+
 random: end
 
 page: end
@@ -342,61 +348,61 @@ item: 項目
 l: 10_laiyuan_Q10_1
 q:   
 t: scale 次數
-o: width 55
+o: width 70
 - 電視
 
 l: 10_laiyuan_Q10_2
 q:   
 t: scale 次數
-o: width 55
+o: width 70
 - 收音機
 
 l: 10_laiyuan_Q10_3
 q:   
 t: scale 次數
-o: width 55
+o: width 70
 - 印刷報紙
 
 l: 10_laiyuan_Q10_4
 q:   
 t: scale 次數
-o: width 55
+o: width 70
 - 新聞網站（例如，東森新聞、yahoo奇摩新聞、LINE TODAY、ET TODAY）
 
 l: 10_laiyuan_Q10_5
 q:   
 t: scale 次數
-o: width 55
+o: width 70
 - 社交網站（例如，Facebook、Twitter、Instagram）
 
 l: 10_laiyuan_Q10_6
 q:   
 t: scale 次數
-o: width 55
+o: width 70
 - 影片分享平台（例如，YouTube）
 
 l: 10_laiyuan_Q10_7
 q:   
 t: scale 次數
-o: width 55
+o: width 70
 - 影片串流平台（例如，Netflix）
 
 l: 10_laiyuan_Q10_8
 q:   
 t: scale 次數
-o: width 55
+o: width 70
 - 朋友和/或家人（個人互動）
 
 l: 10_laiyuan_Q10_9
 q:   
 t: scale 次數
-o: width 55
+o: width 70
 - 訊息軟體（例如，LINE、Whatsapp、Facebook messenger）
 
 l: 10_laiyuan_Q10_10
 q:   
 t: scale 次數
-o: width 55
+o: width 70
 - 社交新聞聚合網站（例如，PTT、Dcard、卡提諾）
 
 page: end
