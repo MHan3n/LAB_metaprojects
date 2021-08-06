@@ -10,7 +10,7 @@
 
 
 
-<meta name="date" content="2021-08-02" />
+<meta name="date" content="2021-08-06" />
 
 <title>Psytoolkit data processing</title>
 
@@ -167,14 +167,14 @@ pre code {
 
 
 <h1 class="title toc-ignore">Psytoolkit data processing</h1>
-<h4 class="date">2021-08-02</h4>
+<h4 class="date">2021-08-06</h4>
 
 </div>
 
 
 <p>匯入下載的資料壓縮檔</p>
 <pre class="r"><code>## path to the latest downloaded raw data
-downloaded_rawdata &lt;- &quot;0_reproduce_training/xinxi_data（有5個人回答的）.zip&quot;
+downloaded_rawdata &lt;- &quot;0_reproduce_training/xinxi_data.zip&quot;
 ## Check the downloaded data files
 datafiles &lt;- unzip(downloaded_rawdata, list = TRUE)
 ## Check the time of latest data 
@@ -186,15 +186,22 @@ datarows &lt;- read_csv(unz(downloaded_rawdata,filename = &quot;data.csv&quot;))
     drop_na() %&gt;%
 ## Remove the time columns
    select(-starts_with(&quot;TIME_&quot;))</code></pre>
-<pre><code>## Rows: 17 Columns: 36</code></pre>
-<pre><code>## -- Column specification --------------------------------------------------------
-## Delimiter: &quot;,&quot;
-## chr  (3): participant, TIME_start, TIME_end
-## dbl (32): 1_xinxi_Q1:1, 1_xinxi_Q1:2, 1_xinxi_Q1:3, 1_xinxi_Q1:4, 1_xinxi_Q1...</code></pre>
 <pre><code>## 
-## i Use `spec()` to retrieve the full column specification for this data.
-## i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<pre><code>## Warning: One or more parsing issues, see `problems()` for details</code></pre>
+## -- Column specification --------------------------------------------------------
+## cols(
+##   .default = col_double(),
+##   participant = col_character(),
+##   TIME_start = col_character(),
+##   TIME_end = col_character()
+## )
+## i&lt;U+00A0&gt;Use `spec()` for the full column specifications.</code></pre>
+<pre><code>## Warning: 5 parsing failures.
+## row col   expected     actual         file
+##   2  -- 36 columns 37 columns &lt;connection&gt;
+##   4  -- 36 columns 37 columns &lt;connection&gt;
+##  13  -- 36 columns 37 columns &lt;connection&gt;
+##  14  -- 36 columns 37 columns &lt;connection&gt;
+##  16  -- 36 columns 37 columns &lt;connection&gt;</code></pre>
 <table>
 <thead>
 <tr class="header">
