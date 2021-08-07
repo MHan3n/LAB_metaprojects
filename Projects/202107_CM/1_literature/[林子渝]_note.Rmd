@@ -1,0 +1,17 @@
+---
+title: "My note"
+author: "林子渝"
+date: "`r Sys.Date()`"
+output: html_document
+##bibliography:
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Need for cognition
+陳正男、丁學勤、林素吟、劉若蘭（2005）。廣告的訊息訴求方式、訊息正反性、訊息來源可信度與消費者認知需求對廣告效果之影響。中山管理評論，13(1)，107-142。
+
+
+## Need for cognitive closure
