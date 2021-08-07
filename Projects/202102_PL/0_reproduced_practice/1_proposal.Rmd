@@ -27,15 +27,36 @@ knitr::opts_chunk$set(echo = TRUE)
 
 1. "Plain language summary vs. Ordinary abstract" on comprehensibility & knowledge and knowledge acquisition  
 2. "Plain with sub-heading vs. Plain without sub-heading" on comprehensibility & knowledge and knowledge acquisition  
-3. Easiness effects: Credibility, Confidence to evaluate, Need for corss-evaluation
+3. Easiness effects: Credibility, Confidence to evaluate, Need for cross-evaluation
 
 ## 研究假設
+* 確認性假設
+1. 有標題的白話文摘要、沒標題的白話文摘要比學術摘要的可理解性更高。
+2. 有標題的白話文摘要比沒標題的白話文摘要、學術摘要的知識獲取更多。
+3. 有標題的白話文摘要比學術摘要的可信度更高。
+4. 有標題的白話文摘要比學術摘要對評估研究能力的信心更高。
+5. 有標題的白話文摘要比學術摘要認為需要進行的交叉評估更低。
 
+* 探索性問題
+1. 獲取全文的意願性
 
 
 # 方法
+* 參與者
+ + 預計招募具有大學學籍之學生60人為目標，統計檢定力與樣本量使用ANOVA_exact計算。
 
+* 材料
+ + 摘要（12篇，每篇再分為學術摘要、有標題的白話摘要、沒標題的白話摘要3種）：
+    學術摘要全部取自於《中華心理學刊》中發表的期刊論文，白話摘要取自於中華心理學刊網站中的專欄文章，並加入標題，分別為背景、為什麼進行這項研究、研究人員做了什麼和發現了什麼與這些發現意味著什麼，也有對各個摘要進行中文文本可讀性指標自動化分析。
+    
+ + 知識理解測驗（24題）
+    針對摘要的內容回答是或否的問題。學術摘要與白話摘要各一題，用於測量知識獲取量。
 
+* 研究程序
+1. 基本人口資料統計。
+2. 共進行四個階段。每個階段參與者依序觀看3個研究摘要（每種摘要各一），每看完一個摘要對其可理解性、科學性、可信度、評估能力、決策能力做1-8分的評分，並詢問是否想在測試結束後取得全文連結。
+3. 進行知識理解測驗，休息90秒，再進行下一階段，直到做完四個階段。
+每一階段與階段內觀看的摘要皆採用隨機分配的方式。
 
 ## 設計
 
