@@ -1,5 +1,5 @@
 ---
-title: "原始資料取得與預覽"
+title: "重製研究規劃"
 date: "`r Sys.Date()`"
 output: html_document
 ---
@@ -17,7 +17,7 @@ library(osfr)
 原始資料下載處： https://osf.io/a9qsy
 
 
-```{r echo=TRUE, message=FALSE, warning=FALSE}
+```{r eval=FALSE, message=FALSE, warning=FALSE, include=FALSE}
 ## Get the meta from OSF
 pl_project <- osf_retrieve_node("a9qsy")
 origin_files <- osf_ls_files(pl_project)
@@ -38,3 +38,14 @@ list.files(pattern="Subject_Dataset_Codebook.csv") %>%
   rmarkdown::paged_table(options = list(rows.print = 20))
 ```
 
+
+### 重製規劃
+
+- [計畫書源始檔](1_proposal.Rmd)
+
+- [考驗力模擬分析](2_power_simulation.html)
+
+- [OpenSesame腳本:更新中](../1_OS_scripts/ReplicationKerweretal2021_3.3.10.osexp)
+
+  - [腳本測試網頁](https://cortex.jatos.org/publix/162/start?batchId=163&generalMultiple) ~ 只使用滑鼠就能完成全部問題
+  - [OpenSesame 3.3.10版下載](https://github.com/open-cogsci/OpenSesame/releases/download/prerelease%2F3.3.10a12/opensesame_3.3.10a12-py37-win64-2.exe)
