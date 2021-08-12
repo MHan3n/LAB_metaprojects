@@ -1,0 +1,15 @@
+---
+title: '[張祥偉]_note.Rmd'
+author: "張祥偉"
+date: "2021/8/12"
+bibliography: ref.bib
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Need for cognition
+[@chenjiayiZiXunChengXianMoShiDuiGeRenHuaTuiJianDaiLiRenManYiDuZhiYingXiangRenZhiXuQiuYuJueCeFuZaDuZhiDiaoJieXiaoGuo2016]
+
