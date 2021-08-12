@@ -1,0 +1,52 @@
+---
+title: Boot (2021) Gather其他中文研究的引用 
+author: "謝明翰"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+本研究重製 @bootGatheringProcessingInterpreting2021 的問卷調查及假設分析，探討台灣地區民眾相信正確及錯誤疫情資訊的認知動機因素。
+
+認知動機是什麼？
+Need for cognition(認知需求)
+
+問卷來源文獻: @cacioppoNeedCognition1982; 
+
+@cacioppoEfficientAssessmentNeed1984
+
+# 在Gathering Reference裡面的6.19
+
+1. 認知閉合需求與創業警覺性的 關係：創業團隊內一致性壓力 知覺的調節效果 黃瓊億 Chiung Yi Huang et.al
+
+2. 團隊安全感氛圍與團隊認知閉合需求對資訊分享與創新績效的影響 Chiung Yi Huang et.al
+
+Need for cognitive closure(認知停歇需求)
+
+問卷來源文獻: @kruglanskiPsychologicalTheoryTesting1997
+
+## 目前在其他研究中發現  @Kruglanski, Arie W, Atash, M, DeGrada, Eraldo, Mannetti, Lucia, Pierro, Antonio, & Webster, Donna M. (1997).
+
+# 在Gathering Reference裡面的9
+
+1. 探索結論需求對獎勵計畫與忠誠度關聯性之影響 (暫時保留)
+2. 不同決策特質與搜尋時間壓力下部落格設計與使用者滿意度之探討. 
+(有引用到，但不確定有沒有權限可以下載)
+
+
+
+----- 以下是找過，但沒有引用上述文獻的研究
+
+@ 0806 以下是 NCC 沒有引用 Kruglanski 1997 的文獻
+1. 認知重評與認知閉合需求間交互作用對心理健康的影響
+2. 團隊創新氛圍與團隊認知閉合需求對資訊分享與創新績效的影響
+3.態度一致性與情緒喚起對線上謠言判斷之影響
+
+4. 特別，不知道有沒有權限可以瀏覽 (香港城市大學)
+
+選擇性接觸, 擴展性接觸, 旁導性接觸: 互聯網時代媒體信息接觸理論分析
+
+5. 華人開放性與畫作偏好之關係：以認知閉合需求為中介.
+
