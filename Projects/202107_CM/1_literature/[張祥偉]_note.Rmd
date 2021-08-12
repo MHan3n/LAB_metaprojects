@@ -1,5 +1,5 @@
 ---
-title: '[張祥偉]_note.Rmd'
+title: 'My note'
 author: "張祥偉"
 date: "2021/8/12"
 bibliography: ref.bib
@@ -11,5 +11,5 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ## Need for cognition
-[@chenjiayiZiXunChengXianMoShiDuiGeRenHuaTuiJianDaiLiRenManYiDuZhiYingXiangRenZhiXuQiuYuJueCeFuZaDuZhiDiaoJieXiaoGuo2016]
+陳佳誼, and 柯書婷. 2016. “資訊呈現模式對個人化推薦代理人滿意度之影響：認知需求與決策複雜度之調節效果.” 行銷科學學報 12 (1): 63–83. [@chenjiayiZiXunChengXianMoShiDuiGeRenHuaTuiJianDaiLiRenManYiDuZhiYingXiangRenZhiXuQiuYuJueCeFuZaDuZhiDiaoJieXiaoGuo2016]
 
