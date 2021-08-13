@@ -15,6 +15,11 @@ knitr::opts_chunk$set(echo = TRUE)
 df <- read.csv("../0_reproduced_practice/Gesamtdatensatz_Total_Dataset_Matrix.csv", na.strings = c("-999"))
 df_wiss <- read.csv("../0_reproduced_practice/Wissenstestdatensatz_Knowledge_Test_Dataset_Matrix.csv", na.strings = c("-999"))
 library(tidyverse)
+require(lme4)
+require(lmerTest)
+require(sjstats)
+require(MuMIn)
+library(multcomp)
 ```
 
 ## 表3
@@ -52,11 +57,63 @@ table3 <- df %>%
   )%>%
 print()
 
+
+```
+
+
+## 表3類內相關係數
+
+```{r message=FALSE, warning=FALSE}
+## H1 Comprehensibility
+#ICC Subject
+m0 <- lmer(vst ~ (1 | id), data = df)
+summary(m0)
+performance::icc(m0)
+
+#ICC Study
+m00 <- lmer(vst ~ (1 | study), data = df)
+summary(m00)
+performance::icc(m00)
+
+## H3 Credibility
+#ICC Subject
+m0 <- lmer(vtr ~ (1 | id), data = df)
+summary(m0)
+performance::icc(m0)
+
+#ICC Study
+m00 <- lmer(vtr ~ (1 | study), data = df)
+summary(m00)
+performance::icc(m00)
+
+## H4 Ability to Evaluate
+
+#ICC Subject
+m0 <- lmer(wahr ~ (1 | id), data = df)
+summary(m0)
+performance::icc(m0)
+
+#ICC Study
+m00 <- lmer(wahr ~ (1 | study), data = df)
+summary(m00)
+performance::icc(m00)
+
+## H5 Ability to Make a Decision
+
+#ICC Subject
+m0 <- lmer(ent ~ (1 | id), data = df)
+summary(m0)
+performance::icc(m0)
+
+#ICC Study
+m00 <- lmer(ent ~ (1 | study), data = df)
+summary(m00)
+performance::icc(m00)
+
+
 ```
 
 ## 表6
 
 ```{r message=FALSE, warning=FALSE}
-
-
 ```
