@@ -1,0 +1,62 @@
+---
+title: "Table 3 & 6 重製"
+author: "林子渝"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Read Data
+
+```{r, echo=TRUE, results='show', message=TRUE, warning=TRUE, include=T}
+df <- read.csv("../0_reproduced_practice/Gesamtdatensatz_Total_Dataset_Matrix.csv", na.strings = c("-999"))
+df_wiss <- read.csv("../0_reproduced_practice/Wissenstestdatensatz_Knowledge_Test_Dataset_Matrix.csv", na.strings = c("-999"))
+library(tidyverse)
+```
+
+## 表3
+
+```{r message=FALSE, warning=FALSE}
+table3 <- df %>%
+  group_by(PLS) %>%
+  summarise("Comprehensibility M" = mean(vst,na.rm = TRUE),
+            "Comprehensibility SD" = sd(vst,na.rm = TRUE),
+            "Credibility M" = mean(vtr,na.rm = TRUE),
+            "Credibility SD" = sd(vtr,na.rm = TRUE),
+            "Ability to evaluate M" = mean(wahr,na.rm = TRUE),
+            "Ability to evaluate SD" = sd(wahr,na.rm = TRUE),
+            "Ability to make a decision M" = mean(ent,na.rm = TRUE),
+            "Ability to make a decision SD" = sd(ent,na.rm = TRUE),
+            )%>%
+  pivot_longer(
+    cols = "Comprehensibility M":"Ability to make a decision SD",
+    names_to = c("Outcome"),
+    values_to = "score"
+    ) %>%
+  spread(
+  key = PLS,
+  value = score
+) %>%
+  separate(
+  col = Outcome,
+  into = c("Outcome", "M_SD"),
+  sep = -2
+) %>%
+  rename(
+    "PLS with subheading" = "PLS",
+    "PLS without subheading" = "No Heading",
+    "ordinary scientific abstract" = "Non PLS"
+  )%>%
+print()
+
+```
+
+## 表6
+
+```{r message=FALSE, warning=FALSE}
+
+
+```
