@@ -12,52 +12,76 @@ knitr::opts_chunk$set(echo = TRUE)
 ## Read Data
 
 ```{r, echo=TRUE, results='show', message=TRUE, warning=TRUE, include=T}
-df <- read.csv("../0_reproduced_practice/Gesamtdatensatz_Total_Dataset_Matrix.csv", na.strings = c("-999"))
-df_wiss <- read.csv("../0_reproduced_practice/Wissenstestdatensatz_Knowledge_Test_Dataset_Matrix.csv", na.strings = c("-999"))
 library(tidyverse)
 require(lme4)
 require(lmerTest)
 require(sjstats)
 require(MuMIn)
 library(multcomp)
+## Import raw data
+df <- read.csv("../0_reproduced_practice/Gesamtdatensatz_Total_Dataset_Matrix.csv", na.strings = c("-999"))
+df_wiss <- read.csv("../0_reproduced_practice/Wissenstestdatensatz_Knowledge_Test_Dataset_Matrix.csv", na.strings = c("-999"))
+## Keep the order of summary types
+df$PLS <- factor(df$PLS, levels = c("PLS", "No Heading", "Non PLS"))
+
+df$NH <- df$PLS == "No Heading"
+df$OSA <- df$PLS == "Non PLS"
 ```
 
 ## 表3
 
 ```{r message=FALSE, warning=FALSE}
-table3 <- df %>%
+table3_cells <- df %>%
+  ## Compute the means and sd of each dependent variable 
+  ## All cells are consistent with the original Table 3
   group_by(PLS) %>%
   summarise("Comprehensibility M" = mean(vst,na.rm = TRUE),
             "Comprehensibility SD" = sd(vst,na.rm = TRUE),
             "Credibility M" = mean(vtr,na.rm = TRUE),
             "Credibility SD" = sd(vtr,na.rm = TRUE),
-            "Ability to evaluate M" = mean(wahr,na.rm = TRUE),
-            "Ability to evaluate SD" = sd(wahr,na.rm = TRUE),
-            "Ability to make a decision M" = mean(ent,na.rm = TRUE),
-            "Ability to make a decision SD" = sd(ent,na.rm = TRUE),
-            )%>%
+            "Ability_to_evaluate M" = mean(wahr,na.rm = TRUE),
+            "Ability_to_evaluate SD" = sd(wahr,na.rm = TRUE),
+            "Ability_to_make_a_decision M" = mean(ent,na.rm = TRUE),
+            "Ability_to_make_a_decision SD" = sd(ent,na.rm = TRUE),
+            ) %>%
+  ## Turn to long table
   pivot_longer(
-    cols = "Comprehensibility M":"Ability to make a decision SD",
+    cols = "Comprehensibility M":"Ability_to_make_a_decision SD",
     names_to = c("Outcome"),
     values_to = "score"
     ) %>%
-  spread(
-  key = PLS,
-  value = score
-) %>%
-  separate(
-  col = Outcome,
-  into = c("Outcome", "M_SD"),
-  sep = -2
-) %>%
-  rename(
-    "PLS with subheading" = "PLS",
-    "PLS without subheading" = "No Heading",
-    "ordinary scientific abstract" = "Non PLS"
-  )%>%
-print()
+  ## Split the variable names and statistic terms
+  separate(Outcome, c("Variable","Stat"),sep = " ") %>%
+  ## Transfer stat terms to col
+  pivot_wider(names_from = Stat, values_from = score) %>%
+  ## Unite stat terms for convert PLS to cols
+  unite("Stat",M:SD,sep="," ) %>%
+  ## Turn PLS to cols
+  pivot_wider(names_from = PLS, values_from = Stat) %>%
+  separate(PLS, c("PLS_M","PLS_SD"),sep=",") %>%
+  separate(`No Heading`,c("PLS_NH_M","PLS_NH_SD"),sep = ",") %>%
+  separate(`Non PLS`,c("OSA_M","OSA_SD"),sep = ",") 
 
+## convert all characters back to numeric
+table3_cells[,-1] <- sapply(table3_cells[,-1],as.numeric)
 
+print(table3_cells)
+#%>%
+#  spread(
+#  key = PLS,
+#  value = score
+#) %>%
+#  separate(
+#  col = Outcome,
+#  into = c("Outcome", "M_SD"),
+#  sep = -2
+#) %>%
+#  rename(
+#    "PLS with subheading" = "PLS",
+#    "PLS without subheading" = "No Heading",
+#    "ordinary scientific abstract" = "Non PLS"
+#  )%>%
+#print()
 ```
 
 
