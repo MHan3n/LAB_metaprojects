@@ -31,39 +31,40 @@ df$OSA <- df$PLS == "Non PLS"
 ## 表3
 
 ```{r message=FALSE, warning=FALSE}
-table3_cells <- df %>%
-  ## Compute the means and sd of each dependent variable 
   ## All cells are consistent with the original Table 3
+table3_cells <- (df %>%
+  ## Compute the means of each dependent variable 
   group_by(PLS) %>%
-  summarise("Comprehensibility M" = mean(vst,na.rm = TRUE),
-            "Comprehensibility SD" = sd(vst,na.rm = TRUE),
-            "Credibility M" = mean(vtr,na.rm = TRUE),
-            "Credibility SD" = sd(vtr,na.rm = TRUE),
-            "Ability_to_evaluate M" = mean(wahr,na.rm = TRUE),
-            "Ability_to_evaluate SD" = sd(wahr,na.rm = TRUE),
-            "Ability_to_make_a_decision M" = mean(ent,na.rm = TRUE),
-            "Ability_to_make_a_decision SD" = sd(ent,na.rm = TRUE),
+  summarise("Comprehensibility" = mean(vst,na.rm = TRUE),
+            "Credibility" = mean(vtr,na.rm = TRUE),
+            "Ability to evaluate" = mean(wahr,na.rm = TRUE),
+            "Ability to make a decision" = mean(ent,na.rm = TRUE),
             ) %>%
   ## Turn to long table
   pivot_longer(
-    cols = "Comprehensibility M":"Ability_to_make_a_decision SD",
-    names_to = c("Outcome"),
-    values_to = "score"
-    ) %>%
-  ## Split the variable names and statistic terms
-  separate(Outcome, c("Variable","Stat"),sep = " ") %>%
-  ## Transfer stat terms to col
-  pivot_wider(names_from = Stat, values_from = score) %>%
-  ## Unite stat terms for convert PLS to cols
-  unite("Stat",M:SD,sep="," ) %>%
-  ## Turn PLS to cols
-  pivot_wider(names_from = PLS, values_from = Stat) %>%
-  separate(PLS, c("PLS_M","PLS_SD"),sep=",") %>%
-  separate(`No Heading`,c("PLS_NH_M","PLS_NH_SD"),sep = ",") %>%
-  separate(`Non PLS`,c("OSA_M","OSA_SD"),sep = ",") 
-
-## convert all characters back to numeric
-table3_cells[,-1] <- sapply(table3_cells[,-1],as.numeric)
+    cols = "Comprehensibility":"Ability to make a decision",
+    names_to = "Variable",
+    values_to = "M"
+  ) %>%
+left_join(
+  ## Compute the sd of each dependent variable 
+df %>%
+  group_by(PLS) %>%
+  summarise("Comprehensibility" = sd(vst,na.rm = TRUE),
+            "Credibility" = sd(vtr,na.rm = TRUE),
+            "Ability to evaluate" = sd(wahr,na.rm = TRUE),
+            "Ability to make a decision" = sd(ent,na.rm = TRUE)
+            ) %>%
+  ## Turn to long table
+  pivot_longer(
+    cols = "Comprehensibility":"Ability to make a decision",
+    names_to = "Variable",
+    values_to = "SD"
+  ),
+by = c("PLS","Variable")
+)  %>% 
+  ## Turn to Readable table
+    pivot_wider(names_from = PLS, values_from = c(M,SD)))[,c(1,2,5,3,6,4,7)]
 
 print(table3_cells)
 #%>%
