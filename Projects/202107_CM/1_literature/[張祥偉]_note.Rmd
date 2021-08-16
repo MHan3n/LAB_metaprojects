@@ -12,4 +12,5 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Need for cognition
 陳佳誼, and 柯書婷. 2016. “資訊呈現模式對個人化推薦代理人滿意度之影響：認知需求與決策複雜度之調節效果.” 行銷科學學報 12 (1): 63–83. [@chenjiayiZiXunChengXianMoShiDuiGeRenHuaTuiJianDaiLiRenManYiDuZhiYingXiangRenZhiXuQiuYuJueCeFuZaDuZhiDiaoJieXiaoGuo2016]
+研究觀點：在這篇研究中，透過認知需求理論探討當高認知需求與低認知需求遇到個人化資訊的表現，他們認為高認知需求會比低認知需求還要花費較多心力評估這些資訊，能夠比較回想較多更多訊息，能夠有不同的層面去看，去了解這些個人化的資訊是否對自己有幫助。
 
