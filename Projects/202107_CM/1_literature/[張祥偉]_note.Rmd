@@ -18,6 +18,6 @@ knitr::opts_chunk$set(echo = TRUE)
 研究方法：填答15 題Wolfe and Grosch（1990）所提出的認知需求量表，
 
 個人因素在幽默廣告勸服途徑中之角色研究
-[liannaihuaGeRenYinSuZaiYouMoGuangGaoQuanFuTuJingZhongZhiJiaoSeYanJiu2002]
+[@liannaihuaGeRenYinSuZaiYouMoGuangGaoQuanFuTuJingZhongZhiJiaoSeYanJiu2002]
 研究觀點：研究者把認知需求主要分為三種程度高認知需求、中認知需求、低認知需求。使用認知需求主要探討不同程度的認知需求者對於幽默廣告類型表現以及情感密集度他們之間的關聯。研究中主要有三個假設是與認知需求有關。研究結果發現中認知需求者對於認知型幽默、非幽默型廣告表現優於低認知需求者，低認知需求者對於情感性幽默廣告優於兩者，由於中與高認知需求者沒有太大差異所以研究者並沒有做探討。結果證實中認知需求者對於要思考的認知行幽默廣告比較感興趣。
 研究方法：使用(Cacioppo,petty,and Kao) NFC問卷，使用六點量表共18題，研究對象為180名大學生。
