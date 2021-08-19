@@ -295,6 +295,4 @@ m3a <- lmer(ent ~(1 | study) + NH+ OSA + Englisch +   (1 | id), data = df)
 
 anova(m,m3a) # English Proficiency on Random Intercept 	
 
-tribble()
-
 ```
