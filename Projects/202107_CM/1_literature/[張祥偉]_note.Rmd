@@ -11,15 +11,13 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ## Need for cognition
-陳佳誼, and 柯書婷. 2016. “資訊呈現模式對個人化推薦代理人滿意度之影響：認知需求與決策複雜度之調節效果.” 行銷科學學報 12 (1): 63–83. 
 
-@chenjiayiZiXunChengXianMoShiDuiGeRenHuaTuiJianDaiLiRenManYiDuZhiYingXiangRenZhiXuQiuYuJueCeFuZaDuZhiDiaoJieXiaoGuo2016
+陳佳誼, and 柯書婷. 2016. 
+資訊呈現模式對個人化推薦代理人滿意度之影響：認知需求與決策複雜度之調節效果. [@chenjiayiZiXunChengXianMoShiDuiGeRenHuaTuiJianDaiLiRenManYiDuZhiYingXiangRenZhiXuQiuYuJueCeFuZaDuZhiDiaoJieXiaoGuo2016]
+研究觀點：在這篇研究中，他們透過認知需求理論探討當高認知需求與低認知需求遇到高複雜的個人化資訊與低複雜的資訊的表現，他們認為高認知需求會比低認知需求還要花費較多心力評估這些資訊，能夠比較回想較多更多訊息，能夠有不同的層面去看，去了解這些個人化的資訊是否對自己有幫助。結果證實，高認知需求的確比低認知需求不管在高低複雜中都能夠花費較多心力分析問題。
+研究方法：填答15 題Wolfe and Grosch（1990）所提出的認知需求量表，
 
-研究觀點：在這篇研究中，透過認知需求理論探討當高認知需求與低認知需求遇到個人化資訊的表現，他們認為高認知需求會比低認知需求還要花費較多心力評估這些資訊，能夠比較回想較多更多訊息，能夠有不同的層面去看，去了解這些個人化的資訊是否對自己有幫助。
- 
-@liannaihuaGeRenYinSuZaiYouMoGuangGaoQuanFuTuJingZhongZhiJiaoSeYanJiu2002
-
-練乃華. (2002). 個人因素在幽默廣告勸服途徑中之角色研究 [Report]. 臺北市：國立臺灣大學工商管理學系. https://scholars.lib.ntu.edu.tw/handle/123456789/99003
-
+個人因素在幽默廣告勸服途徑中之角色研究
+[liannaihuaGeRenYinSuZaiYouMoGuangGaoQuanFuTuJingZhongZhiJiaoSeYanJiu2002]
 研究觀點：研究者把認知需求主要分為三種程度高認知需求、中認知需求、低認知需求。使用認知需求主要探討不同程度的認知需求者對於幽默廣告類型表現以及情感密集度他們之間的關聯。研究中主要有三個假設是與認知需求有關。研究結果發現中認知需求者對於認知型幽默、非幽默型廣告表現優於低認知需求者，低認知需求者對於情感性幽默廣告優於兩者，由於中與高認知需求者沒有太大差異所以研究者並沒有做探討。結果證實中認知需求者對於要思考的認知行幽默廣告比較感興趣。
 研究方法：使用(Cacioppo,petty,and Kao) NFC問卷，使用六點量表共18題，研究對象為180名大學生。
