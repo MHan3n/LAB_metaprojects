@@ -93,12 +93,12 @@ print(table3_cells)
 #ICC Subject
 m0 <- lmer(vst ~ (1 | id), data = df)
 summary(m0)
-performance::icc(m0)
+vst_participant_icc <- (performance::icc(m0) %>% unlist())[1] ## retrieve participant icc
 
 #ICC Study
 m00 <- lmer(vst ~ (1 | study), data = df)
 summary(m00)
-performance::icc(m00)
+vst_study_icc <- (performance::icc(m00) %>% unlist())[1] ## retrieve study icc
 
 ## H3 Credibility
 #ICC Subject
