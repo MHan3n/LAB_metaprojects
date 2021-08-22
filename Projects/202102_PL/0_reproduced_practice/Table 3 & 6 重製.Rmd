@@ -154,12 +154,12 @@ m00 <- lmer(vst ~ NH + OSA +(1 | study), data = df)
 
 m1 <- lmer(vst ~(1 | study) + NH + OSA +  (1 | id), data = df)
 
-Vst_1 <- (anova(m00, m1) %>%
+Vst_1 <- (anova(m00, m1) %>% # Random Intercept Participant 
 dplyr::select("Chisq":"Pr(>Chisq)"))[-1,] %>%
   gather(
   key = "Comprehensibility", 
-  value = "score1", 
-  "Chisq":"Pr(>Chisq)")           # Random Intercept Participant 
+  value = "parameters1", 
+  "Chisq":"Pr(>Chisq)")           
 
 #Random Slopes
 m2a <- lmer(vst ~(1 | study) + NH + OSA +   (OSA | id), data = df)
@@ -168,19 +168,19 @@ m2a <- lmer(vst ~(1 | study) + NH + OSA +   (OSA | id), data = df)
 m2b <- lmer(vst ~(1 | study) + NH + OSA +   (NH | id), data = df, REML = F)
 summary(m2b)
 
-Vst_2 <- (anova(m2a, m1) %>% 	
+Vst_2 <- (anova(m2a, m1) %>% 	# Random Slope OSA by Participant 
 dplyr::select("Chisq":"Pr(>Chisq)"))[-1,]%>%  
   gather(
   key = "Comprehensibility", 
-  value = "score2", 
-  "Chisq":"Pr(>Chisq)")# Random Slope OSA by Participant 
+  value = "parameters2", 
+  "Chisq":"Pr(>Chisq)")
 
-Vst_3 <- (anova(m2b, m1)%>% 	
+Vst_3 <- (anova(m2b, m1)%>% 	# Random Slope No Subheadings by Participant 
 dplyr::select("Chisq":"Pr(>Chisq)"))[-1,] %>% 
   gather(
   key = "Comprehensibility", 
-  value = "score3", 
-  "Chisq":"Pr(>Chisq)")# Random Slope No Subheadings by Participant 	
+  value = "parameters3", 
+  "Chisq":"Pr(>Chisq)")	
 
 m3a <- lmer(vst ~(1 | study) + NH+ OSA + j_ja   + j_pj + j_ms +   (OSA | id), data = df)
 m3b <- lmer(vst ~(1 | study) + NH+ OSA * j_ja   + OSA * j_pj + OSA * j_ms +   (OSA | id), data = df)
@@ -189,34 +189,38 @@ Vst_4 <- (anova(m2a,m3a) %>% # Justification Beliefs on Random Intercept
 dplyr::select("Chisq":"Pr(>Chisq)"))[-1,]%>%  
   gather(
   key = "Comprehensibility", 
-  value = "score4", 
+  value = "parameters4", 
   "Chisq":"Pr(>Chisq)")
 
-Vst_5 <- (anova(m2a,m3b) %>% 
+Vst_5 <- (anova(m2a,m3b) %>% # Justification Beliefs on Random Slope OSA 	
 dplyr::select("Chisq":"Pr(>Chisq)"))[-1,]%>%
     gather(
   key = "Comprehensibility", 
-  value = "score5", 
-  "Chisq":"Pr(>Chisq)")# Justification Beliefs on Random Slope OSA 	
+  value = "parameters5", 
+  "Chisq":"Pr(>Chisq)")
 
 m3a <- lmer(vst ~(1 | study) + NH+ OSA + Englisch +   (OSA | id), data = df)
 m3b <- lmer(vst ~(1 | study) + NH+ OSA * Englisch +   (OSA | id), data = df)
 
-Vst_6 <- (anova(m2a,m3a) %>% 
+Vst_6 <- (anova(m2a,m3a) %>% # English Proficiency on Random Intercept 	
 dplyr::select("Chisq":"Pr(>Chisq)"))[-1,]%>%
     gather(
   key = "Comprehensibility", 
-  value = "score6", 
-  "Chisq":"Pr(>Chisq)")# English Proficiency on Random Intercept 	
+  value = "parameters6", 
+  "Chisq":"Pr(>Chisq)")
 
-Vst_7 <- (anova(m3a,m3b) %>% 
+Vst_7 <- (anova(m3a,m3b) %>% # English Proficiency on Random Slope OSA 	
 dplyr::select("Chisq":"Pr(>Chisq)"))[-1,] %>%
     gather(
   key = "Comprehensibility", 
-  value = "score7", 
-  "Chisq":"Pr(>Chisq)")# English Proficiency on Random Slope OSA 	
+  value = "parameters7", 
+  "Chisq":"Pr(>Chisq)")
 
-Comprehensibility_ratio_tests <- list(Vst_1,Vst_2,Vst_3,Vst_4,Vst_5,Vst_6,Vst_7) %>% reduce(left_join, by = "Comprehensibility") 
+Comprehensibility_ratio_tests <- list(Vst_1,Vst_2,Vst_3,Vst_4,Vst_5,Vst_6,Vst_7) %>% reduce(left_join, by = "Comprehensibility") %>%
+  pivot_longer(cols = parameters1:parameters7, names_to = "ratio") %>%
+  pivot_wider(names_from = Comprehensibility, values_from = value)
+---
+  
 # Knowledge Acquisition
 
 df_wiss$NH <- df_wiss$PLS == "No Heading"
