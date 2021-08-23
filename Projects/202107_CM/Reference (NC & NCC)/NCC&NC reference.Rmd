@@ -13,6 +13,8 @@ knitr::opts_chunk$set(echo = TRUE)
 認知動機是什麼？
 1. Need for cognition(認知需求)
 
+認知需求的人喜歡思考的歷程，他們普遍想要了解知識。因此這些人可能會運用不同的管道去獲得知識，並從中判斷資訊的真實度。
+
 問卷來源文獻: @cacioppoNeedCognition1982; 
 
 @cacioppoEfficientAssessmentNeed1984  (# 在Gathering Reference裡面的6.19)
@@ -21,6 +23,9 @@ knitr::opts_chunk$set(echo = TRUE)
 1-2. 團隊安全感氛圍與團隊認知閉合需求對資訊分享與創新績效的影響 Chiung Yi Huang et.al(引用 @cacioppoNeedCognition1982)
 
 2. Need for cognitive closure(認知停歇需求)
+
+認知閉合需求的人認為思考主要是為了要解決問題，以及為了消除對於資訊的不確定，所帶來的壓力或不安。
+
 
 可引用的相關問卷來源文獻: @KruglanskiPsychologicalTheoryTesting1997
                           @Kruglanskiinneedforcognitiveclosure1994
@@ -36,6 +41,20 @@ knitr::opts_chunk$set(echo = TRUE)
 2-4. 團隊創新氛圍與團隊認知閉合需求對資訊分享與創新績效的影響(@Kruglanskiinneedforcognitiveclosure1994)
 2-5. 探索結論需求對獎勵計畫與忠誠度關聯性之影響  (@Kruglanskiinneedforcognitiveclosure1994)
 
+
+@ 0823  國內研究
+
+
+NCC(認知閉合需求)
+
+目前看到的認知閉合相關國內研究，在許多廣告研究都能看見，其中包含，消費者的認知閉合與創意廣告的關係（消費者的認知閉合需求，在看到商業廣告，與他們的認知閉合需求的關係），以及認知閉合與創業的關係，此研究認為創業警覺性以及個體所知覺到的團隊內一致性壓力，與創業有關係。
+閉合需求與虛擬經驗組合的研究，這篇研究探討人在虛擬模擬的人際互動狀態下，他們的認知閉合需求與廣告行銷的關係
+
+引用來源：
+渴望延遲閉合需求對創意廣告效果之影響（方菁容、衛萬里、鄧成連）
+認知閉合需求與創業警覺性的關係：創業團隊內一致性壓力知覺的調節效果（王瓊億、王預萱）
+結論需求與組合順序對虛擬經驗組合之廣告效果影響（耿慶瑞、丁慧瑩、李武軒）
+這些文獻也有提到使用Roet and Van Hiel (2011) 的認知閉合量表
 
 ----- 以下是找過，但沒有引用上述文獻的研究
 
