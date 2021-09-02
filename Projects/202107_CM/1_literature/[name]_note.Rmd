@@ -1,0 +1,41 @@
+---
+title: "My note"
+author: "My name"
+date: "`r Sys.Date()`"
+
+bibliography: ref.bib
+
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## 前置準備
+
+#### zotero
+
+- [安裝與設定zotero](https://youtu.be/h3_-T22xagQ)
+  - [建議設定](https://youtu.be/h3_-T22xagQ)
+- [註冊zotero雲端帳號](https://youtu.be/wSfFFc_ZOCU)
+- [使用共享書目資料](https://youtu.be/ASt37BOgjjA)
+  - [實驗室共享書目](https://www.zotero.org/groups/331808/TCU_LCP_LAB)，告知註冊帳號即可加入
+
+- 安裝add on ~ [Better BibTeX for Zotero](https://retorque.re/zotero-better-bibtex/)
+
+#### Rstudio
+
+安裝套件~
+[citr](https://github.com/crsh/citr)
+
+
+## Need for cognition
+
+創建者： @cacioppoNeedCognition1982 and @cacioppoEfficientAssessmentNeed1984
+
+## Need for cognitive closure
+
+
+
+#### 參考文獻

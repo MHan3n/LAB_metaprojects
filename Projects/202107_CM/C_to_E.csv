@@ -1,0 +1,66 @@
+Scale,Original Questions,Chinese Version,Sub
+NC,I prefer complex to simple problems.,我比較喜歡複雜而不喜歡簡單的問題 。,
+NC,I like to have the responsibility of handling a situation that requires a lot of thinking.,我願意負責解決要花很多腦筋的事 。,
+NC,Thinking is not my idea of fun.,{reverse}我不以思考為樂 。,
+NC,I would rather do something that requires little thought than something that is sure to challenge my thinking abilities.,{reverse}我比較喜歡去做不用思考的事，而不願去做需要思考的事。,
+NC,I try to anticipate and avoid situations where there is a likely chance I will have to think in depth about something.,{reverse} 我對那些要花很多心思去想事情的情境，避之唯恐不及。,
+NC,I find satisfaction in deliberating hard and for long hours.,我從深思和長考中得到滿足 。,
+NC,I only think as hard as I have to.,{reverse}我不費心去多想 。,
+NC,I prefer to think about small daily projects to long term ones.,{reverse}與其去想一些長期計劃，我寧願想一些小的日常計劃。,
+NC,I like tasks that require little thought once I've learned them.,{reverse}我喜歡那些一旦學會就不用再想的工作。,
+NC,The idea of relying on thought to make my way to the top appeals to me.,靠著思考去往上爬的想法正合我意。,
+NC,I really enjoy a task that involves coming up with new solutions to problems.,我喜歡那些需要想出新的方法來解決問題的工作。,
+NC,Learning new ways to think doesn't excite me very much.,{reverse}學習新的思考方式沒有甚麼意思。,
+NC,I prefer my life to be filled with puzzles I must solve.,我願我這一生充滿著我必須解決的難題。,
+NC,The notion of thinking abstractly is appealing to me.,我喜歡抽象地思考。,
+NC,"I would prefer a task that is intellectual, difficult, and important to one that is somewhat important but does not require much thought.",我喜歡需要動腦筋且困難的重要工作，而不喜歡還算重要但不需多想的工作。,
+NC,I feel relief rather than satisfaction after completing a task that requires a lot of mental effort.,{reverse}當我完成一件很費心力的工作後，我感到的是解脫而不是滿足。,
+NC,It's enough for me that something gets the job done; I don't care how or why it works.,{reverse}我只在乎工作是否完成，我不在意它是如何或爲何做成的。,
+NC,I usually end up deliberating about issues even when they do not affect me personally.,即使一些事務跟我個人沒有切身關係，我常會去對它們深思熟慮一番。,
+NCC,I think that having clear rules and order at work is essential for success.,我認為在工作中有清晰的規則和條理是獲得成功的必要條件。,Order 
+NCC,"Even after I've made up my mind about something, I am always eager to consider a different opinion.",{reverse}即使對某件事的心意已定，我總是還會急切地考慮其他不同的觀點。,Closed Mindedness 
+NCC,I don't like situations that are uncertain.,我不喜歡不確定的狀況。,Ambiguity 
+NCC,I dislike questions which could be answered in many different ways.,我不喜歡那些有許多不同答案的問題。,Closed Mindedness 
+NCC,I like to have friends who are unpredictable.,{reverse}我喜歡擁有行為不可預測的朋友,Predictability 
+NCC,I find that a well ordered life with regular hours suits my temperament.,我發現我的個性適合井井有條、作息固定的生活方式。,Order 
+NCC,I enjoy the uncertainty of going into a new situation without knowing what might happen.,{reverse}我享受自己身處於無法預知的新情境中所帶來的不確定性及新鮮感。,Predictability 
+NCC,"When dining out, I like to go to places where I have been before so that I know what to expect.",外出吃飯時，我喜歡去以前去過的地方，因為這樣我心中有底。,Predictability 
+NCC,I feel uncomfortable when I don't understand the reason why an event occurred in my life.,當我不瞭解我生活中某件事發生的原因時，我會感到不舒服。,Ambiguity 
+NCC,I feel irritated when one person disagrees with what everyone else in a group believes.,當某個人不同意群體內其他人都認同的觀點時，我會感到惱火。,Closed Mindedness 
+NCC,I hate to change my plans at the last minute.,我討厭在最後一刻改變我的計畫。,Order 
+NCC,I would describe myself as indecisive.,{reverse}當我做完了一個決定時，我會感覺很不安。,Decisiveness 
+NCC,"When I go shopping, I have difficulty deciding exactly what it is I want.",{reverse}買東西的時候，我經常很難決定要買什麼。,Decisiveness 
+NCC,When faced with a problem I usually see the one best solution very quickly.,當我面臨問題時，我很快就會找到最好的解決辦法。,Decisiveness 
+NCC,"When I am confused about an important issue, I feel very upset.",當我對某個重要問題感到困惑時，會覺得心煩。,Ambiguity 
+NCC,I tend to put off making important decisions until the last possible moment.,{reverse}我習慣拖到最後一刻才做出決定。,Decisiveness 
+NCC,I usually make important decisions quickly and confidently.,我經常能花最少時間做出我有信心的決定。,Decisiveness 
+NCC,I have never been late for an appointment or work.,無論是約會或工作，我從來不會遲到。,Lie
+NCC,I think it is fun to change my plans at the last moment.,{reverse}我認為在最後一刻改變計畫是有趣的。,Predictability 
+NCC,My personal space is usually messy and disorganized.,{reverse}我的私人空間通常是雜亂無章的。,Order 
+NCC,"In most social conflicts, I can easily see which side is right and which is wrong.", 在大多數的衝突中，我能輕易地分辨出誰對誰錯。,Ambiguity 
+NCC,I have never known someone I did not like.,我認識的人之中沒有令我討厭的人。,Lie
+NCC,I tend to struggle with most decisions.,{reverse}需要做許多決定的時候，我經常難以抉擇。,Decisiveness 
+NCC,I believe orderliness and organization are among the most important characteristics of a good student.,我認為有組織守紀律是一個人最重要的特質之一,Order 
+NCC,"When considering most conflict situations, I can usually see how both sides could be right.",{reverse}在思考多數衝突的情境時，我通常看得出雙方都有可能是正確的。,Closed Mindedness 
+NCC,I don't like to be with people who are capable of unexpected actions.,我不喜歡與會做出意想不到的事情及行為的人在一起。,Predictability 
+NCC,I prefer to socialize with familiar friends because I know what to expect from them.,我喜歡與熟悉的朋友交往，因為我知道他們的行為習慣。,Predictability 
+NCC,I think that I would learn best in a class that lacks clearly stated objectives and requirements.,{reverse}我覺得自己在缺乏清楚的規定和要求的情境中學得最好。,Order 
+NCC,"When thinking about a problem, I consider as many different opinions on the issue as possible.",{reverse}思考問題的時候，我會盡可能的把有關該問題的所有觀點都考慮到。,Closed Mindedness 
+NCC,I don't like to go into a situation without knowing what I can expect from it.,我不喜歡進入一個無法預測的情境中。,Predictability 
+NCC,I like to know what people are thinking all the time.,我喜歡知道別人心中一直在想些什麼。,Ambiguity 
+NCC,I dislike it when a person's statement could mean many different things.,我不喜歡一個人的話裏面有多種不同的含意。,Ambiguity 
+NCC,It's annoying to listen to someone who cannot seem to make up his or her mind.,聽舉棋不定的人說話是件令人討厭的事。,Ambiguity 
+NCC,I find that establishing a consistent routine enables me to enjoy life more.,我發現建立一套例行且前後一致的規則能使我好好的享受生活。,Order 
+NCC,I enjoy having a clear and structured mode of life.,我喜歡有條不紊的生活方式。,Order 
+NCC,I prefer interacting with people whose opinions are very different from my own.,{reverse}我比較喜歡和觀點與我非常不同的人打交道。,Closed Mindedness 
+NCC,I like to have a plan for everything and a place for everything.,我喜歡對每件事情都有計劃，對每樣東西都有它固定的一個擺放位置。,Order 
+NCC,I feel uncomfortable when someone's meaning or intention is unclear to me.,當我不清楚某人的意思或意圖時，會感到不舒服。,Ambiguity 
+NCC,I believe that one should never engage in leisure activities.,我認為每個人都不應該從事休閒活動。,Lie
+NCC,When trying to solve a problem I often see so many possible options that it's confusing.,{reverse}在嘗試解決問題時，我經常會因為太多的選擇方案而不知所措。,Decisiveness 
+NCC,I always see many possible solutions to problems I face.,{reverse}對我所碰到的問題，我總是能發現許多可能的解決辦法。,Closed Mindedness 
+NCC,I'd rather know bad news than stay in a state of uncertainty.,我寧願知道壞消息，也不願意處在不確定的狀態中。,Ambiguity 
+NCC,I feel that there is no such thing as an honest mistake.,我覺得沒有所謂的無心之過。,Lie
+NCC,I do not usually consult many different options before forming my own view.,"在自己還沒有定見之前,我通常不會諮詢許多不同的意見。",Closed Mindedness 
+NCC,I dislike unpredictable situations.,我不喜歡無法預測的環境。,Predictability 
+NCC,I have never hurt another person's feelings.,我從來沒有令別人感到不舒服。,Lie
+NCC,I dislike the routine aspects of my work (studies).,{reverse}我不喜歡我的工作或學習中，有那些常規性的規範和規則。,Order 

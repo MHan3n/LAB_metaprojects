@@ -1,30 +1,37 @@
 # 信息處理 true & false statement
 |item_var_tag|info|category|wave|
 |------------|----|--------|----|
-|ID|Prolific ID number|NA|NA|
-|Q1_1|已知的首例冠狀病毒病例發生在中國武漢。|True statement|1|
-|Q1_2|冠狀病毒主要通過咳嗽和打噴嚏傳播。|True statement|1|
-|Q1_3|冠狀病毒對老年人尤其致命。|True statement|1|
-|Q1_4|發燒是冠狀病毒的潛在症狀。|True statement|1|
-|Q1_5|冠狀病毒可以通過沒有出現症狀的人傳播。|True statement|1|
-|Q1_6|冠狀病毒來自動物。|True statement|1|
-|Q1_7|冠狀病毒尚無治療方法。|True statement|1|
-|Q1_8|暴露于冠狀病毒後可能需要14天才能出現症狀。|True statement|1|
-|Q1_9|保持社交距離有助於減緩冠狀病毒的傳播。|True statement|1|
-|Q1_10|康復後有可能對冠狀病毒免疫。|True statement|1|
-|Q1_11|大多數感染冠狀病毒的人會出現輕微症狀。|True statement|1|
-|Q1_12|冠狀病毒可以通過電梯按鈕和門把手傳播。|True statement|1|
-|Q1_13R|冠狀病毒不如普通流感致命。|False statement|1|
-|Q1_14R|冠狀病毒可以通過食物污染傳播。|False statement|1|
-|Q1_15R|口罩可以保護您免受冠狀病毒的侵害。|False statement|1|
-|Q1_16R|流感疫苗可以保護您免受冠狀病毒的侵害。|False statement|1|
-|Q1_17R|冠狀病毒主要影響心臟。|False statement|1|
-|Q1_18R|噁心是冠狀病毒的潛在症狀。|False statement|1|
-|Q1_19R|冠狀病毒不會通過小學適齡兒童傳播。|False statement|1|
-|Q1_20R|冠狀病毒是普通流感的變種。|False statement|1|
-|Q1_21R|寵物可能會受到冠狀病毒的影響。|False statement|1|
-|Q1_22R|只有在您已經生病的情況下，您才能死于冠狀病毒。|False statement|1|
-|Q1_23R|感染冠狀病毒的人只能感染 2-3 個人。|False statement|1|
-|Q1_24R|乾手器可有效殺死冠狀病毒。|False statement|1|
+|Q1_1|最早的冠狀病毒患者來源於中國。|True statement|1|
+|Q1_2|AZ與莫德納的疫苗在第一劑接種完，可於接種後第10至12週接種第二劑。|True statement|1|
+|Q1_3|對流感疫苗有過敏反應，依舊可以接種疫苗。|True statement|1|
+|Q1_4|發燒是感染冠狀病毒的潛在症狀。|True statement|1|
+|Q1_5|注射疫苗前若服用止痛藥(例如，普拿疼)、消炎藥或退燒藥藥物，可能會降低免疫反應。|True statement|1|
+|Q1_6|施打疫苗並不會造成不孕。|True statement|1|
+|Q1_7|施打完疫苗後身體出現胸痛、心悸或下肢疼痛的狀況是不正常的要盡快就醫。|True statement|1|
+|Q1_8|感染冠狀病毒後會有14天的潛伏期。|True statement|1|
+|Q1_9|若本身有慢性病但控制穩定，依舊可以接種冠狀病毒疫苗。|True statement|1|
+|Q1_10|沒有出現症狀的人能傳播冠狀病毒。|True statement|1|
+|Q1_11|冠狀病毒患者康復後若沒有做好防疫措施(例：戴口罩、勤洗手)，依舊有可能會再次受到感染。|True statement|1|
+|Q1_12|若使用家用快篩試劑呈現陽性，需盡快聯繫當地衛生局或播打1922。|True statement|1|
+|Q1_13R|懷孕婦女不宜接種任何疫苗。|False statement|1|
+|Q1_14R|輝瑞、莫德納的mRNA疫苗是帶有遺傳因子的疫苗，會影響人體基因，有高度致命風險。|False statement|1|
+|Q1_15R|若接種完第一劑疫苗，身體已經有100%的保護力，不怕受到感染。|False statement|1|
+|Q1_16R|流感疫苗可以保護一般人免受冠狀病毒的侵害。|False statement|1|
+|Q1_17R|疫苗的副作用可能會導致血栓、心肌炎，所以要打在右手遠離心臟已降低副作用。|False statement|1|
+|Q1_18R|注射輝瑞或莫德納疫苗會讓身體產生磁性。|False statement|1|
+|Q1_19R|醫療口罩不能阻隔冠狀變種病毒的侵害，需配戴N95口罩才可以。|False statement|1|
+|Q1_20R|冠狀病毒更容易在下雨天傳播，所以在下雨天更不要出門。|False statement|1|
+|Q1_21R|冠狀病毒在抵達肺部前會停留在喉嚨四天，如果喝大量的水，並且以溫水加鹽巴或醋來漱口，可以消除病毒。|False statement|1|
+|Q1_22R|配戴兩層醫用口罩的防護力比內層戴醫用口罩、外層戴布料口罩的防謢力好。|False statement|1|
+|Q1_23R|暫時沒有嗅覺或味覺代表你已經感染到冠狀病毒。|False statement|1|
+|Q1_24R|若蔬果表面上有冠狀病毒，食用後並不會感染，可以放心食用。|False statement|1|
+|Q1_25R|中國政府發布了冠狀病毒以防止地球人口過剩。|Conspiracy|1|
+|Q1_26R|冠狀病毒是人類所創造的，用以讓製藥行業銷售疫苗並撈取利益。|Conspiracy|1|
+|Q1_27R|冠狀病毒是神派來懲罰人類的。|Conspiracy|1|
+|Q1_28R|臺灣政府不積極購買疫苗是擁護國產疫苗上市。|Conspiracy|1|
+|Q1_29R|冠狀病毒是中國政府為了觸發第三次世界大戰而製造的生化武器。|Conspiracy|1|
+|Q1_30R|冠狀病毒是美國故意製造和傳播用以銷售疫苗的。|Conspiracy|1|
+|Q1_31R|疫苗會將微型晶片植入人體，是為了未來將全人類數據化。|Conspiracy|1|
+|Q1_32R|日本特定選在6月4日贈送給台灣疫苗是為了挑釁中國。|Conspiracy|1|
 
  *R為反向題目

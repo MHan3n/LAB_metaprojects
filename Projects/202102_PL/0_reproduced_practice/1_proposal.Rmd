@@ -13,6 +13,8 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # 緒論
 
+在原始研究Kerwer(2017)的研究中，他認為白話文科學摘要更可以讓大眾理解，這點在許多領域上已有證實，像是生物、醫學等等，而在心理學的領域上則還未有研究，在學術摘要中可能會有特定領域的專有名詞、研究方法與統計術語等等，可能讓一般大眾造成閱讀理解上的困難，使之無法從中獲取資訊與知識。
+
 
 重製研究的重要性：相關的中文研究? 
 
@@ -27,27 +29,42 @@ knitr::opts_chunk$set(echo = TRUE)
 
 1. "Plain language summary vs. Ordinary abstract" on comprehensibility & knowledge and knowledge acquisition  
 2. "Plain with sub-heading vs. Plain without sub-heading" on comprehensibility & knowledge and knowledge acquisition  
-3. Easiness effects: Credibility, Confidence to evaluate, Need for corss-evaluation
+3. Easiness effects: Credibility, Confidence to evaluate, Need for cross-evaluation
 
 ## 研究假設
+* 確認性假設
+1. 有標題的白話文摘要、沒標題的白話文摘要比學術摘要，受測者認為更容易理解(comprehensibility)。
+2. 有標題的白話文摘要比沒標題的白話文摘要、學術摘要，受測者更能有效吸收知識(knowledge acquisition)。
+3. 有標題的白話文摘要比學術摘要，受測者認為可信度更高(Credibility)。
+4. 有標題的白話文摘要比學術摘要，受測者認為更能評估研究內容的真實性(Confidence to evaluate)。
+5. 有標題的白話文摘要比學術摘要，受測者傾向認為不需要更多資訊才能理解內容(cross-evaluation)。
 
+* 探索性問題
+1. 獲取全文的意願性
 
 
 # 方法
 
-
-
 ## 設計
 
-
+* 研究程序
+1. 基本人口資料統計。
+2. 共進行四個階段。每個階段參與者依序觀看3個研究摘要（每種摘要各一），每看完一個摘要對其可理解性、科學性、可信度、評估能力、決策能力做1-8分的評分，並詢問是否想在測試結束後取得全文連結。
+3. 進行知識理解測驗，休息90秒，再進行下一階段，直到做完四個階段。
+每一階段與階段內觀看的摘要皆採用隨機分配的方式。
 
 ## 材料
 
-
+ * 摘要（12篇，每篇再分為學術摘要、有標題的白話摘要、沒標題的白話摘要3種）：
+    學術摘要全部取自於《中華心理學刊》中發表的期刊論文，白話摘要取自於中華心理學刊網站中的專欄文章，並加入標題，分別為背景、為什麼進行這項研究、研究人員做了什麼和發現了什麼與這些發現意味著什麼，也有對各個摘要進行中文文本可讀性指標自動化分析。
+    
+ * 知識理解測驗（24題）
+    針對摘要的內容回答是或否的問題。學術摘要與白話摘要各一題，用於測量知識獲取量。
 
 ## 參與者人數估計
 
-(Power analysis)
+採用Kumle et al. (2021)開發的mixedpower套件，並參考範例，使用Kerwer et al.(2020)提供的源始分析腳本建立的混合效果模型，模擬不同樣本可達到的考驗力。
+預計招募具有大學學籍之學生80人為目標。
 
 # 分析計畫
 

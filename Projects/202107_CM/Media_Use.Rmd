@@ -1,0 +1,245 @@
+---
+title: "Media use reproduction"
+author: "My name"
+date: "2021/8/12"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(osfr)
+```
+
+
+
+### 下載原始資料映像檔
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+## Download and load W1 rawdata from OSF
+osf_retrieve_file("he2v7") %>%
+  osf_download()
+## Download and load W2 rawdata from OSF
+osf_retrieve_file("ch68a") %>%
+  osf_download() 
+```
+
+### 載入原始資料物件
+
+```{r message=FALSE, warning=FALSE}
+load(list.files(recursive = TRUE,full.names = TRUE,include.dirs = TRUE,pattern = "*.Rdata")[1])
+load(list.files(recursive = TRUE,full.names = TRUE,include.dirs = TRUE,pattern = "*.Rdata")[2])
+ls()
+file.remove(list.files(recursive = TRUE,full.names = TRUE,include.dirs = TRUE,pattern = "*.Rdata"))
+```
+
+
+
+### Wave 1 正式分析資料
+
+```{r message=FALSE, warning=FALSE}
+
+wave1_rawdata <- data_numeric %>% 
+## exclude the participants who spent more than 999 seconds on the knowledge test
+  filter(Q1T_Page.Submit < 999) %>%
+## exclude the participants who failed the catch question
+  filter(Q1_CATCH1 == 5) %>%
+## ## exclude the participants who spent time on the knowledge test longer than 3.29 standardized time
+  filter(scale(Q1T_Page.Submit)<3.29)
+## How many participants' data are analyzed?
+wave1_rawdata %>%
+  summarise(N=n())
+```
+
+## 重製Figure 2
+
+> From https://github.com/AC108516137
+> figure.2 資料
+
+> 因為我這邊資料尚未更新，使用資料夾data_numeric
+以下是使用wave1_rawdata資料夾的程式碼，應該不會有太大的數值偏差情況發生。
+
+> 資料夾中的統計項目順序和文獻中的並不一致
+做出來的圖表會不一樣，但數據是正確的。
+
+
+1.電視
+```{r}
+wave1_rawdata%>%
+  select(ID,Q10_1) %>%
+  pivot_longer(cols = starts_with("Q10_"), names_to = "Television_", values_to = "rating") %>%
+  group_by(ID) %>%
+  summarise(Television_5_AGreatDeal = mean(rating == 42),
+            Television_4_ALot = mean(rating == 41),
+            Television_3_AModerateAmount = mean(rating == 40),
+            Television_2_ALittle = mean(rating == 39),
+            Television_1_NoneAtAll = mean(rating == 38)) %>%
+  pivot_longer(cols = starts_with("Television_"), names_to = "Options",values_to = "Percentage") %>%
+  group_by(Options) %>%
+  summarise(Mean = round(mean(Percentage)*100,1)
+            ) %>%
+  arrange(desc(Options))
+```
+
+2.收音機
+```{r}
+wave1_rawdata%>%
+  select(ID,Q10_2) %>%
+  pivot_longer(cols = starts_with("Q10_"), names_to = "Radio_", values_to = "rating") %>%
+  group_by(ID) %>%
+  summarise(Radio_5_AGreatDeal = mean(rating == 42),
+            Radio_4_ALot = mean(rating == 41),
+            Radio_3_AModerateAmount = mean(rating == 40),
+            Radio_2_ALittle = mean(rating == 39),
+            Radio_1_NoneAtAll = mean(rating == 38)) %>%
+  pivot_longer(cols = starts_with("Radio_"), names_to = "Options",values_to = "Percentage") %>%
+  group_by(Options) %>%
+  summarise(Mean = round(mean(Percentage)*100,1)
+            ) %>%
+  arrange(desc(Options))
+```
+
+3.印刷報紙
+```{r}
+wave1_rawdata%>%
+  select(ID,Q10_3) %>%
+  pivot_longer(cols = starts_with("Q10_"), names_to = "PrintedNewspapers_", values_to = "rating") %>%
+  group_by(ID) %>%
+  summarise(PrintedNewspapers_5_AGreatDeal = mean(rating == 42),
+            PrintedNewspapers_4_ALot = mean(rating == 41),
+            PrintedNewspapers_3_AModerateAmount = mean(rating == 40),
+            PrintedNewspapers_2_ALittle = mean(rating == 39),
+            PrintedNewspapers_1_NoneAtAll = mean(rating == 38)) %>%
+  pivot_longer(cols = starts_with("PrintedNewspapers_"), names_to = "Options",values_to = "Percentage") %>%
+  group_by(Options) %>%
+  summarise(Mean = round(mean(Percentage)*100,1)
+            ) %>%
+  arrange(desc(Options))
+```
+
+4.新聞網站
+```{r}
+wave1_rawdata%>%
+  select(ID,Q10_4) %>%
+  pivot_longer(cols = starts_with("Q10_"), names_to = "NewsSites_", values_to = "rating") %>%
+  group_by(ID) %>%
+  summarise(NewsSites_5_AGreatDeal = mean(rating == 42),
+            NewsSites_4_ALot = mean(rating == 41),
+            NewsSites_3_AModerateAmount = mean(rating == 40),
+            NewsSites_2_ALittle = mean(rating == 39),
+            NewsSites_1_NoneAtAll = mean(rating == 38)) %>%
+  pivot_longer(cols = starts_with("NewsSites_"), names_to = "Options",values_to = "Percentage") %>%
+  group_by(Options) %>%
+  summarise(Mean = round(mean(Percentage)*100,1)
+            ) %>%
+  arrange(desc(Options))
+```
+
+5.社交網站
+```{r}
+wave1_rawdata%>%
+  select(ID,Q10_5) %>%
+  pivot_longer(cols = starts_with("Q10_"), names_to = "SocialNetworkingSites_", values_to = "rating") %>%
+  group_by(ID) %>%
+  summarise(SocialNetworkingSites_5_AGreatDeal = mean(rating == 42),
+            SocialNetworkingSites_4_ALot = mean(rating == 41),
+            SocialNetworkingSites_3_AModerateAmount = mean(rating == 40),
+            SocialNetworkingSites_2_ALittle = mean(rating == 39),
+            SocialNetworkingSites_1_NoneAtAll = mean(rating == 38)) %>%
+  pivot_longer(cols = starts_with("SocialNetworkingSites_"), names_to = "Options",values_to = "Percentage") %>%
+  group_by(Options) %>%
+  summarise(Mean = round(mean(Percentage)*100,1)
+            ) %>%
+  arrange(desc(Options))
+```
+
+6.影片分享平台
+```{r}
+wave1_rawdata%>%
+  select(ID,Q10_6) %>%
+  pivot_longer(cols = starts_with("Q10_"), names_to = "VedioSharingPlatforms_", values_to = "rating") %>%
+  group_by(ID) %>%
+  summarise(VedioSharingPlatforms_5_AGreatDeal = mean(rating == 42),
+            VedioSharingPlatforms_4_ALot = mean(rating == 41),
+            VedioSharingPlatforms_3_AModerateAmount = mean(rating == 40),
+            VedioSharingPlatforms_2_ALittle = mean(rating == 39),
+            VedioSharingPlatforms_1_NoneAtAll = mean(rating == 38)) %>%
+  pivot_longer(cols = starts_with("VedioSharingPlatforms_"), names_to = "Options",values_to = "Percentage") %>%
+  group_by(Options) %>%
+  summarise(Mean = round(mean(Percentage)*100,1)
+            ) %>%
+  arrange(desc(Options))
+```
+
+7.影片串流平台
+```{r}
+wave1_rawdata%>%
+  select(ID,Q10_7) %>%
+  pivot_longer(cols = starts_with("Q10_"), names_to = "VedioStreamingPlatforms_", values_to = "rating") %>%
+  group_by(ID) %>%
+  summarise(VedioStreamingPlatforms_5_AGreatDeal = mean(rating == 42),
+            VedioStreamingPlatforms_4_ALot = mean(rating == 41),
+            VedioStreamingPlatforms_3_AModerateAmount = mean(rating == 40),
+            VedioStreamingPlatforms_2_ALittle = mean(rating == 39),
+            VedioStreamingPlatforms_1_NoneAtAll = mean(rating == 38)) %>%
+  pivot_longer(cols = starts_with("VedioStreamingPlatforms_"), names_to = "Options",values_to = "Percentage") %>%
+  group_by(Options) %>%
+  summarise(Mean = round(mean(Percentage)*100,1)
+            ) %>%
+  arrange(desc(Options))
+```
+
+8.朋友/家人
+```{r eval=FALSE, include=FALSE}
+
+wave1_rawdata%>%
+  select(ID,Q10_8) %>%
+  pivot_longer(cols = starts_with("Q10_"), names_to = "Friendsor/andFamily_", values_to = "rating") %>%
+  group_by(ID) %>%
+  summarise(Friendsor/andFamily_5_AGreatDeal = mean(rating == 42), ## error happened!
+            Friendsor/andFamily_4_ALot = mean(rating == 41),
+            Friendsor/andFamily_3_AModerateAmount = mean(rating == 40),
+            Friendsor/andFamily_2_ALittle = mean(rating == 39),
+            Friendsor/andFamily_1_NoneAtAll = mean(rating == 38)) %>%
+  pivot_longer(cols = starts_with("Friendsor/andFamily_"), names_to = "Options",values_to = "Percentage") %>%
+  group_by(Options) %>%
+  summarise(Mean = round(mean(Percentage)*100,1)
+            ) %>%
+  arrange(desc(Options))
+```
+
+9.訊息軟體
+```{r}
+wave1_rawdata%>%
+  select(ID,Q10_9) %>%
+  pivot_longer(cols = starts_with("Q10_"), names_to = "MessagingAPPs_", values_to = "rating") %>%
+  group_by(ID) %>%
+  summarise(MessagingAPPs_5_AGreatDeal = mean(rating == 42),
+            MessagingAPPs_4_ALot = mean(rating == 41),
+            MessagingAPPs_3_AModerateAmount = mean(rating == 40),
+            MessagingAPPs_2_ALittle = mean(rating == 39),
+            MessagingAPPs_1_NoneAtAll = mean(rating == 38)) %>%
+  pivot_longer(cols = starts_with("MessagingAPPs_"), names_to = "Options",values_to = "Percentage") %>%
+  group_by(Options) %>%
+  summarise(Mean = round(mean(Percentage)*100,1)
+            ) %>%
+  arrange(desc(Options))
+```
+
+10.社交新聞聚合網站
+```{r}
+wave1_rawdata%>%
+  select(ID,Q10_10) %>%
+  pivot_longer(cols = starts_with("Q10_"), names_to = "SocialNewsAggregationSites_", values_to = "rating") %>%
+  group_by(ID) %>%
+  summarise(SocialNewsAggregationSites_5_AGreatDeal = mean(rating == 42),
+            SocialNewsAggregationSites_4_ALot = mean(rating == 41),
+            SocialNewsAggregationSites_3_AModerateAmount = mean(rating == 40),
+            SocialNewsAggregationSites_2_ALittle = mean(rating == 39),
+            SocialNewsAggregationSites_1_NoneAtAll = mean(rating == 38)) %>%
+  pivot_longer(cols = starts_with("SocialNewsAggregationSites_"), names_to = "Options",values_to = "Percentage") %>%
+  group_by(Options) %>%
+  summarise(Mean = round(mean(Percentage)*100,1)
+            ) %>%
+  arrange(desc(Options))
+```

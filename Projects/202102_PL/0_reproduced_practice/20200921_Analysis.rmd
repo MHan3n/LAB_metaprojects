@@ -30,7 +30,7 @@ sessionInfo()
 
 
 df <- read.csv("Gesamtdatensatz_Total_Dataset_Matrix.csv", na.strings = c("-999"))
-
+#df_codebook <- read.csv("Gesamtdatensatz_Total_Dataset_Codebook.csv")
 
 df_wiss <- read.csv("Wissenstestdatensatz_Knowledge_Test_Dataset_Matrix.csv", na.strings = c("-999"))
 

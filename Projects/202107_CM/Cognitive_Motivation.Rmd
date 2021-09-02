@@ -25,15 +25,22 @@ file.remove(list.files(recursive = TRUE,full.names = TRUE,include.dirs = TRUE,pa
 backward_T <- read_csv(file = "C_to_E.csv")
 ```
 
+> Boot et al.公開資料的英文題本有編碼不相容，重新編輯並排中文題本，置入"C_to_E.csv"
 
 ### NC 問卷題目
 
 取得[原始問卷](https://www.midss.org/content/need-cognition-scale)
 
+中文版題目取自高泉豐 (1994)
+
+> 中文題目前置{reverse}，代表該題為反向題
+
 ```{r}
-bind_cols( subset(items, key %in% grep("^Q16_",key,value=TRUE) )%>%
-  pull(value) %>% gsub(pattern = "For each of the statements below, please indicate whether or not the statement is characteristic of you or of what you believe. - ",replacement = "") ,
-  slice(backward_T,1:18)) %>% rename(`Original Questions` = `...1`,`Forward Translation` =`Source segment`, `Backward Translation` = `Target segment`) %>%
+#bind_cols( subset(items, key %in% grep("^Q16_",key,value=TRUE) )%>%
+#  pull(value) %>% gsub(pattern = "For each of the statements below, please indicate whether or not the statement is characteristic of you or of what you believe. - ",replacement = "") ,
+filter(backward_T,Scale=="NC") %>% 
+  select(-Scale) %>%
+##  rename(`Original Questions` = `...1`,`Forward Translation` =`Source segment`, `Backward Translation` = `Target segment`) %>%
   rmarkdown::paged_table(options = list(rows.print = 10))
 ```
 
@@ -42,10 +49,16 @@ bind_cols( subset(items, key %in% grep("^Q16_",key,value=TRUE) )%>%
 
 取得[原始問卷](https://www.midss.org/content/need-closure-scale-nfc)
 
+中文版題目取自黃瓊億 (2010)。原版題目有Order, Predictability, Decisiveness, Ambiguity, Closed Mindedness, Lie六個題組。黃瓊億版去除Lie題組，並變更Decisiveness答題向度，本重製版還原兩個題組，以求重現Boot等人(2021)的研究方法。
+
+> 中文題目前置{reverse}，代表該題為反向題
+
 ```{r}
-bind_cols( subset(items, key %in% grep("^Q17_",key,value=TRUE) )%>%
-  pull(value) %>% gsub(pattern = "Read each of the following statements and decide how much you agree with each according to your beliefs and experiences. - ",replacement = "") ,
-  slice(backward_T,-1:-18)) %>% rename(`Original Questions` = `...1`,`Forward Translation` =`Source segment`, `Backward Translation` = `Target segment`) %>%
+#bind_cols( subset(items, key %in% grep("^Q17_",key,value=TRUE) )%>%
+#  pull(value) %>% gsub(pattern = "Read each of the following statements and decide how much you agree with each according to your beliefs and experiences. - ",replacement = "") ,
+  subset(backward_T,Scale=="NCC") %>% 
+  ##rename(`Original Questions` = `...1`,`Forward Translation` =`Source segment`, `Backward Translation` = `Target segment`) %>%
+  select(-Scale) %>%
   rmarkdown::paged_table(options = list(rows.print = 10))
 ```
 

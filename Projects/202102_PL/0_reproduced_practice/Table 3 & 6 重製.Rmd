@@ -1,0 +1,371 @@
+---
+title: "Table 3 & 6 重製"
+author: "林子渝"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Read Data
+
+```{r, echo=TRUE, results='show', message=TRUE, warning=TRUE, include=T}
+library(tidyverse)
+require(lme4)
+require(lmerTest)
+require(sjstats)
+require(MuMIn)
+library(multcomp)
+## Import raw data
+df <- read.csv("../0_reproduced_practice/Gesamtdatensatz_Total_Dataset_Matrix.csv", na.strings = c("-999"))
+df_wiss <- read.csv("../0_reproduced_practice/Wissenstestdatensatz_Knowledge_Test_Dataset_Matrix.csv", na.strings = c("-999"))
+## Keep the order of summary types
+df$PLS <- factor(df$PLS, levels = c("PLS", "No Heading", "Non PLS"))
+
+df$NH <- df$PLS == "No Heading"
+df$OSA <- df$PLS == "Non PLS"
+```
+
+## 表3
+
+```{r message=FALSE, warning=FALSE}
+  ## All cells are consistent with the original Table 3
+table3_cells <- (df %>%
+  ## Compute the means of each dependent variable 
+  group_by(PLS) %>%
+  summarise("Comprehensibility" = mean(vst,na.rm = TRUE),
+            "Credibility" = mean(vtr,na.rm = TRUE),
+            "Ability to evaluate" = mean(wahr,na.rm = TRUE),
+            "Ability to make a decision" = mean(ent,na.rm = TRUE),
+            ) %>%
+  ## Turn to long table
+  pivot_longer(
+    cols = "Comprehensibility":"Ability to make a decision",
+    names_to = "Variable",
+    values_to = "M"
+  ) %>%
+left_join(
+  ## Compute the sd of each dependent variable 
+df %>%
+  group_by(PLS) %>%
+  summarise("Comprehensibility" = sd(vst,na.rm = TRUE),
+            "Credibility" = sd(vtr,na.rm = TRUE),
+            "Ability to evaluate" = sd(wahr,na.rm = TRUE),
+            "Ability to make a decision" = sd(ent,na.rm = TRUE)
+            ) %>%
+  ## Turn to long table
+  pivot_longer(
+    cols = "Comprehensibility":"Ability to make a decision",
+    names_to = "Variable",
+    values_to = "SD"
+  ),
+by = c("PLS","Variable")
+)  %>% 
+  ## Turn to Readable table
+    pivot_wider(names_from = PLS, values_from = c(M,SD)))[,c(1,2,5,3,6,4,7)]
+
+print(table3_cells)
+#%>%
+#  spread(
+#  key = PLS,
+#  value = score
+#) %>%
+#  separate(
+#  col = Outcome,
+#  into = c("Outcome", "M_SD"),
+#  sep = -2
+#) %>%
+#  rename(
+#    "PLS with subheading" = "PLS",
+#    "PLS without subheading" = "No Heading",
+#    "ordinary scientific abstract" = "Non PLS"
+#  )%>%
+#print()
+```
+
+
+## 表3類內相關係數
+
+```{r message=FALSE, warning=FALSE}
+## H1 Comprehensibility
+#ICC Subject
+m0 <- lmer(vst ~ (1 | id), data = df)
+summary(m0)
+vst_participant_icc <- (performance::icc(m0) %>% unlist())[1] ## retrieve participant icc
+
+#ICC Study
+m00 <- lmer(vst ~ (1 | study), data = df)
+summary(m00)
+vst_study_icc <- (performance::icc(m00) %>% unlist())[1] ## retrieve study icc
+
+## H3 Credibility
+#ICC Subject
+m0 <- lmer(vtr ~ (1 | id), data = df)
+summary(m0)
+vtr_participant_icc <- (performance::icc(m0) %>% unlist())[1]
+
+#ICC Study
+m00 <- lmer(vtr ~ (1 | study), data = df)
+summary(m00)
+vtr_study_icc <- (performance::icc(m00) %>% unlist())[1]
+
+## H4 Ability to Evaluate
+
+#ICC Subject
+m0 <- lmer(wahr ~ (1 | id), data = df)
+summary(m0)
+whar_participant_icc <- (performance::icc(m0) %>% unlist())[1]
+
+#ICC Study
+m00 <- lmer(wahr ~ (1 | study), data = df)
+summary(m00)
+whar_study_icc <- (performance::icc(m00) %>% unlist())[1]
+
+## H5 Ability to Make a Decision
+
+#ICC Subject
+m0 <- lmer(ent ~ (1 | id), data = df)
+summary(m0)
+ent_participant_icc <- (performance::icc(m0) %>% unlist())[1]
+
+#ICC Study
+m00 <- lmer(ent ~ (1 | study), data = df)
+summary(m00)
+ent_study_icc <- (performance::icc(m00) %>% unlist())[1]
+
+ICC_table <- tibble(
+  Variable = c("Comprehensibility","Credibility","Ability to evaluate","Ability to make a decision"),
+  ICC_Participants = c(vst_participant_icc,vtr_participant_icc,whar_participant_icc,ent_participant_icc),
+  ICC_Study = c(vst_study_icc,vtr_study_icc,whar_study_icc,ent_study_icc)
+)
+
+table3 <- left_join(ICC_table, table3_cells, by = "Variable") 
+```
+
+## 表6
+
+```{r message=FALSE, warning=FALSE}
+# Comprehensibility	
+# Random Intercepts
+
+m00 <- lmer(vst ~ NH + OSA +(1 | study), data = df)
+
+m1 <- lmer(vst ~(1 | study) + NH + OSA +  (1 | id), data = df)
+
+Vst_1 <- (anova(m00, m1) %>% # Random Intercept Participant 
+dplyr::select("Chisq":"Pr(>Chisq)"))[-1,] # %>%
+#  gather(
+#  key = "Comprehensibility", 
+#  value = "parameters1", 
+#  "Chisq":"Pr(>Chisq)")           
+
+#Random Slopes
+m2a <- lmer(vst ~(1 | study) + NH + OSA +   (OSA | id), data = df)
+
+
+m2b <- lmer(vst ~(1 | study) + NH + OSA +   (NH | id), data = df, REML = F)
+summary(m2b)
+
+Vst_2 <- (anova(m2a, m1) %>% 	# Random Slope OSA by Participant 
+dplyr::select("Chisq":"Pr(>Chisq)"))[-1,] #%>%  
+#  gather(
+#  key = "Comprehensibility", 
+#  value = "parameters2", 
+#  "Chisq":"Pr(>Chisq)")
+
+Vst_3 <- (anova(m2b, m1)%>% 	# Random Slope No Subheadings by Participant 
+dplyr::select("Chisq":"Pr(>Chisq)"))[-1,] #%>% 
+#  gather(
+#  key = "Comprehensibility", 
+#  value = "parameters3", 
+#  "Chisq":"Pr(>Chisq)")	
+
+m3a <- lmer(vst ~(1 | study) + NH+ OSA + j_ja   + j_pj + j_ms +   (OSA | id), data = df)
+m3b <- lmer(vst ~(1 | study) + NH+ OSA * j_ja   + OSA * j_pj + OSA * j_ms +   (OSA | id), data = df)
+
+Vst_4 <- (anova(m2a,m3a) %>% # Justification Beliefs on Random Intercept 	
+dplyr::select("Chisq":"Pr(>Chisq)"))[-1,] #%>%  
+#  gather(
+#  key = "Comprehensibility", 
+#  value = "parameters4", 
+#  "Chisq":"Pr(>Chisq)")
+
+Vst_5 <- (anova(m2a,m3b) %>% # Justification Beliefs on Random Slope OSA 	
+dplyr::select("Chisq":"Pr(>Chisq)"))[-1,] #%>%
+#    gather(
+#  key = "Comprehensibility", 
+#  value = "parameters5", 
+#  "Chisq":"Pr(>Chisq)")
+
+m3a <- lmer(vst ~(1 | study) + NH+ OSA + Englisch +   (OSA | id), data = df)
+m3b <- lmer(vst ~(1 | study) + NH+ OSA * Englisch +   (OSA | id), data = df)
+
+Vst_6 <- (anova(m2a,m3a) %>% # English Proficiency on Random Intercept 	
+dplyr::select("Chisq":"Pr(>Chisq)"))[-1,] #%>%
+#    gather(
+#  key = "Comprehensibility", 
+#  value = "parameters6", 
+#  "Chisq":"Pr(>Chisq)")
+
+Vst_7 <- (anova(m3a,m3b) %>% # English Proficiency on Random Slope OSA 	
+dplyr::select("Chisq":"Pr(>Chisq)"))[-1,] #%>%
+#    gather(
+#  key = "Comprehensibility", 
+#  value = "parameters7", 
+#  "Chisq":"Pr(>Chisq)")
+
+Comprehensibility_ratio_tests <- bind_rows(Vst_1,Vst_2,Vst_3,Vst_4,Vst_5,Vst_6,Vst_7) #%>% #reduce(left_join, by = "Comprehensibility") %>%
+#  pivot_longer(cols = parameters1:parameters7, names_to = "ratio") #%>%
+#  pivot_wider(names_from = Comprehensibility, values_from = value)
+
+  
+# Knowledge Acquisition
+
+df_wiss$NH <- df_wiss$PLS == "No Heading"
+df_wiss$OSA <- df_wiss$PLS == "Non PLS"
+
+#Random Intercept
+
+m00 <- glmer(test ~ NH + OSA +(1 | study/item), data = df_wiss, family = binomial("logit"))
+m1 <- glmer(test ~ NH + OSA + (1 | study/item) + (1 | id), data = df_wiss, family = binomial("logit"))
+
+df_wiss_1 <- (anova(m00, m1) %>%  #Random Intercept Participant 	
+  dplyr::select("Chisq":"Pr(>Chisq)"))[-1,]
+                
+m2b <- glmer(test ~ (1 | study/item) + NH + OSA + (NH | id), data = df_wiss, family = binomial("logit"))
+
+df_wiss_3 <- (anova(m1, m2b) %>% # Random Slope No Subheadings by Participant
+  dplyr::select("Chisq":"Pr(>Chisq)"))[-1,]
+
+m3 <- glmer(test ~ (1 | study/item) + NH + OSA + j_pj + j_ja + j_ms  + (1 | id), data = df_wiss, family = binomial("logit"))
+
+df_wiss_4 <- (anova(m1, m3) %>% # Justification Beliefs on Random Intercept 	
+  dplyr::select("Chisq":"Pr(>Chisq)"))[-1,]
+
+m3 <- glmer(test ~ (1 | study/item) + NH + OSA + Englisch + (1 | id), data = df_wiss, family = binomial("logit"))
+
+df_wiss_6 <- (anova(m1, m3) %>% # English Proficiency on Random Intercept
+  dplyr::select("Chisq":"Pr(>Chisq)"))[-1,]
+
+Knowledge_Acquisition_ratio_tests <- bind_rows(df_wiss_1,df_wiss_3,df_wiss_4,df_wiss_6)
+
+# Credibility
+#Random Intercept
+
+m00 <- lmer(vtr ~ NH + OSA + (1 | study), data = df)
+
+m <- lmer(vtr ~ NH + OSA + (1 | study) +  (1 | id), data = df)
+
+vtr_1 <- (anova(m00, m) %>% #Random Intercept Participant 	
+  dplyr::select("Chisq":"Pr(>Chisq)"))[-1,]
+
+m2a <- lmer(vtr ~(1 | study) + NH + OSA +   (OSA | id), data = df)
+
+m2b <- lmer(vtr ~(1 | study) + NH + OSA +   (NH | id), data = df)
+m2b <- lmer(vtr ~(1 | study) + NH + OSA +   (NH | id), data = df, REML = F)
+
+vtr_2 <- (anova(m2a, m) %>% # Random Slope OSA by Participant 	
+  dplyr::select("Chisq":"Pr(>Chisq)"))[-1,]
+
+vtr_3 <- (anova(m2b,m) %>% # Random Slope No Subheadings by Participant 	
+  dplyr::select("Chisq":"Pr(>Chisq)"))[-1,]
+
+m3a <- lmer(vtr ~(1 | study) + NH + OSA + j_ja   + j_pj +  j_ms +   (OSA | id), data = df)
+m3b <- lmer(vtr ~(1 | study) + NH + OSA * j_ja   + OSA * j_pj + OSA * j_ms +   (OSA | id), data = df)
+
+vtr_4_5 <- (anova(m2a,m3a,m3b) %>% # Justification Beliefs on Random Intercept 	#Justification Beliefs on Random Slope OSA 	
+  dplyr::select("Chisq":"Pr(>Chisq)"))[-1,]
+
+
+#non-convergence
+m3a <- lmer(vtr ~(1 | study) + NH+ OSA + Englisch +   (OSA | id), data = df, REML = F)
+m3b <- lmer(vtr ~(1 | study) + NH+ OSA * Englisch +   (OSA | id), data = df)
+
+
+vtr_6 <- (anova(m2a,m3a, m3b) %>% # English Proficiency on Random Intercept 	
+  dplyr::select("Chisq":"Pr(>Chisq)"))[2,]
+
+vtr_7 <- (anova(m2a,m3b) %>% # English Proficiency on Random Slope OSA 	
+  dplyr::select("Chisq":"Pr(>Chisq)"))[-1,]
+
+Credibility_ratio_tests <- bind_rows(vtr_1,vtr_2,vtr_3,vtr_4_5,vtr_6,vtr_7)
+
+# Ability to Evaluate	
+
+# Random Intercept
+
+m00 <- lmer(wahr ~ NH + OSA + (1 | study), data = df)
+
+m <- lmer(wahr ~ NH + OSA + (1 | study) +  (1 | id), data = df)
+
+wahr_1 <- (anova(m00, m) %>% # Random Intercept Participant 	
+  dplyr::select("Chisq":"Pr(>Chisq)"))[-1,]
+
+# Random Slopes
+
+m2a <- lmer(wahr ~(1 | study) + NH + OSA +   (OSA | id), data = df)
+
+#non-convergence
+m2b <- lmer(wahr ~(1 | study) + NH + OSA +   (NH | id), data = df, REML = T)
+m2b <- lmer(wahr ~(1 | study) + NH + OSA +   (NH | id), data = df, REML = F)
+
+wahr_2 <- (anova(m2a, m) %>% # Random Slope OSA by Participant 	
+  dplyr::select("Chisq":"Pr(>Chisq)"))[-1,]
+
+m3a <- lmer(wahr ~(1 | study) + NH + OSA + j_ja   + j_pj +  j_ms +   (OSA | id), data = df)
+m3b <- lmer(wahr ~(1 | study) + NH + OSA * j_ja   + OSA * j_pj + OSA * j_ms +   (OSA | id), data = df)
+
+wahr_4_5 <- (anova(m2a,m3a,m3b) %>% # Justification Beliefs on Random Intercept 	# Justification Beliefs on Random Slope OSA 	
+  dplyr::select("Chisq":"Pr(>Chisq)"))[-1,]
+
+m3a <- lmer(wahr ~(1 | study) + NH+ OSA + Englisch +   (OSA | id), data = df)
+m3b <- lmer(wahr ~(1 | study) + NH+ OSA * Englisch +   (OSA | id), data = df)
+
+
+wahr_6 <- (anova(m2a,m3a) %>% # English Proficiency on Random Intercept 	
+  dplyr::select("Chisq":"Pr(>Chisq)"))[-1,]
+
+wahr_7 <- (anova(m2a,m3b) %>% # English Proficiency on Random Slope OSA 	
+  dplyr::select("Chisq":"Pr(>Chisq)"))[-1,]
+
+Ability_to_Evaluate_ratio_tests <- bind_rows(wahr_1,wahr_2,wahr_4_5,wahr_6,wahr_7)
+
+# Ability to Make a Decision
+# Random Intercept
+
+m00 <- lmer(ent ~ NH + OSA + (1 | study), data = df)
+
+m <- lmer(ent ~ NH + OSA + (1 | study) +  (1 | id), data = df)
+
+ent_1 <- (anova(m00, m) %>% # Random Intercept Participant 	
+  dplyr::select("Chisq":"Pr(>Chisq)"))[-1,]
+
+# Random Slopes
+
+# Non-convergence
+
+m2a <- lmer(ent ~(1 | study) + NH + OSA +   (OSA | id), data = df)
+m2a <- lmer(ent ~(1 | study) + NH + OSA +   (OSA | id), data = df, REML = F)
+
+#converged nicht
+m2b <- lmer(ent ~(1 | study) + NH + OSA +   (NH | id), data = df)
+m2b <- lmer(ent ~(1 | study) + NH + OSA +   (NH | id), data = df, REML = F)
+
+ent_3 <- (anova(m, m2b) %>% # Random Slope No Subheadings by Participant 	
+  dplyr::select("Chisq":"Pr(>Chisq)"))[-1,]
+
+m3a <- lmer(ent ~(1 | study) + NH + OSA + j_ja   + j_pj +  j_ms +   (1 | id), data = df)
+
+ent_4 <- (anova(m,m3a) %>% # Justification Beliefs on Random Intercept 	
+  dplyr::select("Chisq":"Pr(>Chisq)"))[-1,]
+
+m3a <- lmer(ent ~(1 | study) + NH+ OSA + Englisch +   (1 | id), data = df)
+
+ent_6 <- (anova(m,m3a) %>% # English Proficiency on Random Intercept 	
+  dplyr::select("Chisq":"Pr(>Chisq)"))[-1,]
+
+Ability_to_Makea_Decision_ratio_tests <- bind_rows(ent_1,ent_3,ent_4,ent_6)
+
+```

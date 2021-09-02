@@ -17,7 +17,7 @@ library(lubridate)
 
 ```{r}
 ## path to the latest downloaded raw data
-downloaded_rawdata <- "0_reproduce_training/data.zip"
+downloaded_rawdata <- "0_reproduce_training/xinxi_data.zip"
 ## Check the downloaded data files
 datafiles <- unzip(downloaded_rawdata, list = TRUE)
 ## Check the time of latest data 
@@ -29,6 +29,132 @@ datarows <- read_csv(unz(downloaded_rawdata,filename = "data.csv")) %>%
 ## Remove the time columns
    select(-starts_with("TIME_"))
 ```
+
+|item_var_tag|info|category|wave|
+|------------|----|--------|----|
+|Q1_1|已知的首例冠狀病毒病例發生在中國武漢。|True statement|1|
+|Q1_2|冠狀病毒主要通過咳嗽和打噴嚏傳播。|True statement|1|
+|Q1_3|冠狀病毒對老年人尤其致命。|True statement|1|
+|Q1_4|發燒是冠狀病毒的潛在症狀。|True statement|1|
+|Q1_5|冠狀病毒可以通過沒有出現症狀的人傳播。|True statement|1|
+|Q1_6|冠狀病毒來自動物。|True statement|1|
+|Q1_7|冠狀病毒尚無治療方法。|True statement|1|
+|Q1_8|暴露于冠狀病毒後可能需要14天才能出現症狀。|True statement|1|
+|Q1_9|保持社交距離有助於減緩冠狀病毒的傳播。|True statement|1|
+|Q1_10|康復後有可能對冠狀病毒免疫。|True statement|1|
+|Q1_11|大多數感染冠狀病毒的人會出現輕微症狀。|True statement|1|
+|Q1_12|冠狀病毒可以通過電梯按鈕和門把手傳播。|True statement|1|
+|Q1_13R|冠狀病毒不如普通流感致命。|False statement|1|
+|Q1_14R|冠狀病毒可以通過食物污染傳播。|False statement|1|
+|Q1_15R|口罩可以保護您免受冠狀病毒的侵害。|False statement|1|
+|Q1_16R|流感疫苗可以保護您免受冠狀病毒的侵害。|False statement|1|
+|Q1_17R|冠狀病毒主要影響心臟。|False statement|1|
+|Q1_18R|噁心是冠狀病毒的潛在症狀。|False statement|1|
+|Q1_19R|冠狀病毒不會通過小學適齡兒童傳播。|False statement|1|
+|Q1_20R|冠狀病毒是普通流感的變種。|False statement|1|
+|Q1_21R|寵物可能會受到冠狀病毒的影響。|False statement|1|
+|Q1_22R|只有在您已經生病的情況下，您才能死于冠狀病毒。|False statement|1|
+|Q1_23R|感染冠狀病毒的人只能感染 2-3 個人。|False statement|1|
+|Q1_24R|乾手器可有效殺死冠狀病毒。|False statement|1|
+|Q1_25R|中國政府發布了冠狀病毒以防止地球人口過剩。|Conspiracy|1|
+|Q1_26R|冠狀病毒是在實驗室中創建的，因此製藥行業可以銷售疫苗。|Conspiracy|1|
+|Q1_27R|冠狀病毒是神派來懲罰人類的。|Conspiracy|1|
+|Q1_28R|臺灣政府不積極購買疫苗是擁護國產疫苗上市。|Conspiracy|1|
+|Q1_29R|冠狀病毒是中國政府為了統治台灣而製造的生化武器。|Conspiracy|1|
+|Q1_30R|冠狀病毒是美國故意製造和傳播用以銷售疫苗的。|Conspiracy|1|
+|Q1_31R|冠狀病毒是來自武漢的地下實驗室。|Conspiracy|1|
+|Q1_32R|日本提供給台灣AZ疫苗是為了反抗中國。|Conspiracy|1|
+
+
+```{r all_statment}
+names(datarows) <- gsub(names(datarows),pattern = "1_xinxi_Q1:*",replacement = "")
+
+datarows %>%
+  pivot_longer(cols = `1`:`32`, names_to = "Statment", values_to = "rating") %>%
+  group_by(Statment) %>%
+  summarise(Option_5 = mean(rating == 5),
+            Option_4 = mean(rating == 4),
+            Option_3 = mean(rating == 3),
+            Option_2 = mean(rating == 2),
+            Option_1 = mean(rating == 1)) %>%
+  arrange(as.numeric(Statment)) %>%
+  rmarkdown::paged_table(options = list(rows.print = 12))
+```
+
+
+
+```{r true_statement, eval=FALSE, include=FALSE}
+TRUE_state <- datarows %>%
+  select("participant",`1_xinxi_Q1:1`:`1_xinxi_Q1:12`) %>%
+  pivot_longer(cols = starts_with("1_xinxi_Q1"), names_to = "True_statment", values_to = "rating") %>%
+  group_by(participant) %>%
+  summarise(True_statement_5 = mean(rating == 5),
+            True_statement_4 = mean(rating == 4),
+            True_statement_3 = mean(rating == 3),
+            True_statement_2 = mean(rating == 2),
+            True_statement_1 = mean(rating == 1)) %>%
+  pivot_longer(cols = starts_with("True_statement_"), names_to = "Options",values_to = "Percentage") %>%
+  group_by(Options) %>%
+  summarise(Mean = round(mean(Percentage)*100,1), 
+            SD = round(sd(Percentage)*100,1),
+            CI_L = round(Mean + qnorm(.025)*SD/sqrt(length(unique(participant))),1),
+            CI_U = round(Mean + qnorm(.975)*SD/sqrt(length(unique(participant))),1),
+            MIN = min(Percentage),
+            MAX = max(Percentage)) %>%
+  arrange(desc(Options))
+
+TRUE_state
+```
+
+
+```{r false_statement, eval=FALSE, include=FALSE}
+FALSE_state <- datarows %>%
+  select("participant",`1_xinxi_Q1:13`:`1_xinxi_Q1:24`) %>%
+  pivot_longer(cols = starts_with("1_xinxi_Q1"), names_to = "True_statment", values_to = "rating") %>%
+  group_by(participant) %>%
+  summarise(False_statement_5 = mean(rating == 5),
+            False_statement_4 = mean(rating == 4),
+            False_statement_3 = mean(rating == 3),
+            False_statement_2 = mean(rating == 2),
+            False_statement_1 = mean(rating == 1)) %>%
+  pivot_longer(cols = starts_with("False_statement_"), names_to = "Options",values_to = "Percentage") %>%
+  group_by(Options) %>%
+  summarise(Mean = round(mean(Percentage)*100,1), 
+            SD = round(sd(Percentage)*100,1),
+            CI_L = round(Mean + qnorm(.025)*SD/sqrt(length(unique(participant))),1),
+            CI_U = round(Mean + qnorm(.975)*SD/sqrt(length(unique(participant))),1),
+            MIN = min(Percentage),
+            MAX = max(Percentage)) %>%
+  arrange(desc(Options))
+
+FALSE_state
+```
+
+
+```{r conspiracy, eval=FALSE, include=FALSE}
+Conspiracy <- datarows %>%
+  select("participant",`1_xinxi_Q1:25`:`1_xinxi_Q1:32`) %>%
+  pivot_longer(cols = starts_with("1_xinxi_Q1"), names_to = "True_statment", values_to = "rating") %>%
+  group_by(participant) %>%
+  summarise(Conspiracy_5 = mean(rating == 5),
+            Conspiracy_4 = mean(rating == 4),
+            Conspiracy_3 = mean(rating == 3),
+            Conspiracy_2 = mean(rating == 2),
+            Conspiracy_1 = mean(rating == 1)) %>%
+  pivot_longer(cols = starts_with("Conspiracy_"), names_to = "Options",values_to = "Percentage") %>%
+  group_by(Options) %>%
+  summarise(Mean = round(mean(Percentage)*100,1), 
+            SD = round(sd(Percentage)*100,1),
+            CI_L = round(Mean + qnorm(.025)*SD/sqrt(length(unique(participant))),1),
+            CI_U = round(Mean + qnorm(.975)*SD/sqrt(length(unique(participant))),1),
+            MIN = min(Percentage),
+            MAX = max(Percentage)) %>%
+  arrange(desc(Options))
+
+Conspiracy
+```
+
+
 提取NC資料
 
 ```{r NC, message=FALSE, warning=FALSE}
