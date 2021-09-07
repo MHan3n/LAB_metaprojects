@@ -12,6 +12,8 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## 緒論
 
+> 明翰：回顧認知動機的定義、問卷開發概念
+
 本研究重製 @bootGatheringProcessingInterpreting2021 的問卷調查及假設分析，探討台灣地區民眾相信正確及錯誤疫情資訊的認知動機因素。
 
 認知動機是什麼？
@@ -29,12 +31,19 @@ Need for cognitive closure(認知停歇需求)
 
 @bootGatheringProcessingInterpreting2021 使用 @kruglanskiPsychologicalTheoryTesting1997 47題版本
 
+> 明翰：台灣學術圈使用NC或NCC問卷，探討資訊解讀或認知態度的研究主題
 
-> 尋找有引用上述文獻的中文文獻；整理曾被用來探討的主題。
 
-疫情資訊的樣態
 
-民眾對疫情資訊的信任度
+
+
+> 采妤：疫情爆發後，全球使用NC或NCC問卷，探討民眾應對疫情資訊及措施的態度或動機研究
+
+
+
+
+
+> 祥偉、子渝：從目前學術機構或民調中心的資訊，整理台灣社會疫情資訊的樣態; 民眾對疫情資訊的信任度調查
 
 |Boot et al.(2021)原始假設 | 結果支持狀況 |
 |---|---|
@@ -43,6 +52,8 @@ Need for cognitive closure(認知停歇需求)
 |H1c: 高NC者依賴新媒體及可靠管道獲取最新疫情資訊來源的程度高於低NC者 | 不支持 |
 |H2: 高NCC者比低NCC者對個人認為是真實的資訊更有信心 | 部分支持 |
 |H3: 低認知動機者(低NC,高NCC)容易接受流言說法 | 不支持 |
+
+
 
 > 與高NCC有關的假設沒有得到充分支持的研究結果可能原因：
 > 1. Prolific平台的多數參與者年輕(20y~40y)，會主動吸收最新資訊。
