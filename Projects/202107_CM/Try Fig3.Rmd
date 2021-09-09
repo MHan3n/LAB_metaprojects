@@ -1,0 +1,41 @@
+---
+title: "Try Fig3"
+author: "Hsieh M.H"
+date: "2021/9/1"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(osfr)
+
+```
+
+匯入原始osf檔案
+```{r}
+osf_retrieve_file("he2v7") %>% osf_download()
+load(list.fie(recursive = TRUE,full.names = TRUE,include.dirs = TRUE,PATTERN = "*.Rdata")) 
+file.move(list.files(recursive = TRUE,full.names = TRUE,include.dirs = TRUE,pattern = "*.Rdata" ))
+```
+由於初次嘗試發現分組人數與論文不一致，聯絡論文第一作者Arnout Boot，得知16位被排除的參與者是根據完成"Knowledge Test"的秒數。
+
+```{r message=FALSE, warning=FALSE}
+## check the equality of two data sets
+sum(data_factors$Q1T_Page.Submit != data_numeric$Q1T_Page.Submit)
+## Boxplot for test duration
+boxplot(data_numeric$Q1T_Page.Submit)
+
+wave1_rawdata <- data_numeric %>% 
+## exclude the participants who spent more than 999 seconds on the knowledge test
+  filter(Q1T_Page.Submit < 999) %>%
+## exclude the participants who failed the catch question
+  filter(Q1_CATCH1 == 5) %>%
+## ## exclude the participants who spent time on the knowledge test longer than 3.29 standardized time
+  filter(scale(Q1T_Page.Submit)<3.29)
+## How many participants' data are analyzed?
+wave1_rawdata %>%
+  summarise(N=n())
+```
+
+

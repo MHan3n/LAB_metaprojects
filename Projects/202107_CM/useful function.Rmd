@@ -1,0 +1,82 @@
+---
+title: "Code learning"
+author: "Hsieh M.H"
+date: "2021/8/26"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+***以下為參考老師傳授的專題學習歷程所使用到的各個函式運用。
+
+每一個函數均由其使用到的時候，因此都理解是基礎。
+
+Regular expression 正則式表達(此為某種小系統的語系，下面一個講述list.file在匯入檔案時會用到)
+1. list.file
+list.file  means == list the file in directory
+參數為: recursive = full.names = include.dirs =  pattern = 
+data type 參數均為邏輯logical
+pattern 在這裡尤為重要，先不管pattern裡面使用的正則式符號。
+程式碼要輸入正確，才能對應。
+正則式:
+Re又稱為正則表達式，裡面有許多符號\ | ( ) [ { ^ $ * + ?
+每個都有使用上的意義，依據不同狀況使用。
+list.file  means == list the file in directory
+
+2. rmarkdown::paged table
+是一個可以簡易的製造row and cols 的 表格。
+
+3. rnorm (這個簡易的功能也是不容小覷)
+rnorm(n, mean , sd )
+n = 資料的觀查值數量。(小狗有100隻)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+C 3
+stat_summary()裡面可以放的參數非常廣
+基本上ggplot有用到的參數，stay_summary也常會拿來用。
+
+功用:是屬於一般要看資料時，複合型圖形，好檢視數據多個不同面向，多用於疊圖，或者要看標準誤(standard error)，或計算平均值。
+
+
+很有意思的是 Column Plot 確實可以與Stat_summary 一同使用，不過還是會透過兩個以上的疊圖方便檢視資料。
+Function Knit:: package is good use since
+some plot are not generated from R Code.
+Knitr::include("File name + .png")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+腦袋裝水? 
+fill
+back E-T
+情緒歷程
+思考歷程
+朋友
+
+我唸書時，阿是乾我??
+ 

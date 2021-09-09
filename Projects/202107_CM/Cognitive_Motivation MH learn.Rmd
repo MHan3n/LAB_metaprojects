@@ -1,0 +1,223 @@
+---
+title: "Boot et al.(2021)認知動機量表分析重製測試"
+date: "`r Sys.Date()`"
+output: 
+  html_document
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(osfr)
+```
+
+### 下載及載入原始資料
+
+```{r load_rawdata, echo=TRUE, message=FALSE, warning=FALSE}
+## Download and load W1 rawdata from OSF
+osf_retrieve_file("he2v7") %>%
+  osf_download()
+load(list.files(recursive = TRUE,full.names = TRUE,include.dirs = TRUE,pattern = "*.Rdata"))
+file.remove(list.files(recursive = TRUE,full.names = TRUE,include.dirs = TRUE,pattern = "*.Rdata"))
+
+## Import Backward translation questions
+backward_T <- read_csv(file = "C_to_E.csv")
+```
+
+
+### NC 問卷題目
+
+取得[原始問卷](https://www.midss.org/content/need-cognition-scale)
+
+```{r}
+bind_cols( subset(items, key %in% grep("^Q16_",key,value=TRUE) )%>%
+  pull(value) %>% gsub(pattern = "For each of the statements below, please indicate whether or not the statement is characteristic of you or of what you believe. - ",replacement = "") ,
+  slice(backward_T,1:18)) %>% rename(`Original Questions` = `...1`,`Forward Translation` =`Source segment`, `Backward Translation` = `Target segment`) %>%
+  rmarkdown::paged_table(options = list(rows.print = 10))
+```
+
+
+### NCC 問卷題目
+
+取得[原始問卷](https://www.midss.org/content/need-closure-scale-nfc)
+
+```{r}
+bind_cols( subset(items, key %in% grep("^Q17_",key,value=TRUE) )%>%
+  pull(value) %>% gsub(pattern = "Read each of the following statements and decide how much you agree with each according to your beliefs and experiences. - ",replacement = "") ,
+  slice(backward_T,-1:-18)) %>% rename(`Original Questions` = `...1`,`Forward Translation` =`Source segment`, `Backward Translation` = `Target segment`) %>%
+  rmarkdown::paged_table(options = list(rows.print = 10))
+```
+
+### 匯入wave 1 認知動機資料
+
+```{r NC, message=FALSE, warning=FALSE}
+NC_data <- data_numeric %>% 
+## exclude the participants who spent more than 999 seconds on the knowledge test
+  filter(Q1T_Page.Submit < 999) %>%
+## exclude the participants who failed the catch question
+  filter(Q1_CATCH1 == 5) %>%
+## ## exclude the participants who spent time on the knowledge test longer than 3.29 standardized time
+  filter(scale(Q1T_Page.Submit)<3.29) %>%
+  ## 挑出ID及NC資料
+  select("ID", starts_with("Q16_"))
+```
+
+
+```{r NCC, message=FALSE, warning=FALSE}
+NCC_data <- data_numeric %>% 
+  ## exclude the participants who spent more than 999 seconds on the knowledge test
+  filter(Q1T_Page.Submit < 999) %>%
+## exclude the participants who failed the catch question
+  filter(Q1_CATCH1 == 5) %>%
+## ## exclude the participants who spent time on the knowledge test longer than 3.29 standardized time
+  filter(scale(Q1T_Page.Submit)<3.29) %>%
+  ## 挑出ID及NC資料
+  select("ID", starts_with("Q17_"))
+```
+
+
+
+### NC 資料數值集
+
+```{r}
+NC_data %>%
+  rmarkdown::paged_table(options = list(rows.print = 5))
+```
+
+
+### NCC資料數值集
+
+
+```{r}
+NCC_data %>%
+  rmarkdown::paged_table(options = list(rows.print = 5))
+```
+
+## 認知動機分組
+
+以NC(Need for cognition)及NCC(Need for cognitive closure)量表總分篩選實際納入分析的參與者
+
+根據原始論文分組人數描述：
+"Group sizes were 61 (Hi-NC, Hi-NCC), 78 (Hi-NC,Lo-NCC), 61 (Lo-NC, Hi-NCC), and 52 (Lo-NC, Lo-NCC)." 總共`r sum(61,78,61,52)`人。
+
+
+### NCC計分及分組
+
+參考[量表計分說明](https://www.midss.org/sites/default/files/need_for_closure_scale.pdf)
+
+```{r NCC_reversed, message=FALSE, warning=FALSE}
+# 這裡運用到 Chapter 6 的單元
+
+
+## 挑出非反向計分題
+NCC_data_reversed <- NCC_data %>% select(!ends_with("R")) %>%
+## 挑出反向計分題
+## 重置計分
+## 重新組合資料框架
+bind_cols(7 - NCC_data %>% 
+  select(ends_with("R")))
+```
+
+NCC總分大於Q3為高分組;小於或等於Q1為低分組
+
+```{r NCC_group, message=FALSE, warning=FALSE}
+## 測謊題欄數
+lie_pos <- names(NCC_data_reversed)[grep(names(NCC_data_reversed),pattern = "LIE")]
+## NCC題欄數
+ncc_pos <- names(NCC_data_reversed)[-grep(names(NCC_data_reversed),pattern = "LIE")][-1]
+## Order questions
+o_pos <- paste0("Q17_",c("1", "6", "11", "20R", "24", "28R", "34", "35", "37", "47R"))
+## Predictability questions
+p_pos <- paste0("Q17_",c("5R", "7R", "8", "19R", "26", "27", "30", "45"))
+## Decisiveness questions
+d_pos <- paste0("Q17_",c("12R", "13R", "14", "16R", "17", "23R", "40R"))
+## Ambiguity questions
+a_pos <- paste0("Q17_",c("3", "9", "15", "21", "31", "32", "33", "38", "42"))
+## Closed Mindedness
+c_pos <-  paste0("Q17_",c("2R", "4", "10", "25R", "29R", "36R", "41R", "44"))
+
+## NCC總分小計
+NCC_scores <- NCC_data_reversed %>%
+  mutate(o_score = rowSums(.[o_pos]),
+         p_score = rowSums(.[p_pos]),
+         d_score = rowSums(.[d_pos]),
+         a_score = rowSums(.[a_pos]),
+         c_score = rowSums(.[c_pos])) %>%
+  transmute(ID=ID,lie_score = rowSums(.[lie_pos]), 
+            o_score = o_score,
+            p_score = p_score,
+            d_score = d_score,
+            a_score = a_score,
+            c_score = c_score,
+            ncc_score = rowSums(.[ncc_pos]))
+
+(NCC_scores <- NCC_scores %>% 
+## 計算NCC 25% & 75%四位分數
+## NCC High > 75%; NCC Low < 25%
+  mutate(NCC_GROUP = if_else(ncc_score > quantile(ncc_score,c(.75)), "H",
+                      (if_else(ncc_score <= quantile(ncc_score,c(.25)),"L","N"))                      )
+         )) %>%
+  group_by(NCC_GROUP) %>%
+  summarise(N = n(), Average = mean(ncc_score))
+```
+
+
+### NC計分及分組
+
+
+```{r NC_reversed, message=FALSE, warning=FALSE}
+## 挑出非反向計分題
+NC_data_reversed <- NC_data %>% select(!ends_with("R")) %>%
+## 挑出反向計分題
+## 重置計分
+## 重新組合資料框架
+bind_cols(6 - NC_data %>% 
+  select(ends_with("R")))
+```
+
+NC總分大於中位數為高分組，等於或小於為低分組。
+
+```{r NC_group, message=FALSE, warning=FALSE}
+## NC總分小計
+(NC_scores <- NC_data_reversed %>%
+  transmute(ID=ID,nc_score = rowSums(.[-1])) %>%
+   mutate(NC_GROUP = if_else(nc_score > median(nc_score), "H", "L")))%>%
+#                      if_else(nc_score <= quantile(nc_score,c(.25)),"L","N") ))) %>%
+  group_by(NC_GROUP) %>%
+  summarise(N=n(), Average = mean(nc_score))
+```
+
+
+
+### 合併NC及NCC分數
+
+重製Appendix A Table 6
+
+```{r groups, message=FALSE, warning=FALSE}
+Scale <- c("Need for Cognition","Need for Cognitive Closure")
+
+bind_cols(Scale,
+bind_rows(
+NC_scores %>% 
+  summarise(N = n(), Mean = mean(nc_score), SD = sd(nc_score), Median=median(nc_score), Min = min(nc_score), Max = max(nc_score), CI_L = Mean + qnorm(.025)*SD/sqrt(n()), CI_H = Mean + qnorm(.975)*SD/sqrt(n()) ),
+NCC_scores %>% 
+  summarise(N = n(), Mean = mean(ncc_score), SD = sd(ncc_score), Median=median(ncc_score), Min = min(ncc_score), Max = max(ncc_score), CI_L = Mean + qnorm(.025)*SD/sqrt(n()), CI_H = Mean + qnorm(.975)*SD/sqrt(n()) )
+ )
+)
+```
+
+
+## 分組人數與論文報告確認一致
+
+```{r}
+NC_scores %>% left_join(NCC_scores, by = "ID") %>% 
+  filter(NC_GROUP != "N", NCC_GROUP != "N") %>%
+  group_by(NC_GROUP, NCC_GROUP) %>%
+  summarise(N = n())
+```
+
+"Group sizes were 61 (Hi-NC, Hi-NCC), 78 (Hi-NC,Lo-NCC), 61 (Lo-NC, Hi-NCC), and 52 (Lo-NC, Lo-NCC)."
+
+
+

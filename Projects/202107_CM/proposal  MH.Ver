@@ -1,0 +1,124 @@
+---
+title: "計畫書"
+author: "謝明翰 個人彙整用" 
+date: "2021/7/26"
+bibliography: ref.bib
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## 緒論
+
+本研究重製 @bootGatheringProcessingInterpreting2021 的問卷調查及假設分析，探討台灣地區民眾相信正確及錯誤疫情資訊的認知動機因素。
+
+認知動機是什麼？
+1. Need for cognition(認知需求) 問卷來源文獻: @cacioppoNeedCognition1982; 
+
+                                              @cacioppoEfficientAssessmentNeed1984 # 在Gathering Reference裡面的6.19(NC 問卷)
+
+1-1 求與創業警覺性的 關係：創業團隊內一致性壓力 知覺的調節效果 黃瓊億 Chiung Yi Huang et.al
+
+1-2. 團隊安全感氛圍與團隊認知閉合需求對資訊分享與創新績效的影響 Chiung Yi Huang et.al
+
+2.  Need for cognitive closure(認知停歇需求) 問卷來源文獻: @kruglanskiPsychologicalTheoryTesting1997
+              
+
+## 目前在其他研究中發現  @Kruglanski, Arie W, Atash, M, DeGrada, Eraldo, Mannetti, Lucia, Pierro, Antonio, & Webster, Donna M. (1997).
+
+# Reference裡面的9
+
+2-1. 探索結論需求對獎勵計畫與忠誠度關聯性之影響 (暫時保留)
+2-2. 不同決策特質與搜尋時間壓力下部落格設計與使用者滿意度之探討. 
+(有引用到，但不確定有沒有權限可以下載)
+
+
+
+----- 以下是找過，但沒有引用上述文獻的研究
+
+@ 0806 以下是 NCC 沒有引用 Kruglanski 1997 的文獻
+
+3.態度一致性與情緒喚起對線上謠言判斷之影響
+
+4. 特別，不知道有沒有權限可以瀏覽 (香港城市大學)
+
+選擇性接觸, 擴展性接觸, 旁導性接觸: 互聯網時代媒體信息接觸理論分析
+
+5. 華人開放性與畫作偏好之關係：以認知閉合需求為中介，這篇與Boot(2021)，在認知動機需求的引用較與本次重製研究較無關聯，華人的這一篇是將認知閉合當作一個因素，認知閉合當作中介，探討學生美術畫作的偏好與認知閉合間的關係.
+
+
+
+老師的建議:老匠認為，受訪者平常有哪些資訊管道的時候，我們也需要稍微透過簡單的調查，透過媒體來源做排序。 來發現目前台灣的民眾他們認為，哪些的媒體管道其實更符合民生對於使用媒體的了解(那些最常用的資訊是大眾媒體會接受的。)
+
+> 尋找有引用上述文獻的中文文獻；整理曾被用來探討的主題。
+
+疫情資訊的樣態
+
+民眾對疫情資訊的信任度
+
+|Boot et al.(2021)原始假設 | 結果支持狀況 |
+|---|---|
+|H1a: 高NC者對疫情的正確認識高於低NC者 | 充分支持 |
+|H1b: 高NC者更新疫情資訊的頻率高於低NC者 | 不支持 |
+|H1c: 高NC者依賴新媒體及可靠管道獲取最新疫情資訊來源的程度高於低NC者 | 不支持 |
+|H2: 高NCC者比低NCC者對個人認為是真實的資訊更有信心 | 部分支持 |
+|H3: 低認知動機者(低NC,低NCC)容易接受流言說法 | 不支持 |
+
+
+
+## 方法
+
+問卷內容(依原始問卷腳本施測次序):
+
+1. 疫情資訊可信度評估(Q1)：12條真實資訊, 12條不實資訊, 8條流言說法
+2. 人口背景調查(Q2 ~ Q7)
+3. 媒體使用狀況調查：使用平台(Q8), 每日使用時間(Q9),獲取最新資訊的來源種類(**Q10**) 獲取最新資訊的情境(**Q10_1~4**), 獲取最新資訊的頻率(**Q12**), 獲取最新資訊的動機(**Q14**), 動機調查填充題(Q14_1~5,Q15)
+4. 認知動機問卷: NC(Q16),NCC(Q17)
+
+
+## 分析計畫
+
+(原研究第一波分析)
+1. 疫情資訊回應資料的分類檢測：隨機選取200位參與者的資料進行確證性因素分析，分解兩種因素：Knowledge, Conspiracy Rejection
+
+2. 確設性假設分析
+
+檢測資料符合有Knowledge, Conspiracy Rejection的迴歸式之程度。
+
+(Q1 Knowledge, Conspiracy Rejection分別分析)
+model 0: Q1 responses ~ 1
+model 1: Q1 responses ~ NC X NCC
+
+- H1a: 迴歸分析確認高NC者掌握資訊的正確度高於低NC者
+
+(只分析Q1 Knowledge)
+model 1的 NC 迴歸係數
+
+- H1b: 迴歸分析無法支持高NC者更新疫情資訊的頻率高於低NC者
+model 0: Q12 responses ~ 1
+mode1 1: Q12 responses ~ NC*NCC
+
+model 1的 NC 迴歸係數
+
+- H1c: 集群分析無法支持高NC者依賴新媒體及可靠管道獲取最新疫情資訊來源的程度高於低NC者
+
+集群分析綜合Q1, Q10, Q10_1~4, Q12, Q14, Q16, Q17
+
+- H2: 描述統計顯示高NCC者比低NCC者認為是真實的資訊更有信心( https://osf.io/8jfwe/  Table 9,10 回答“I am sure this is true"/"I am sure this is not true"的分組信賴區間)；迴歸分析顯示高NCC者對真假資訊及流言說法，都有較高的信心。
+
+(Q1 Knowledge, Conspiracy Rejection分別分析)
+model 1的NCC迴歸係數
+
+- H3: 迴歸分析無法支持低認知動機者(低NC,低NCC)容易接受流言說法
+
+(只分析Q1 Conspiracy Rejection)
+model 1 的 NC*NCC迴歸係數
+
+3. 描述統計
+
+
+
+
+### 參考文獻
